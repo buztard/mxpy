@@ -1,0 +1,11 @@
+QUIET_GEN = @echo '   ' GEN $@;
+
+PLATFORM_VERSION = 1.0
+
+# python scripts & extension modules
+pkgpythondir = $(pyexecdir)
+pkgpyexecdir = $(pyexecdir)
+
+pynbtk_common_includes = $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) -I$(top_builddir)/nbtk
+pynbtk_common_ldflags = -module -avoid-version
+pynbtk_defsdir = $(pkgdatadir)/$(PLATFORM_VERSION)/defs

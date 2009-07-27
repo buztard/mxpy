@@ -1,0 +1,72 @@
+
+NbtkLabel {
+  color: red;
+  background-color: yellow;
+  font-size: 30;
+  font-family: "Times";
+}
+
+NbtkLabel#padded-label {
+  padding-left: 50;
+  padding: 10;
+}
+
+NbtkButton, NbtkFadeButton, NbtkScrollButton {
+  color: blue;
+  padding: 12;
+  border-image: url('file://border-image.png') 12 stretch stretch;
+}
+
+NbtkButton:hover, NbtkFadeButton:hover, NbtkScrollButton:hover {
+  border-image: url('file://border-image-light.png') 12 stretch stretch;
+}
+
+NbtkButton:active, NbtkFadeButton:active, NbtkScrollButton:active {
+  border-image: url('file://border-image-dark.png') 12 stretch stretch;
+}
+
+NbtkButton#test-border-image {
+  color: black;
+  border-image: url('file://border-image.png') 12 stretch stretch;
+}
+
+NbtkButton NbtkBin#button-icon {
+  background-color: green;
+}
+
+NbtkButton NbtkBin#button-icon:hover {
+  background-color: yellow;
+}
+
+NbtkLabel#test-border-image {
+  color: black;
+  border-image: url('file://border-image.png') 12 stretch stretch;
+  border-width: 12;
+}
+
+*#red-button {
+  border-image: url('file://red-button.png') 0 stretch stretch;
+}
+
+*#blue-button {
+  border-image: url('file://cyan-button.png') 0 stretch stretch;
+}
+
+*#green-button {
+  border-image: url('file://green-button.png') 0 stretch stretch;
+}
+
+*#style-button {
+  border-image: url('file://green-button.png') 0;
+}
+
+*#style-button:hover {
+  border-image: url('file://red-button.png') 0;
+}
+
+NbtkTable {
+  color: #aee;
+  background-color: #ddd;
+  border-image: url('file://rounded-corner.png') 30;
+  padding: 10;
+}

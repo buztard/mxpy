@@ -1,0 +1,289 @@
+;; -*- scheme -*-
+; object definitions ...
+
+(define-object Widget
+  (in-module "Nbtk")
+  (parent "ClutterActor")
+  (c-name "NbtkWidget")
+  (gtype-id "NBTK_TYPE_WIDGET")
+)
+
+(define-object Bin
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkBin")
+  (gtype-id "NBTK_TYPE_BIN")
+)
+
+(define-object Viewport
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkViewport")
+  (gtype-id "NBTK_TYPE_VIEWPORT")
+)
+
+(define-object Tooltip
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkTooltip")
+  (gtype-id "NBTK_TYPE_TOOLTIP")
+)
+
+(define-object ScrollBar
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkScrollBar")
+  (gtype-id "NBTK_TYPE_SCROLL_BAR")
+)
+
+(define-object Expander
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkExpander")
+  (gtype-id "NBTK_TYPE_EXPANDER")
+)
+
+(define-object Button
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkButton")
+  (gtype-id "NBTK_TYPE_BUTTON")
+)
+
+(define-object FadeButton
+  (in-module "Nbtk")
+  (parent "NbtkButton")
+  (c-name "NbtkFadeButton")
+  (gtype-id "NBTK_TYPE_FADE_BUTTON")
+)
+
+(define-object ScrollView
+  (in-module "Nbtk")
+  (parent "NbtkBin")
+  (c-name "NbtkScrollView")
+  (gtype-id "NBTK_TYPE_SCROLL_VIEW")
+)
+
+(define-object Adjustment
+  (in-module "Nbtk")
+  (parent "GObject")
+  (c-name "NbtkAdjustment")
+  (gtype-id "NBTK_TYPE_ADJUSTMENT")
+)
+
+
+(define-interface Draggable
+  (in-module "Nbtk")
+  (c-name "NbtkDraggable")
+  (gtype-id "NBTK_TYPE_DRAGGABLE")
+)
+
+(define-interface Droppable
+  (in-module "Nbtk")
+  (c-name "NbtkDroppable")
+  (gtype-id "NBTK_TYPE_DROPPABLE")
+)
+
+(define-object Clipboard
+  (in-module "Nbtk")
+  (parent "GObject")
+  (c-name "NbtkClipboard")
+  (gtype-id "NBTK_TYPE_CLIPBOARD")
+)
+
+(define-object GtkExpander
+  (in-module "Nbtk")
+  (parent "GtkBin")
+  (c-name "NbtkGtkExpander")
+  (gtype-id "NBTK_TYPE_GTK_EXPANDER")
+)
+
+(define-object GtkFrame
+  (in-module "Nbtk")
+  (parent "GtkFrame")
+  (c-name "NbtkGtkFrame")
+  (gtype-id "NBTK_GTK_TYPE_FRAME")
+)
+
+(define-object GtkLightSwitch
+  (in-module "Nbtk")
+  (parent "GtkDrawingArea")
+  (c-name "NbtkGtkLightSwitch")
+  (gtype-id "NBTK_GTK_TYPE_LIGHT_SWITCH")
+)
+
+(define-object Style
+  (in-module "Nbtk")
+  (parent "GObject")
+  (c-name "NbtkStyle")
+  (gtype-id "NBTK_TYPE_STYLE")
+)
+
+(define-object Subtexture
+  (in-module "Nbtk")
+  (parent "ClutterActor")
+  (c-name "NbtkSubtexture")
+  (gtype-id "NBTK_TYPE_SUBTEXTURE")
+)
+
+(define-object TableChild
+  (in-module "Nbtk")
+  (parent "ClutterChildMeta")
+  (c-name "NbtkTableChild")
+  (gtype-id "NBTK_TYPE_TABLE_CHILD")
+)
+
+(define-object TextureCache
+  (in-module "Nbtk")
+  (parent "GObject")
+  (c-name "NbtkTextureCache")
+  (gtype-id "NBTK_TYPE_TEXTURE_CACHE")
+)
+
+(define-object TextureFrame
+  (in-module "Nbtk")
+  (parent "ClutterActor")
+  (c-name "NbtkTextureFrame")
+  (gtype-id "NBTK_TYPE_TEXTURE_FRAME")
+)
+
+(define-object Table
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkTable")
+  (gtype-id "NBTK_TYPE_TABLE")
+)
+
+(define-object ProgressBar
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkProgressBar")
+  (gtype-id "NBTK_TYPE_PROGRESS_BAR")
+)
+
+(define-object Label
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkLabel")
+  (gtype-id "NBTK_TYPE_LABEL")
+)
+
+(define-object Icon
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkIcon")
+  (gtype-id "NBTK_TYPE_ICON")
+)
+
+(define-object Grid
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkGrid")
+  (gtype-id "NBTK_TYPE_GRID")
+)
+
+(define-object ListView
+  (in-module "Nbtk")
+  (parent "NbtkGrid")
+  (c-name "NbtkListView")
+  (gtype-id "NBTK_TYPE_LIST_VIEW")
+)
+
+(define-object ItemView
+  (in-module "Nbtk")
+  (parent "NbtkGrid")
+  (c-name "NbtkItemView")
+  (gtype-id "NBTK_TYPE_ITEM_VIEW")
+)
+
+(define-object Entry
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkEntry")
+  (gtype-id "NBTK_TYPE_ENTRY")
+)
+
+(define-object BoxLayout
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkBoxLayout")
+  (gtype-id "NBTK_TYPE_BOX_LAYOUT")
+)
+
+(define-interface Stylable
+  (in-module "Nbtk")
+  (c-name "NbtkStylable")
+  (gtype-id "NBTK_TYPE_STYLABLE")
+)
+
+;; Enumerations and flags ...
+
+(define-enum DragAxis
+  (in-module "Nbtk")
+  (c-name "NbtkDragAxis")
+  (gtype-id "NBTK_TYPE_DRAG_AXIS")
+  (values
+    '("no-axis" "NBTK_NO_AXIS")
+    '("x-axis" "NBTK_X_AXIS")
+    '("y-axis" "NBTK_Y_AXIS")
+  )
+)
+
+(define-enum DragContainment
+  (in-module "Nbtk")
+  (c-name "NbtkDragContainment")
+  (gtype-id "NBTK_TYPE_DRAG_CONTAINMENT")
+  (values
+    '("disable-containment" "NBTK_DISABLE_CONTAINMENT")
+    '("contain-in-stage" "NBTK_CONTAIN_IN_STAGE")
+    '("contain-in-parent" "NBTK_CONTAIN_IN_PARENT")
+    '("contain-in-area" "NBTK_CONTAIN_IN_AREA")
+  )
+)
+
+(define-enum StyleError
+  (in-module "Nbtk")
+  (c-name "NbtkStyleError")
+  (gtype-id "NBTK_TYPE_STYLE_ERROR")
+  (values
+    '("file" "NBTK_STYLE_ERROR_INVALID_FILE")
+  )
+)
+
+(define-flags TableChildOptions
+  (in-module "Nbtk")
+  (c-name "NbtkTableChildOptions")
+  (gtype-id "NBTK_TYPE_TABLE_CHILD_OPTIONS")
+  (values
+    '("keep-aspect-ratio" "NBTK_KEEP_ASPECT_RATIO")
+    '("x-expand" "NBTK_X_EXPAND")
+    '("y-expand" "NBTK_Y_EXPAND")
+    '("x-fill" "NBTK_X_FILL")
+    '("y-fill" "NBTK_Y_FILL")
+  )
+)
+
+(define-enum Alignment
+  (in-module "Nbtk")
+  (c-name "NbtkAlignment")
+  (gtype-id "NBTK_TYPE_ALIGNMENT")
+  (values
+    '("top" "NBTK_ALIGN_TOP")
+    '("right" "NBTK_ALIGN_RIGHT")
+    '("bottom" "NBTK_ALIGN_BOTTOM")
+    '("left" "NBTK_ALIGN_LEFT")
+    '("center" "NBTK_ALIGN_CENTER")
+  )
+)
+
+(define-enum Align
+  (in-module "Nbtk")
+  (c-name "NbtkAlign")
+  (gtype-id "NBTK_TYPE_ALIGN")
+  (values
+    '("start" "NBTK_ALIGN_START")
+    '("middle" "NBTK_ALIGN_MIDDLE")
+    '("end" "NBTK_ALIGN_END")
+  )
+)
+

@@ -1,0 +1,2173 @@
+;; -*- scheme -*-
+
+(include "nbtk-base-types.defs")
+
+;; From nbtk-adjustment.h
+
+(define-function adjustment_get_type
+  (c-name "nbtk_adjustment_get_type")
+  (return-type "GType")
+)
+
+(define-function adjustment_new
+  (c-name "nbtk_adjustment_new")
+  (is-constructor-of "NbtkAdjustment")
+  (return-type "NbtkAdjustment*")
+  (properties
+    '("value")
+    '("lower")
+    '("upper")
+    '("step_increment")
+    '("page_increment")
+    '("page_size")
+  )
+)
+
+(define-method get_value
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_get_value")
+  (return-type "gdouble")
+)
+
+(define-method set_value
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_set_value")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method clamp_page
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_clamp_page")
+  (return-type "none")
+  (parameters
+    '("gdouble" "lower")
+    '("gdouble" "upper")
+  )
+)
+
+(define-method set_values
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_set_values")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+    '("gdouble" "lower")
+    '("gdouble" "upper")
+    '("gdouble" "step_increment")
+    '("gdouble" "page_increment")
+    '("gdouble" "page_size")
+  )
+)
+
+(define-method get_values
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_get_values")
+  (return-type "none")
+  (parameters
+    '("gdouble*" "value")
+    '("gdouble*" "lower")
+    '("gdouble*" "upper")
+    '("gdouble*" "step_increment")
+    '("gdouble*" "page_increment")
+    '("gdouble*" "page_size")
+  )
+)
+
+(define-method interpolate
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_interpolate")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+    '("guint" "duration")
+  )
+)
+
+(define-method get_elastic
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_get_elastic")
+  (return-type "gboolean")
+)
+
+(define-method set_elastic
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_set_elastic")
+  (return-type "none")
+  (parameters
+    '("gboolean" "elastic")
+  )
+)
+
+(define-method clamp
+  (of-object "NbtkAdjustment")
+  (c-name "nbtk_adjustment_clamp")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "interpolate")
+    '("guint" "duration")
+  )
+)
+
+
+
+;; From nbtk-bin.h
+
+(define-function bin_get_type
+  (c-name "nbtk_bin_get_type")
+  (return-type "GType")
+)
+
+(define-function bin_new
+  (c-name "nbtk_bin_new")
+  (is-constructor-of "NbtkBin")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_child
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_set_child")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method get_child
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_get_child")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_alignment
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_set_alignment")
+  (return-type "none")
+  (parameters
+    '("NbtkAlignment" "x_align")
+    '("NbtkAlignment" "y_align")
+  )
+)
+
+(define-method get_alignment
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_get_alignment")
+  (return-type "none")
+  (parameters
+    '("NbtkAlignment*" "x_align")
+    '("NbtkAlignment*" "y_align")
+  )
+)
+
+(define-method set_fill
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_set_fill")
+  (return-type "none")
+  (parameters
+    '("gboolean" "x_fill")
+    '("gboolean" "y_fill")
+  )
+)
+
+(define-method get_fill
+  (of-object "NbtkBin")
+  (c-name "nbtk_bin_get_fill")
+  (return-type "none")
+  (parameters
+    '("gboolean*" "x_fill")
+    '("gboolean*" "y_fill")
+  )
+)
+
+
+
+;; From nbtk-box-layout.h
+
+(define-function box_layout_get_type
+  (c-name "nbtk_box_layout_get_type")
+  (return-type "GType")
+)
+
+(define-function box_layout_new
+  (c-name "nbtk_box_layout_new")
+  (is-constructor-of "NbtkBoxLayout")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_vertical
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_set_vertical")
+  (return-type "none")
+  (parameters
+    '("gboolean" "vertical")
+  )
+)
+
+(define-method get_vertical
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_get_vertical")
+  (return-type "gboolean")
+)
+
+(define-method set_pack_start
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_set_pack_start")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pack_start")
+  )
+)
+
+(define-method get_pack_start
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_get_pack_start")
+  (return-type "gboolean")
+)
+
+(define-method set_spacing
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_set_spacing")
+  (return-type "none")
+  (parameters
+    '("guint" "spacing")
+  )
+)
+
+(define-method get_spacing
+  (of-object "NbtkBoxLayout")
+  (c-name "nbtk_box_layout_get_spacing")
+  (return-type "guint")
+)
+
+
+
+;; From nbtk-button.h
+
+(define-function button_get_type
+  (c-name "nbtk_button_get_type")
+  (return-type "GType")
+)
+
+(define-function button_new
+  (c-name "nbtk_button_new")
+  (is-constructor-of "NbtkButton")
+  (return-type "NbtkWidget*")
+  (properties
+    '("label" (optional))
+  )
+)
+
+(define-function button_new_with_label
+  (c-name "nbtk_button_new_with_label")
+  (return-type "NbtkWidget*")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_label
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_get_label")
+  (return-type "const-gchar*")
+)
+
+(define-method set_label
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method set_toggle_mode
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_set_toggle_mode")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method get_toggle_mode
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_get_toggle_mode")
+  (return-type "gboolean")
+)
+
+(define-method set_checked
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_set_checked")
+  (return-type "none")
+  (parameters
+    '("gboolean" "checked")
+  )
+)
+
+(define-method get_checked
+  (of-object "NbtkButton")
+  (c-name "nbtk_button_get_checked")
+  (return-type "gboolean")
+)
+
+
+
+;; From nbtk-clipboard.h
+
+(define-function clipboard_get_type
+  (c-name "nbtk_clipboard_get_type")
+  (return-type "GType")
+)
+
+(define-function clipboard_get_default
+  (c-name "nbtk_clipboard_get_default")
+  (return-type "NbtkClipboard*")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "NbtkClipboard")
+  (c-name "nbtk_clipboard_get_text")
+  (return-type "none")
+  (parameters
+    '("NbtkClipboardCallbackFunc" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method set_text
+  (of-object "NbtkClipboard")
+  (c-name "nbtk_clipboard_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+
+
+;; From nbtk-draggable.h
+
+(define-function draggable_get_type
+  (c-name "nbtk_draggable_get_type")
+  (return-type "GType")
+)
+
+(define-method set_axis
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_set_axis")
+  (return-type "none")
+  (parameters
+    '("NbtkDragAxis" "axis")
+  )
+)
+
+(define-method get_axis
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_get_axis")
+  (return-type "NbtkDragAxis")
+)
+
+(define-method set_drag_threshold
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_set_drag_threshold")
+  (return-type "none")
+  (parameters
+    '("guint" "threshold")
+  )
+)
+
+(define-method get_drag_threshold
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_get_drag_threshold")
+  (return-type "guint")
+)
+
+(define-method set_containment_type
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_set_containment_type")
+  (return-type "none")
+  (parameters
+    '("NbtkDragContainment" "containment")
+  )
+)
+
+(define-method get_containment_type
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_get_containment_type")
+  (return-type "NbtkDragContainment")
+)
+
+(define-method set_containment_area
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_set_containment_area")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x_1")
+    '("gfloat" "y_1")
+    '("gfloat" "x_2")
+    '("gfloat" "y_2")
+  )
+)
+
+(define-method get_containment_area
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_get_containment_area")
+  (return-type "none")
+  (parameters
+    '("gfloat*" "x_1")
+    '("gfloat*" "y_1")
+    '("gfloat*" "x_2")
+    '("gfloat*" "y_2")
+  )
+)
+
+(define-method disable
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_disable")
+  (return-type "none")
+)
+
+(define-method enable
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_enable")
+  (return-type "none")
+)
+
+(define-method is_enabled
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_is_enabled")
+  (return-type "gboolean")
+)
+
+
+
+;; From nbtk-droppable.h
+
+(define-function droppable_get_type
+  (c-name "nbtk_droppable_get_type")
+  (return-type "GType")
+)
+
+(define-method enable
+  (of-object "NbtkDroppable")
+  (c-name "nbtk_droppable_enable")
+  (return-type "none")
+)
+
+(define-method disable
+  (of-object "NbtkDroppable")
+  (c-name "nbtk_droppable_disable")
+  (return-type "none")
+)
+
+(define-method is_enabled
+  (of-object "NbtkDroppable")
+  (c-name "nbtk_droppable_is_enabled")
+  (return-type "gboolean")
+)
+
+(define-method accept_drop
+  (of-object "NbtkDroppable")
+  (c-name "nbtk_droppable_accept_drop")
+  (return-type "gboolean")
+  (parameters
+    '("NbtkDraggable*" "draggable")
+  )
+)
+
+
+
+;; From nbtk-entry.h
+
+(define-function entry_get_type
+  (c-name "nbtk_entry_get_type")
+  (return-type "GType")
+)
+
+(define-function entry_new
+  (c-name "nbtk_entry_new")
+  (is-constructor-of "NbtkEntry")
+  (return-type "NbtkWidget*")
+  (properties
+    '("text")
+  )
+)
+
+(define-method get_text
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_get_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_text
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_clutter_text
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_get_clutter_text")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_hint_text
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_set_hint_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_hint_text
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_get_hint_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_primary_icon_from_file
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_set_primary_icon_from_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "filename")
+  )
+)
+
+(define-method set_secondary_icon_from_file
+  (of-object "NbtkEntry")
+  (c-name "nbtk_entry_set_secondary_icon_from_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "filename")
+  )
+)
+
+
+
+;; From nbtk-enum-types.h
+
+(define-function drag_axis_get_type
+  (c-name "nbtk_drag_axis_get_type")
+  (return-type "GType")
+)
+
+(define-function drag_containment_get_type
+  (c-name "nbtk_drag_containment_get_type")
+  (return-type "GType")
+)
+
+(define-function style_error_get_type
+  (c-name "nbtk_style_error_get_type")
+  (return-type "GType")
+)
+
+(define-function table_child_options_get_type
+  (c-name "nbtk_table_child_options_get_type")
+  (return-type "GType")
+)
+
+(define-function alignment_get_type
+  (c-name "nbtk_alignment_get_type")
+  (return-type "GType")
+)
+
+(define-function align_get_type
+  (c-name "nbtk_align_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From nbtk-expander.h
+
+(define-function expander_get_type
+  (c-name "nbtk_expander_get_type")
+  (return-type "GType")
+)
+
+(define-function expander_new
+  (c-name "nbtk_expander_new")
+  (is-constructor-of "NbtkExpander")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_label
+  (of-object "NbtkExpander")
+  (c-name "nbtk_expander_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "label")
+  )
+)
+
+(define-method get_expanded
+  (of-object "NbtkExpander")
+  (c-name "nbtk_expander_get_expanded")
+  (return-type "gboolean")
+)
+
+(define-method set_expanded
+  (of-object "NbtkExpander")
+  (c-name "nbtk_expander_set_expanded")
+  (return-type "none")
+  (parameters
+    '("gboolean" "expanded")
+  )
+)
+
+
+
+;; From nbtk-fade-button.h
+
+(define-function fade_button_get_type
+  (c-name "nbtk_fade_button_get_type")
+  (return-type "GType")
+)
+
+(define-function fade_button_new
+  (c-name "nbtk_fade_button_new")
+  (is-constructor-of "NbtkFadeButton")
+  (return-type "NbtkWidget*")
+)
+
+(define-function fade_button_new_with_label
+  (c-name "nbtk_fade_button_new_with_label")
+  (return-type "NbtkWidget*")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+
+
+;; From nbtk-grid.h
+
+(define-function grid_get_type
+  (c-name "nbtk_grid_get_type")
+  (return-type "GType")
+)
+
+(define-function grid_new
+  (c-name "nbtk_grid_new")
+  (is-constructor-of "NbtkGrid")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_end_align
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_end_align")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_end_align
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_end_align")
+  (return-type "gboolean")
+)
+
+(define-method set_homogenous_rows
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_homogenous_rows")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_homogenous_rows
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_homogenous_rows")
+  (return-type "gboolean")
+)
+
+(define-method set_homogenous_columns
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_homogenous_columns")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_homogenous_columns
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_homogenous_columns")
+  (return-type "gboolean")
+)
+
+(define-method set_column_major
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_column_major")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_column_major
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_column_major")
+  (return-type "gboolean")
+)
+
+(define-method set_row_gap
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_row_gap")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method get_row_gap
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_row_gap")
+  (return-type "gfloat")
+)
+
+(define-method set_column_gap
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_column_gap")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method get_column_gap
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_column_gap")
+  (return-type "gfloat")
+)
+
+(define-method set_valign
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_valign")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method get_valign
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_valign")
+  (return-type "gdouble")
+)
+
+(define-method set_halign
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_halign")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method get_halign
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_halign")
+  (return-type "gdouble")
+)
+
+(define-method set_max_stride
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_set_max_stride")
+  (return-type "none")
+  (parameters
+    '("gint" "value")
+  )
+)
+
+(define-method get_max_stride
+  (of-object "NbtkGrid")
+  (c-name "nbtk_grid_get_max_stride")
+  (return-type "gint")
+)
+
+
+
+;; From nbtk-gtk-expander.h
+
+(define-function gtk_expander_get_type
+  (c-name "nbtk_gtk_expander_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_expander_new
+  (c-name "nbtk_gtk_expander_new")
+  (is-constructor-of "NbtkGtkExpander")
+  (return-type "GtkWidget*")
+)
+
+(define-method set_expanded
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_set_expanded")
+  (return-type "none")
+  (parameters
+    '("gboolean" "expanded")
+  )
+)
+
+(define-method get_expanded
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_get_expanded")
+  (return-type "gboolean")
+)
+
+(define-method set_label_widget
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_set_label_widget")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "label")
+  )
+)
+
+(define-method get_label_widget
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_get_label_widget")
+  (return-type "GtkWidget*")
+)
+
+(define-method set_has_indicator
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_set_has_indicator")
+  (return-type "none")
+  (parameters
+    '("gboolean" "has_indicator")
+  )
+)
+
+(define-method get_has_indicator
+  (of-object "NbtkGtkExpander")
+  (c-name "nbtk_gtk_expander_get_has_indicator")
+  (return-type "gboolean")
+)
+
+
+
+;; From nbtk-gtk-frame.h
+
+(define-function gtk_frame_get_type
+  (c-name "nbtk_gtk_frame_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_frame_new
+  (c-name "nbtk_gtk_frame_new")
+  (is-constructor-of "NbtkGtkFrame")
+  (return-type "GtkWidget*")
+)
+
+
+
+;; From nbtk-gtk.h
+
+
+
+;; From nbtk-gtk-light-switch.h
+
+(define-function gtk_light_switch_get_type
+  (c-name "nbtk_gtk_light_switch_get_type")
+  (return-type "GType")
+)
+
+(define-method set_active
+  (of-object "NbtkGtkLightSwitch")
+  (c-name "nbtk_gtk_light_switch_set_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "active")
+  )
+)
+
+(define-method get_active
+  (of-object "NbtkGtkLightSwitch")
+  (c-name "nbtk_gtk_light_switch_get_active")
+  (return-type "gboolean")
+)
+
+(define-function gtk_light_switch_new
+  (c-name "nbtk_gtk_light_switch_new")
+  (is-constructor-of "NbtkGtkLightSwitch")
+  (return-type "GtkWidget*")
+)
+
+
+
+;; From nbtk.h
+
+
+
+;; From nbtk-icon.h
+
+(define-function icon_get_type
+  (c-name "nbtk_icon_get_type")
+  (return-type "GType")
+)
+
+(define-function icon_new
+  (c-name "nbtk_icon_new")
+  (is-constructor-of "NbtkIcon")
+  (return-type "NbtkIcon*")
+)
+
+
+
+;; From nbtk-item-view.h
+
+(define-function item_view_get_type
+  (c-name "nbtk_item_view_get_type")
+  (return-type "GType")
+)
+
+(define-function item_view_new
+  (c-name "nbtk_item_view_new")
+  (is-constructor-of "NbtkItemView")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_model
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_set_model")
+  (return-type "none")
+  (parameters
+    '("ClutterModel*" "model")
+  )
+)
+
+(define-method get_model
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_get_model")
+  (return-type "ClutterModel*")
+)
+
+(define-method set_item_type
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_set_item_type")
+  (return-type "none")
+  (parameters
+    '("GType" "item_type")
+  )
+)
+
+(define-method get_item_type
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_get_item_type")
+  (return-type "GType")
+)
+
+(define-method add_attribute
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_add_attribute")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "attribute")
+    '("gint" "column")
+  )
+)
+
+(define-method freeze
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_freeze")
+  (return-type "none")
+)
+
+(define-method thaw
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_thaw")
+  (return-type "none")
+)
+
+
+
+;; From nbtk-label.h
+
+(define-function label_get_type
+  (c-name "nbtk_label_get_type")
+  (return-type "GType")
+)
+
+(define-function label_new
+  (c-name "nbtk_label_new")
+  (is-constructor-of "NbtkLabel")
+  (return-type "NbtkWidget*")
+  (properties
+    '("text")
+  )
+)
+
+(define-method get_text
+  (of-object "NbtkLabel")
+  (c-name "nbtk_label_get_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_text
+  (of-object "NbtkLabel")
+  (c-name "nbtk_label_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_clutter_text
+  (of-object "NbtkLabel")
+  (c-name "nbtk_label_get_clutter_text")
+  (return-type "ClutterActor*")
+)
+
+
+
+;; From nbtk-list-view.h
+
+(define-function list_view_get_type
+  (c-name "nbtk_list_view_get_type")
+  (return-type "GType")
+)
+
+(define-function list_view_new
+  (c-name "nbtk_list_view_new")
+  (is-constructor-of "NbtkListView")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_model
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_set_model")
+  (return-type "none")
+  (parameters
+    '("ClutterModel*" "model")
+  )
+)
+
+(define-method get_model
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_get_model")
+  (return-type "ClutterModel*")
+)
+
+(define-method set_item_type
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_set_item_type")
+  (return-type "none")
+  (parameters
+    '("GType" "item_type")
+  )
+)
+
+(define-method get_item_type
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_get_item_type")
+  (return-type "GType")
+)
+
+(define-method add_attribute
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_add_attribute")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "attribute")
+    '("gint" "column")
+  )
+)
+
+(define-method freeze
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_freeze")
+  (return-type "none")
+)
+
+(define-method thaw
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_thaw")
+  (return-type "none")
+)
+
+
+
+;; From nbtk-progress-bar.h
+
+(define-function progress_bar_get_type
+  (c-name "nbtk_progress_bar_get_type")
+  (return-type "GType")
+)
+
+(define-function progress_bar_new
+  (c-name "nbtk_progress_bar_new")
+  (is-constructor-of "NbtkProgressBar")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_progress
+  (of-object "NbtkProgressBar")
+  (c-name "nbtk_progress_bar_set_progress")
+  (return-type "none")
+  (parameters
+    '("gdouble" "progress")
+  )
+)
+
+(define-method get_progress
+  (of-object "NbtkProgressBar")
+  (c-name "nbtk_progress_bar_get_progress")
+  (return-type "gdouble")
+)
+
+
+
+;; From nbtk-scrollable.h
+
+(define-function scrollable_get_type
+  (c-name "nbtk_scrollable_get_type")
+  (return-type "GType")
+)
+
+(define-method set_adjustments
+  (of-object "NbtkScrollable")
+  (c-name "nbtk_scrollable_set_adjustments")
+  (return-type "none")
+  (parameters
+    '("NbtkAdjustment*" "hadjustment")
+    '("NbtkAdjustment*" "vadjustment")
+  )
+)
+
+(define-method get_adjustments
+  (of-object "NbtkScrollable")
+  (c-name "nbtk_scrollable_get_adjustments")
+  (return-type "none")
+  (parameters
+    '("NbtkAdjustment**" "hadjustment")
+    '("NbtkAdjustment**" "vadjustment")
+  )
+)
+
+
+
+;; From nbtk-scroll-bar.h
+
+(define-function scroll_bar_get_type
+  (c-name "nbtk_scroll_bar_get_type")
+  (return-type "GType")
+)
+
+(define-function scroll_bar_new
+  (c-name "nbtk_scroll_bar_new")
+  (is-constructor-of "NbtkScrollBar")
+  (return-type "NbtkWidget*")
+  (properties
+    '("adjustment")
+  )
+)
+
+(define-method set_adjustment
+  (of-object "NbtkScrollBar")
+  (c-name "nbtk_scroll_bar_set_adjustment")
+  (return-type "none")
+  (parameters
+    '("NbtkAdjustment*" "adjustment")
+  )
+)
+
+(define-method get_adjustment
+  (of-object "NbtkScrollBar")
+  (c-name "nbtk_scroll_bar_get_adjustment")
+  (return-type "NbtkAdjustment*")
+)
+
+
+
+;; From nbtk-scroll-view.h
+
+(define-function scroll_view_get_type
+  (c-name "nbtk_scroll_view_get_type")
+  (return-type "GType")
+)
+
+(define-function scroll_view_new
+  (c-name "nbtk_scroll_view_new")
+  (is-constructor-of "NbtkScrollView")
+  (return-type "NbtkWidget*")
+)
+
+(define-method get_hscroll_bar
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_get_hscroll_bar")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_vscroll_bar
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_get_vscroll_bar")
+  (return-type "ClutterActor*")
+)
+
+;(define-method get_child
+;  (of-object "NbtkScrollView")
+;  (c-name "nbtk_scroll_view_get_child")
+;  (return-type "ClutterActor*")
+;)
+
+(define-method get_column_size
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_get_column_size")
+  (return-type "gfloat")
+)
+
+(define-method set_column_size
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_set_column_size")
+  (return-type "none")
+  (parameters
+    '("gfloat" "column_size")
+  )
+)
+
+(define-method get_row_size
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_get_row_size")
+  (return-type "gfloat")
+)
+
+(define-method set_row_size
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_set_row_size")
+  (return-type "none")
+  (parameters
+    '("gfloat" "row_size")
+  )
+)
+
+(define-method set_mouse_scrolling
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_set_mouse_scrolling")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)
+
+(define-method get_mouse_scrolling
+  (of-object "NbtkScrollView")
+  (c-name "nbtk_scroll_view_get_mouse_scrolling")
+  (return-type "gboolean")
+)
+
+
+
+;; From nbtk-stylable.h
+
+(define-function stylable_get_type
+  (c-name "nbtk_stylable_get_type")
+  (return-type "GType")
+)
+
+(define-method install_property
+  (of-object "NbtkStylableIface")
+  (c-name "nbtk_stylable_iface_install_property")
+  (return-type "none")
+  (parameters
+    '("GType" "owner_type")
+    '("GParamSpec*" "pspec")
+  )
+)
+
+(define-method freeze_notify
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_freeze_notify")
+  (return-type "none")
+)
+
+(define-method notify
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_notify")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "property_name")
+  )
+)
+
+(define-method thaw_notify
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_thaw_notify")
+  (return-type "none")
+)
+
+(define-method list_properties
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_list_properties")
+  (return-type "GParamSpec**")
+  (parameters
+    '("guint*" "n_props")
+  )
+)
+
+(define-method find_property
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_find_property")
+  (return-type "GParamSpec*")
+  (parameters
+    '("const-gchar*" "property_name")
+  )
+)
+
+(define-method set_style
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_set_style")
+  (return-type "none")
+  (parameters
+    '("NbtkStyle*" "style")
+  )
+)
+
+(define-method get_style
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_style")
+  (return-type "NbtkStyle*")
+)
+
+(define-method get
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_property
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_property")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "property_name")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get_default_value
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_default_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property_name")
+    '("GValue*" "value_out")
+  )
+)
+
+(define-method get_container
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_container")
+  (return-type "NbtkStylable*")
+)
+
+(define-method get_base_style
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_base_style")
+  (return-type "NbtkStylable*")
+)
+
+(define-method get_style_id
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_style_id")
+  (return-type "const-gchar*")
+)
+
+(define-method get_style_type
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_style_type")
+  (return-type "const-gchar*")
+)
+
+(define-method get_style_class
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_style_class")
+  (return-type "const-gchar*")
+)
+
+(define-method get_pseudo_class
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_pseudo_class")
+  (return-type "const-gchar*")
+)
+
+(define-method get_attribute
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_attribute")
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method get_viewport
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_get_viewport")
+  (return-type "gboolean")
+  (parameters
+    '("gint*" "x")
+    '("gint*" "y")
+    '("gint*" "width")
+    '("gint*" "height")
+  )
+)
+
+(define-method changed
+  (of-object "NbtkStylable")
+  (c-name "nbtk_stylable_changed")
+  (return-type "none")
+)
+
+
+
+;; From nbtk-style.h
+
+(define-function style_get_type
+  (c-name "nbtk_style_get_type")
+  (return-type "GType")
+)
+
+(define-function style_get_default
+  (c-name "nbtk_style_get_default")
+  (return-type "NbtkStyle*")
+)
+
+(define-function style_new
+  (c-name "nbtk_style_new")
+  (is-constructor-of "NbtkStyle")
+  (return-type "NbtkStyle*")
+)
+
+(define-method load_from_file
+  (of-object "NbtkStyle")
+  (c-name "nbtk_style_load_from_file")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "filename")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_property
+  (of-object "NbtkStyle")
+  (c-name "nbtk_style_get_property")
+  (return-type "none")
+  (parameters
+    '("NbtkStylable*" "stylable")
+    '("GParamSpec*" "pspec")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get
+  (of-object "NbtkStyle")
+  (c-name "nbtk_style_get")
+  (return-type "none")
+  (parameters
+    '("NbtkStylable*" "stylable")
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_valist
+  (of-object "NbtkStyle")
+  (c-name "nbtk_style_get_valist")
+  (return-type "none")
+  (parameters
+    '("NbtkStylable*" "stylable")
+    '("const-gchar*" "first_property_name")
+    '("va_list" "va_args")
+  )
+)
+
+
+
+;; From nbtk-subtexture.h
+
+(define-function subtexture_get_type
+  (c-name "nbtk_subtexture_get_type")
+  (return-type "GType")
+)
+
+(define-function subtexture_new
+  (c-name "nbtk_subtexture_new")
+  (is-constructor-of "NbtkSubtexture")
+  (return-type "ClutterActor*")
+  (properties
+    '("texture")
+    '("top")
+    '("left")
+    '("width")
+    '("height")
+  )
+)
+
+(define-method set_parent_texture
+  (of-object "NbtkSubtexture")
+  (c-name "nbtk_subtexture_set_parent_texture")
+  (return-type "none")
+  (parameters
+    '("ClutterTexture*" "texture")
+  )
+)
+
+(define-method get_parent_texture
+  (of-object "NbtkSubtexture")
+  (c-name "nbtk_subtexture_get_parent_texture")
+  (return-type "ClutterTexture*")
+)
+
+(define-method set_frame
+  (of-object "NbtkSubtexture")
+  (c-name "nbtk_subtexture_set_frame")
+  (return-type "none")
+  (parameters
+    '("gint" "top")
+    '("gint" "left")
+    '("gint" "width")
+    '("gint" "height")
+  )
+)
+
+(define-method get_frame
+  (of-object "NbtkSubtexture")
+  (c-name "nbtk_subtexture_get_frame")
+  (return-type "none")
+  (parameters
+    '("gint*" "top")
+    '("gint*" "left")
+    '("gint*" "width")
+    '("gint*" "height")
+  )
+)
+
+
+
+;; From nbtk-table-child.h
+
+(define-function table_child_get_type
+  (c-name "nbtk_table_child_get_type")
+  (return-type "GType")
+)
+
+(define-method child_get_col_span
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_col_span")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_col_span
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_col_span")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "span")
+  )
+)
+
+(define-method child_get_row_span
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_row_span")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_row_span
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_row_span")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "span")
+  )
+)
+
+(define-method child_get_x_fill
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_x_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_fill
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_x_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "fill")
+  )
+)
+
+(define-method child_get_y_fill
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_y_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_fill
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_y_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "fill")
+  )
+)
+
+(define-method child_get_col_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_col_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_col_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_col_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+(define-method child_get_row_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_row_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_row_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_row_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+(define-method child_get_x_align
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_x_align")
+  (return-type "NbtkAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_align
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_x_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("NbtkAlign" "align")
+  )
+)
+
+(define-method child_get_y_align
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_y_align")
+  (return-type "NbtkAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_align
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_y_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("NbtkAlign" "align")
+  )
+)
+
+(define-method child_set_allocate_hidden
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_allocate_hidden")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "value")
+  )
+)
+
+(define-method child_get_allocate_hidden
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_allocate_hidden")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+
+
+;; From nbtk-table.h
+
+(define-function table_get_type
+  (c-name "nbtk_table_get_type")
+  (return-type "GType")
+)
+
+(define-function table_new
+  (c-name "nbtk_table_new")
+  (is-constructor-of "NbtkTable")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_col_spacing
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_set_col_spacing")
+  (return-type "none")
+  (parameters
+    '("gint" "spacing")
+  )
+)
+
+(define-method set_row_spacing
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_set_row_spacing")
+  (return-type "none")
+  (parameters
+    '("gint" "spacing")
+  )
+)
+
+(define-method get_col_spacing
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_get_col_spacing")
+  (return-type "gint")
+)
+
+(define-method get_row_spacing
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_get_row_spacing")
+  (return-type "gint")
+)
+
+(define-method add_actor
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_add_actor")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "row")
+    '("gint" "column")
+  )
+)
+
+(define-method add_actor_with_properties
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_add_actor_with_properties")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "row")
+    '("gint" "column")
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_row_count
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_get_row_count")
+  (return-type "gint")
+)
+
+(define-method get_column_count
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_get_column_count")
+  (return-type "gint")
+)
+
+
+
+;; From nbtk-texture-cache.h
+
+(define-function texture_cache_get_type
+  (c-name "nbtk_texture_cache_get_type")
+  (return-type "GType")
+)
+
+(define-function texture_cache_get_default
+  (c-name "nbtk_texture_cache_get_default")
+  (return-type "NbtkTextureCache*")
+)
+
+(define-method get_texture
+  (of-object "NbtkTextureCache")
+  (c-name "nbtk_texture_cache_get_texture")
+  (return-type "ClutterTexture*")
+  (parameters
+    '("const-gchar*" "path")
+    '("gboolean" "want_clone")
+  )
+)
+
+(define-method get_actor
+  (of-object "NbtkTextureCache")
+  (c-name "nbtk_texture_cache_get_actor")
+  (return-type "ClutterActor*")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method get_size
+  (of-object "NbtkTextureCache")
+  (c-name "nbtk_texture_cache_get_size")
+  (return-type "gint")
+)
+
+(define-method load_cache
+  (of-object "NbtkTextureCache")
+  (c-name "nbtk_texture_cache_load_cache")
+  (return-type "none")
+  (parameters
+    '("char*" "filename")
+  )
+)
+
+
+
+;; From nbtk-texture-frame.h
+
+(define-function texture_frame_get_type
+  (c-name "nbtk_texture_frame_get_type")
+  (return-type "GType")
+)
+
+(define-function texture_frame_new
+  (c-name "nbtk_texture_frame_new")
+  (is-constructor-of "NbtkTextureFrame")
+  (return-type "ClutterActor*")
+  (properties
+    '("texture")
+    '("top")
+    '("right")
+    '("bottom")
+    '("left")
+  )
+)
+
+(define-method set_parent_texture
+  (of-object "NbtkTextureFrame")
+  (c-name "nbtk_texture_frame_set_parent_texture")
+  (return-type "none")
+  (parameters
+    '("ClutterTexture*" "texture")
+  )
+)
+
+(define-method get_parent_texture
+  (of-object "NbtkTextureFrame")
+  (c-name "nbtk_texture_frame_get_parent_texture")
+  (return-type "ClutterTexture*")
+)
+
+(define-method set_frame
+  (of-object "NbtkTextureFrame")
+  (c-name "nbtk_texture_frame_set_frame")
+  (return-type "none")
+  (parameters
+    '("gfloat" "top")
+    '("gfloat" "right")
+    '("gfloat" "bottom")
+    '("gfloat" "left")
+  )
+)
+
+(define-method get_frame
+  (of-object "NbtkTextureFrame")
+  (c-name "nbtk_texture_frame_get_frame")
+  (return-type "none")
+  (parameters
+    '("gfloat*" "top")
+    '("gfloat*" "right")
+    '("gfloat*" "bottom")
+    '("gfloat*" "left")
+  )
+)
+
+
+
+;; From nbtk-tooltip.h
+
+(define-function tooltip_get_type
+  (c-name "nbtk_tooltip_get_type")
+  (return-type "GType")
+)
+
+(define-method get_label
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_get_label")
+  (return-type "const-gchar*")
+)
+
+(define-method set_label
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method show
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_show")
+  (return-type "none")
+)
+
+(define-method hide
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_hide")
+  (return-type "none")
+)
+
+(define-method set_tip_area
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_set_tip_area")
+  (return-type "none")
+  (parameters
+    '("const-ClutterGeometry*" "area")
+  )
+)
+
+(define-method get_tip_area
+  (of-object "NbtkTooltip")
+  (c-name "nbtk_tooltip_get_tip_area")
+  (return-type "const-ClutterGeometry*")
+)
+
+
+
+;; From nbtk-types.h
+
+(define-function border_image_get_type
+  (c-name "nbtk_border_image_get_type")
+  (return-type "GType")
+)
+
+(define-function padding_get_type
+  (c-name "nbtk_padding_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From nbtk-version.h
+
+
+
+;; From nbtk-viewport.h
+
+(define-function viewport_get_type
+  (c-name "nbtk_viewport_get_type")
+  (return-type "GType")
+)
+
+(define-function viewport_new
+  (c-name "nbtk_viewport_new")
+  (is-constructor-of "NbtkViewport")
+  (return-type "NbtkWidget*")
+)
+
+(define-method set_originu
+  (of-object "NbtkViewport")
+  (c-name "nbtk_viewport_set_originu")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x")
+    '("gfloat" "y")
+    '("gfloat" "z")
+  )
+)
+
+(define-method set_origin
+  (of-object "NbtkViewport")
+  (c-name "nbtk_viewport_set_origin")
+  (return-type "none")
+  (parameters
+    '("gint" "x")
+    '("gint" "y")
+    '("gint" "z")
+  )
+)
+
+(define-method get_originu
+  (of-object "NbtkViewport")
+  (c-name "nbtk_viewport_get_originu")
+  (return-type "none")
+  (parameters
+    '("gfloat*" "x")
+    '("gfloat*" "y")
+    '("gfloat*" "z")
+  )
+)
+
+(define-method get_origin
+  (of-object "NbtkViewport")
+  (c-name "nbtk_viewport_get_origin")
+  (return-type "none")
+  (parameters
+    '("gint*" "x")
+    '("gint*" "y")
+    '("gint*" "z")
+  )
+)
+
+
+
+;; From nbtk-widget.h
+
+(define-function widget_get_type
+  (c-name "nbtk_widget_get_type")
+  (return-type "GType")
+)
+
+(define-method set_style_pseudo_class
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_set_style_pseudo_class")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "pseudo_class")
+  )
+)
+
+(define-method get_style_pseudo_class
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_style_pseudo_class")
+  (return-type "const-gchar*")
+)
+
+(define-method set_style_class_name
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_set_style_class_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "style_class")
+  )
+)
+
+(define-method get_style_class_name
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_style_class_name")
+  (return-type "const-gchar*")
+)
+
+(define-method set_has_tooltip
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_set_has_tooltip")
+  (return-type "none")
+  (parameters
+    '("gboolean" "has_tooltip")
+  )
+)
+
+(define-method get_has_tooltip
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_has_tooltip")
+  (return-type "gboolean")
+)
+
+(define-method set_tooltip_text
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_set_tooltip_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_tooltip_text
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_tooltip_text")
+  (return-type "const-gchar*")
+)
+
+(define-method show_tooltip
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_show_tooltip")
+  (return-type "none")
+)
+
+(define-method hide_tooltip
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_hide_tooltip")
+  (return-type "none")
+)
+
+(define-method ensure_style
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_ensure_style")
+  (return-type "none")
+)
+
+(define-method get_background_image
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_background_image")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_border_image
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_border_image")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_padding
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_get_padding")
+  (return-type "none")
+  (parameters
+    '("NbtkPadding*" "padding")
+  )
+)
+
+(define-method draw_background
+  (of-object "NbtkWidget")
+  (c-name "nbtk_widget_draw_background")
+  (return-type "none")
+)
+
+

@@ -1,0 +1,15 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+includedir=@includedir@
+datadir=@datarootdir@
+
+# you can use the --variable=defsdir argument to
+# pkg-config to get this value.
+defsdir=${datadir}/pynbtk/1.0/defs
+
+pynbtkincludedir=${includedir}/pynbtk-1.0
+
+Name: PyNbtk
+Description: Python bindings for Nbtk
+Version: @VERSION@
+Cflags: -I${pynbtkincludedir}

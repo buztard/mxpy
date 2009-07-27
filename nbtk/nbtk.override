@@ -1,0 +1,175 @@
+%%
+headers
+#define NO_IMPORT_PYGOBJECT
+#include <Python.h>               
+#include "pygobject.h"
+#include <nbtk/nbtk.h>
+#include <nbtk/nbtk-gtk.h>
+#include <nbtk/nbtk-subtexture.h>
+%%
+modulename nbtk                     
+%%
+import gobject.GObject as PyGObject_Type
+import clutter.Actor as PyClutterActor_Type       
+import clutter.Texture as PyClutterTexture_Type
+import clutter.Model as PyClutterModel_Type
+import clutter.ChildMeta as PyClutterChildMeta_Type
+import gtk.Widget as PyGtkWidget_Type
+import gtk.Bin as PyGtkBin_Type
+import gtk.Frame as PyGtkFrame_Type
+import gtk.DrawingArea as PyGtkDrawingArea_Type
+%%
+ignore-glob
+  *_get_type                            
+  nbtk_stylable_*
+%%
+ignore
+  nbtk_clipboard_get_text
+  nbtk_style_get_property
+  nbtk_style_get
+  nbtk_style_get_valist
+  nbtk_table_add_actor_with_properties
+%%
+new-constructor NBTK_TYPE_WIDGET
+%%
+override nbtk_widget_get_padding noargs
+static PyObject *
+_wrap_nbtk_widget_get_padding (PyGObject *self)
+{
+  NbtkPadding padding;
+
+  nbtk_widget_get_padding (NBTK_WIDGET (self->obj), &padding);
+
+  return Py_BuildValue ("(ffff)", 
+                        padding.top, padding.right,
+                        padding.bottom, padding.left);
+}
+%%
+override nbtk_bin_get_alignment noargs
+static PyObject *
+_wrap_nbtk_bin_get_alignment (PyGObject *self)
+{
+  NbtkAlignment x_align, y_align;
+
+  nbtk_bin_get_alignment (NBTK_BIN (self->obj), &x_align, &y_align);
+
+  return Py_BuildValue ("(OO)",
+                        pyg_enum_from_gtype (NBTK_TYPE_ALIGNMENT, x_align),
+                        pyg_enum_from_gtype (NBTK_TYPE_ALIGNMENT, y_align));
+}
+%%
+override nbtk_bin_get_fill noargs
+static PyObject *
+_wrap_nbtk_bin_get_fill (PyGObject *self)
+{
+  gboolean x_fill, y_fill;
+
+  nbtk_bin_get_fill (NBTK_BIN (self->obj), &x_fill, &y_fill);
+
+  return Py_BuildValue ("(ii)", x_fill, y_fill);
+}
+%%
+override nbtk_viewport_get_originu noargs
+static PyObject *
+_wrap_nbtk_viewport_get_originu (PyGObject *self)
+{
+  gfloat x, y, z;
+  x = y = z = 0.f;
+
+  nbtk_viewport_get_originu (NBTK_VIEWPORT (self->obj), &x, &y, &z);
+
+  return Py_BuildValue ("(fff)", x, y, z);
+}
+%%
+override nbtk_viewport_get_origin noargs
+static PyObject *
+_wrap_nbtk_viewport_get_origin (PyGObject *self)
+{
+  gint x, y, z;
+  x = y = z = 0;
+
+  nbtk_viewport_get_origin (NBTK_VIEWPORT (self->obj), &x, &y, &z);
+
+  return Py_BuildValue ("(iii)", x, y, z);
+}
+%%
+override nbtk_adjustment_get_values noargs
+static PyObject *
+_wrap_nbtk_adjustment_get_values (PyGObject *self)
+{
+  gdouble value, lower, upper, step_increment, page_increment, page_size;
+
+  nbtk_adjustment_get_values (NBTK_ADJUSTMENT (self->obj),
+                              &value, &lower, &upper, &step_increment,
+                              &page_increment, &page_size);
+
+  return Py_BuildValue ("(dddddd)", value, lower, upper, step_increment,
+                        page_increment, page_size);
+}
+%%
+override nbtk_draggable_get_containment_area noargs
+static PyObject *
+_wrap_nbtk_draggable_get_containment_area (PyGObject *self)
+{
+  gfloat x_1, y_1, x_2, y_2;
+
+  nbtk_draggable_get_containment_area (NBTK_DRAGGABLE (self->obj),
+                                       &x_1, &y_1, &x_2, &y_2);
+
+  return Py_BuildValue ("(ffff)", x_1, y_1, x_2, y_2);
+}
+%%
+override nbtk_subtexture_get_frame noargs
+static PyObject *
+_wrap_nbtk_subtexture_get_frame (PyGObject *self)
+{
+  gint top, left, width, height;
+  top = left = width = height = 0;
+
+  nbtk_subtexture_get_frame (NBTK_SUBTEXTURE (self->obj),
+                             &top, &left, &width, &height);
+
+  return Py_BuildValue ("(iiii)", top, left, width, height);
+}
+%%
+override nbtk_texture_frame_get_frame noargs
+static PyObject *
+_wrap_nbtk_texture_frame_get_frame (PyGObject *self)
+{
+  gfloat top, right, bottom, left;
+  top = right = bottom = left = 0.f;
+
+  nbtk_texture_frame_get_frame (NBTK_TEXTURE_FRAME (self->obj),
+                                &top, &right, &bottom, &left);
+
+  return Py_BuildValue ("(ffff)", top, right, bottom, left);
+}
+%%
+override nbtk_gtk_expander_set_label_widget
+static PyObject *
+_wrap_nbtk_gtk_expander_set_label_widget (PyGObject *self, PyObject *args)
+{
+  GtkWidget *widget;
+
+  if (!PyArg_ParseTuple (args, "O!nbtk.GtkExpander.set_label_widget",
+                         &PyGtkWidget_Type, &widget))
+    return NULL;
+
+  nbtk_gtk_expander_set_label_widget (NBTK_GTK_EXPANDER (self->obj), widget);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override nbtk_gtk_expander_get_label_widget noargs
+static PyObject *
+_wrap_nbtk_gtk_expander_get_label_widget (PyGObject *self)
+{
+  GtkWidget *widget;
+
+  widget = nbtk_gtk_expander_get_label_widget (NBTK_GTK_EXPANDER (self->obj));
+
+  return pygobject_new ((GObject *)widget);
+}
+
+
