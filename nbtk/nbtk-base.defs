@@ -1335,9 +1335,22 @@
   )
 )
 
+(define-virtual set_style
+  (of-object "NbtkStylable")
+  (return-type "none")
+  (parameters
+    '("NbtkStyle*" "style")
+  )
+)
+
 (define-method get_style
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_style")
+  (return-type "NbtkStyle*")
+)
+
+(define-virtual get_style
+  (of-object "NbtkStylable")
   (return-type "NbtkStyle*")
 )
 
@@ -1377,9 +1390,19 @@
   (return-type "NbtkStylable*")
 )
 
+(define-virtual get_container
+  (of-object "NbtkStylable")
+  (return-type "NbtkStylable*")
+)
+
 (define-method get_base_style
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_base_style")
+  (return-type "NbtkStylable*")
+)
+
+(define-virtual get_base_style
+  (of-object "NbtkStylable")
   (return-type "NbtkStylable*")
 )
 
@@ -1389,10 +1412,20 @@
   (return-type "const-gchar*")
 )
 
+(define-virtual get_style_id
+  (of-object "NbtkStylable")
+  (return-type "constgchar*")
+)
+
 (define-method get_style_type
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_style_type")
   (return-type "const-gchar*")
+)
+
+(define-virtual get_style_type
+  (of-object "NbtkStylable")
+  (return-type "constgchar*")
 )
 
 (define-method get_style_class
@@ -1401,10 +1434,20 @@
   (return-type "const-gchar*")
 )
 
+(define-virtual get_style_class
+  (of-object "NbtkStylable")
+  (return-type "constgchar*")
+)
+
 (define-method get_pseudo_class
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_pseudo_class")
   (return-type "const-gchar*")
+)
+
+(define-virtual get_pseudo_class
+  (of-object "NbtkStylable")
+  (return-type "constgchar*")
 )
 
 (define-method get_attribute
@@ -1416,9 +1459,28 @@
   )
 )
 
+(define-virtual get_attribute
+  (of-object "NbtkStylable")
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
 (define-method get_viewport
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_viewport")
+  (return-type "gboolean")
+  (parameters
+    '("gint*" "x")
+    '("gint*" "y")
+    '("gint*" "width")
+    '("gint*" "height")
+  )
+)
+
+(define-virtual get_viewport
+  (of-object "NbtkStylable")
   (return-type "gboolean")
   (parameters
     '("gint*" "x")
