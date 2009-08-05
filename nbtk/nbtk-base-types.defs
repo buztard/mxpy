@@ -214,6 +214,7 @@
   (in-module "Nbtk")
   (c-name "NbtkStylable")
   (gtype-id "NBTK_TYPE_STYLABLE")
+  (vtable "NbtkStylableIface")
 )
 
 ;; Enumerations and flags ...
