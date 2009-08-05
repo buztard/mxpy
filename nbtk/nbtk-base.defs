@@ -1287,13 +1287,13 @@
   )
 )
 
-(define-method freeze_notify
+(define-method stylable_freeze_notify
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_freeze_notify")
   (return-type "none")
 )
 
-(define-method notify
+(define-method stylable_notify
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_notify")
   (return-type "none")
@@ -1302,13 +1302,13 @@
   )
 )
 
-(define-method thaw_notify
+(define-method stylable_thaw_notify
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_thaw_notify")
   (return-type "none")
 )
 
-(define-method list_properties
+(define-method stylable_list_properties
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_list_properties")
   (return-type "GParamSpec**")
@@ -1317,7 +1317,7 @@
   )
 )
 
-(define-method find_property
+(define-method stylable_find_property
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_find_property")
   (return-type "GParamSpec*")
@@ -1354,7 +1354,7 @@
   (return-type "NbtkStyle*")
 )
 
-(define-method get
+(define-method stylable_get
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get")
   (return-type "none")
@@ -1364,7 +1364,7 @@
   (varargs #t)
 )
 
-(define-method get_property
+(define-method stylable_get_property
   (of-object "NbtkStylable")
   (c-name "nbtk_stylable_get_property")
   (return-type "none")
