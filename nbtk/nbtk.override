@@ -21,12 +21,9 @@ import gtk.DrawingArea as PyGtkDrawingArea_Type
 %%
 ignore-glob
   *_get_type                            
-  nbtk_stylable_*
 %%
 ignore
   nbtk_clipboard_get_text
-  nbtk_style_get_property
-  nbtk_style_get
   nbtk_style_get_valist
 %%
 new-constructor NBTK_TYPE_WIDGET
@@ -267,5 +264,705 @@ _wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
   Py_INCREF (Py_None);
   return Py_None;
 }
+%%
+override nbtk_style_get
+static PyObject *
+_wrap_nbtk_style_get (PyGObject *self, PyObject *args)
+{
+  PyGObject *py_child;
+  gint len, i;
+  PyObject *py_ret;
+  
+  if ((len = PyTuple_Size (args)) < 1) {
+      PyErr_SetString (PyExc_TypeError, "requires at least one argument");
+      return NULL;
+  }
+
+  py_child = (PyGObject *) PyTuple_GetItem (args, 0);
+  if (!pygobject_check (py_child, &PyNbtkStylable_Type)) {
+      PyErr_SetString (PyExc_TypeError, 
+                       "first argument must be a nbtk.Stylable");
+      return NULL;
+  }
+
+  py_ret = PyTuple_New (len - 1);
+  for (i = 1; i < len; i++) {
+      PyObject *py_property = PyTuple_GetItem (args, i);
+      gchar *property_name;
+      GParamSpec *pspec;
+      GValue value = { 0, };
+
+      if (!PyString_Check (py_property)) {
+          PyErr_SetString (PyExc_TypeError,
+                           "Expected string argument for property");
+          return NULL;
+      }
+
+      property_name = PyString_AsString (py_property);
+      pspec = nbtk_stylable_find_property (NBTK_STYLABLE (py_child->obj),
+                                            property_name);
+
+      if (!pspec) {
+          PyErr_SetString (PyExc_TypeError,
+                           "invalid property name");
+          return NULL;
+      }
+
+      g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
+      nbtk_style_get_property (NBTK_STYLE (self->obj),
+                               NBTK_STYLABLE (py_child->obj),
+                               pspec, &value);
+
+      PyTuple_SetItem (py_ret, i-1,
+                       pyg_value_as_pyobject (&value, TRUE));
+
+      g_value_unset (&value);
+  }
+
+  return py_ret;
+}
+%%
+override nbtk_style_get_property
+static PyObject *
+_wrap_nbtk_style_get_property (PyGObject *self, PyObject *args)
+{
+  gchar *property_name;
+  PyGObject *py_child;
+  GParamSpec *pspec;
+  GValue value = { 0, };
+
+  if (!PyArg_ParseTuple (args, "O!s:nbtk.Stylable.get_property",
+                         &PyNbtkStylable_Type, &py_child,
+                         &property_name))
+    return NULL;
+
+  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (py_child->obj),
+                                       property_name);
+
+  if (!pspec) {
+      PyErr_SetString (PyExc_TypeError,
+                       "invalid property name");
+      return NULL;
+  }
+
+  g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
+  nbtk_style_get_property (NBTK_STYLE (self->obj),
+                           NBTK_STYLABLE (py_child->obj),
+                           pspec, &value);
+
+  return pyg_value_as_pyobject (&value, TRUE);
+}
+%%
+override nbtk_stylable_list_properties noargs
+static PyObject *
+_wrap_nbtk_stylable_list_properties (PyGObject *self)
+{
+  guint n_props;
+  GParamSpec **properties;
+  PyObject *py_properties;
+  gint i;
+
+  properties = nbtk_stylable_list_properties (NBTK_STYLABLE (self->obj),
+                                              &n_props);
+
+  py_properties = PyTuple_New (n_props);
+
+  /* FIXME: Instead of returning a pspec it might be better to return the name 
+   */
+  for (i = 0; i < n_props; i++) {
+      PyTuple_SetItem (py_properties, i, 
+                       pyg_param_spec_new (properties[i]));
+  }
+
+  g_free (properties);
+
+  return py_properties;
+}
+%%
+override nbtk_stylable_find_property
+static PyObject *
+_wrap_nbtk_stylable_find_property (PyGObject *self, PyObject *args)
+{
+  const gchar *property_name;
+  GParamSpec *pspec;
+
+  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.find_property",
+                         &property_name))
+    return NULL;
+
+  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+                                       property_name);
+
+  if (pspec)
+    return pyg_param_spec_new (pspec);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override nbtk_stylable_get_viewport noargs
+static PyObject *
+_wrap_nbtk_stylable_get_viewport (PyGObject *self)
+{
+  gboolean ret;
+  gint x, y, width, height;
+
+  ret = nbtk_stylable_get_viewport (NBTK_STYLABLE (self->obj),
+                                    &x, &y, &width, &height);
+
+  if (ret)
+    return Py_BuildValue ("(iiii)", x, y, width, height);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override nbtk_stylable_get_default_value
+static PyObject *
+_wrap_nbtk_stylable_get_default_value (PyGObject *self, PyObject *args)
+{
+  gboolean ret;
+  const gchar *property_name;
+  GValue value = { 0, };
+
+  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.get_default_value",
+                         &property_name))
+    return NULL;
+
+  ret = nbtk_stylable_get_default_value (NBTK_STYLABLE (self->obj),
+                                         property_name, &value);
+
+  if (ret)
+    return pyg_value_as_pyobject (&value, TRUE);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override nbtk_stylable_get
+static PyObject *
+_wrap_nbtk_stylable_get (PyGObject *self, PyObject *args)
+{
+  gint len, i;
+  PyObject *py_ret;
+  
+  if ((len = PyTuple_Size (args)) < 1) {
+      PyErr_SetString (PyExc_TypeError, "requires at least one argument");
+      return NULL;
+  }
+
+  py_ret = PyTuple_New (len);
+  for (i = 0; i < len; i++) {
+      PyObject *py_property = PyTuple_GetItem (args, i);
+      gchar *property_name;
+      GParamSpec *pspec;
+      GValue value = { 0, };
+
+      if (!PyString_Check (py_property)) {
+          PyErr_SetString (PyExc_TypeError,
+                           "Expected string argument for property");
+          return NULL;
+      }
+
+      property_name = PyString_AsString (py_property);
+
+      pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+                                           property_name);
+      if (!pspec) {
+          PyErr_SetString (PyExc_TypeError,
+                           "invalid property name");
+          return NULL;
+      }
+      g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
+
+      nbtk_stylable_get_property (NBTK_STYLABLE (self->obj),
+                                  property_name, &value);
 
 
+      PyTuple_SetItem (py_ret, i,
+                       pyg_value_as_pyobject (&value, TRUE));
+
+      g_value_unset (&value);
+  }
+
+  return py_ret;
+}
+%%
+override nbtk_stylable_get_property
+static PyObject *
+_wrap_nbtk_stylable_get_property (PyGObject *self, PyObject *args)
+{
+  gchar *property_name;
+  GParamSpec *pspec;
+  GValue value = { 0, };
+
+  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.get_property",
+                         &property_name))
+    return NULL;
+
+  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+                                       property_name);
+  if (!pspec) {
+      PyErr_SetString (PyExc_TypeError,
+                       "invalid property name");
+      return NULL;
+  }
+  g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
+
+  nbtk_stylable_get_property (NBTK_STYLABLE (self->obj),
+                              property_name, &value);
+
+
+
+  return pyg_value_as_pyobject (&value, TRUE);
+}
+%%
+override NbtkStylable__proxy_do_get_style_id
+const gchar *
+_wrap_NbtkStylable__proxy_do_get_style_id (NbtkStylable *self)
+{
+  PyGILState_STATE state;
+  PyObject *py_self, *py_method, *py_retval;
+  const gchar *ret;
+
+  state = pyg_gil_state_ensure ();
+  py_self = pygobject_new ((GObject *)self);
+  if (!py_self) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_method = PyObject_GetAttrString (py_self, "do_get_style_id");
+  if (!py_method) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_retval = PyObject_CallObject (py_method, NULL);
+  if (!py_retval) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  if (!PyString_Check (py_retval)) {
+      PyErr_SetString (PyExc_TypeError,
+                       "virtual method should return a string");
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  ret = PyString_AsString (py_retval);
+
+  Py_DECREF (py_retval);
+  Py_DECREF (py_method);
+  Py_DECREF (py_self);
+  pyg_gil_state_release (state);
+
+  return ret;
+}
+%%
+override NbtkStylable__do_get_style_id
+static PyObject *
+_wrap_NbtkStylable__do_get_style_id (PyObject *cls, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  PyGObject *self;
+  const gchar *ret = NULL;
+
+  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_id",
+                         &PyNbtkStylable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
+                                NBTK_TYPE_STYLABLE);
+
+  if (iface->get_style_id)
+    ret = iface->get_style_id (NBTK_STYLABLE (self->obj));
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method nbtk.Stylable.get_style_id not "
+                       "implemented");
+      return NULL;
+  }
+
+  if (ret)
+    return Py_BuildValue ("s", ret);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override NbtkStylable__proxy_do_get_style_type
+const gchar *
+_wrap_NbtkStylable__proxy_do_get_style_type (NbtkStylable *self)
+{
+  PyGILState_STATE state;
+  PyObject *py_self, *py_method, *py_retval;
+  const gchar *ret;
+
+  state = pyg_gil_state_ensure ();
+  py_self = pygobject_new ((GObject *)self);
+  if (!py_self) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_method = PyObject_GetAttrString (py_self, "do_get_style_type");
+  if (!py_method) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_retval = PyObject_CallObject (py_method, NULL);
+  if (!py_retval) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  if (!PyString_Check (py_retval)) {
+      PyErr_SetString (PyExc_TypeError,
+                       "virtual method should return a string");
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  ret = PyString_AsString (py_retval);
+
+  Py_DECREF (py_retval);
+  Py_DECREF (py_method);
+  Py_DECREF (py_self);
+  pyg_gil_state_release (state);
+
+  return ret;
+}
+%%
+override NbtkStylable__do_get_style_type
+static PyObject *
+_wrap_NbtkStylable__do_get_style_type (PyObject *cls, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  PyGObject *self;
+  const gchar *ret = NULL;
+
+  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_type",
+                         &PyNbtkStylable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
+                                NBTK_TYPE_STYLABLE);
+
+  if (iface->get_style_type)
+    ret = iface->get_style_type (NBTK_STYLABLE (self->obj));
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method nbtk.Stylable.get_style_type not "
+                       "implemented");
+      return NULL;
+  }
+
+  if (ret)
+    return Py_BuildValue ("s", ret);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override NbtkStylable__proxy_do_get_style_class
+const gchar *
+_wrap_NbtkStylable__proxy_do_get_style_class (NbtkStylable *self)
+{
+  PyGILState_STATE state;
+  PyObject *py_self, *py_method, *py_retval;
+  const gchar *ret;
+
+  state = pyg_gil_state_ensure ();
+  py_self = pygobject_new ((GObject *)self);
+  if (!py_self) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_method = PyObject_GetAttrString (py_self, "do_get_style_class");
+  if (!py_method) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_retval = PyObject_CallObject (py_method, NULL);
+  if (!py_retval) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  if (!PyString_Check (py_retval)) {
+      PyErr_SetString (PyExc_TypeError,
+                       "virtual method should return a string");
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  ret = PyString_AsString (py_retval);
+
+  Py_DECREF (py_retval);
+  Py_DECREF (py_method);
+  Py_DECREF (py_self);
+  pyg_gil_state_release (state);
+
+  return ret;
+}
+%%
+override NbtkStylable__do_get_style_class
+static PyObject *
+_wrap_NbtkStylable__do_get_style_class (PyObject *cls, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  PyGObject *self;
+  const gchar *ret = NULL;
+
+  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_class",
+                         &PyNbtkStylable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
+                                NBTK_TYPE_STYLABLE);
+
+  if (iface->get_style_class)
+    ret = iface->get_style_class (NBTK_STYLABLE (self->obj));
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method nbtk.Stylable.get_style_class not "
+                       "implemented");
+      return NULL;
+  }
+
+  if (ret)
+    return Py_BuildValue ("s", ret);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override NbtkStylable__proxy_do_get_pseudo_class
+const gchar *
+_wrap_NbtkStylable__proxy_do_get_pseudo_class (NbtkStylable *self)
+{
+  PyGILState_STATE state;
+  PyObject *py_self, *py_method, *py_retval;
+  const gchar *ret;
+
+  state = pyg_gil_state_ensure ();
+  py_self = pygobject_new ((GObject *)self);
+  if (!py_self) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_method = PyObject_GetAttrString (py_self, "do_get_pseudo_class");
+  if (!py_method) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  py_retval = PyObject_CallObject (py_method, NULL);
+  if (!py_retval) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  if (!PyString_Check (py_retval)) {
+      PyErr_SetString (PyExc_TypeError,
+                       "virtual method should return a string");
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return NULL;
+  }
+
+  ret = PyString_AsString (py_retval);
+
+  Py_DECREF (py_retval);
+  Py_DECREF (py_method);
+  Py_DECREF (py_self);
+  pyg_gil_state_release (state);
+
+  return ret;
+}
+%%
+override NbtkStylable__do_get_pseudo_class
+static PyObject *
+_wrap_NbtkStylable__do_get_pseudo_class (PyObject *cls, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  PyGObject *self;
+  const gchar *ret = NULL;
+
+  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_pseudo_class",
+                         &PyNbtkStylable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
+                                NBTK_TYPE_STYLABLE);
+
+  if (iface->get_pseudo_class)
+    ret = iface->get_pseudo_class (NBTK_STYLABLE (self->obj));
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method nbtk.Stylable.get_pseudo_class not "
+                       "implemented");
+      return NULL;
+  }
+
+  if (ret)
+    return Py_BuildValue ("s", ret);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override NbtkStylable__proxy_do_get_viewport
+static gboolean
+_wrap_NbtkStylable__proxy_do_get_viewport (NbtkStylable *self,
+                                           gint         *x,
+                                           gint         *y,
+                                           gint         *width,
+                                           gint         *height)
+{
+  PyGILState_STATE state;
+  PyObject *py_self, *py_method, *py_retval;
+
+  state = pyg_gil_state_ensure ();
+  py_self = pygobject_new ((GObject *)self);
+  if (!py_self) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      pyg_gil_state_release (state);
+      return FALSE;
+  }
+
+  py_method = PyObject_GetAttrString (py_self, "do_get_viewport");
+  if (!py_method) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return FALSE;
+  }
+
+  py_retval = PyObject_CallObject (py_method, NULL);
+  if (!py_retval) {
+      if (PyErr_Occurred ())
+        PyErr_Print ();
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return FALSE;
+  }
+
+  if ((!PyTuple_Check (py_retval)) || (PyTuple_Size (py_retval) != 4)) {
+      PyErr_SetString (PyExc_TypeError,
+                       "virtual method should return a 4-tuple of integers");
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return FALSE;
+  }
+
+  if (!PyArg_ParseTuple (py_retval, "iiii", x, y, width, height)) {
+      Py_XDECREF (py_retval);
+      Py_DECREF (py_method);
+      Py_DECREF (py_self);
+      pyg_gil_state_release (state);
+      return FALSE;
+  }
+
+  Py_XDECREF (py_retval);
+  Py_DECREF (py_method);
+  Py_DECREF (py_self);
+  pyg_gil_state_release (state);
+  return TRUE;
+}
+%%
+override NbtkStylable__do_get_viewport noargs
+static PyObject *
+_wrap_NbtkStylable__do_get_viewport (PyObject *cls, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  PyGObject *self;
+  gint x, y, width, height;
+  gboolean ret;
+
+  if (!PyArg_ParseTuple (args, "O!nbtk.Stylable.do_get_viewport",
+                         &PyNbtkStylable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
+                                NBTK_TYPE_STYLABLE);
+
+  if (iface->get_viewport)
+    ret = iface->get_viewport (NBTK_STYLABLE (self->obj),
+                               &x, &y, &width, &height);
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method nbtk.Stylable.get_viewport not "
+                       "implemented");
+      return NULL;
+  }
+
+  if (ret)
+    return Py_BuildValue ("(iiii)", x, y, width, height);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
