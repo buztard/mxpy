@@ -493,7 +493,7 @@
   (is-constructor-of "NbtkEntry")
   (return-type "NbtkWidget*")
   (properties
-    '("text")
+    '("text" (optional))
   )
 )
 
