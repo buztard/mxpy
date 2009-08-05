@@ -28,7 +28,6 @@ ignore
   nbtk_style_get_property
   nbtk_style_get
   nbtk_style_get_valist
-  nbtk_table_add_actor_with_properties
 %%
 new-constructor NBTK_TYPE_WIDGET
 %%
@@ -170,6 +169,103 @@ _wrap_nbtk_gtk_expander_get_label_widget (PyGObject *self)
   widget = nbtk_gtk_expander_get_label_widget (NBTK_GTK_EXPANDER (self->obj));
 
   return pygobject_new ((GObject *)widget);
+}
+%%
+override nbtk_table_add_actor_with_properties
+static PyObject * 
+_wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
+{
+  PyGObject    *py_child;
+  ClutterActor *child;
+  gint len, i, row, column;
+  NbtkTable *table;
+  GObjectClass *klass;
+
+  if ((len = PyTuple_Size (args)) < 3) {
+      PyErr_SetString (PyExc_TypeError,
+                       "requires at least three arguments");
+      return NULL;
+  }
+
+  py_child = (PyGObject*) PyTuple_GetItem (args, 0);
+  if (!pygobject_check (py_child, &PyClutterActor_Type)) {
+      PyErr_SetString (PyExc_TypeError, 
+                       "first argument must be a clutter.Actor");
+      return NULL;
+  }
+
+  if (PyLong_Check (PyTuple_GetItem (args, 1)))
+      row = PyLong_AsLong (PyTuple_GetItem (args, 1));
+  else if (PyInt_Check (PyTuple_GetItem (args, 1)))
+      row = PyInt_AsLong (PyTuple_GetItem (args, 1));
+  else {
+      PyErr_SetString (PyExc_TypeError,
+                       "second argument must be an integer");
+      return NULL;
+  }
+
+  if (PyLong_Check (PyTuple_GetItem (args, 2)))
+      column = PyLong_AsLong (PyTuple_GetItem (args, 2));
+  else if (PyInt_Check (PyTuple_GetItem (args, 2)))
+      column = PyInt_AsLong (PyTuple_GetItem (args, 2));
+  else {
+      PyErr_SetString (PyExc_TypeError,
+                       "third argument must be an integer");
+      return NULL;
+  }
+
+  table = NBTK_TABLE (self->obj);
+  child = CLUTTER_ACTOR (py_child->obj);
+
+  if ((len - 3) % 2) {
+      PyErr_SetString (PyExc_TypeError,
+                       "Argument list must be property, value pairs");
+      return NULL;
+  }
+
+  klass = G_OBJECT_GET_CLASS (self->obj);
+
+  nbtk_table_add_actor (table, child, row, column);
+
+  for (i = 3; i < len; i += 2) {
+      PyObject *py_property = PyTuple_GetItem (args, i);
+      PyObject *py_value = PyTuple_GetItem (args, i + 1);
+      gchar *property_name;
+      GParamSpec *pspec;
+      GValue value = { 0, };
+
+      if (!PyString_Check (py_property)) {
+          PyErr_SetString (PyExc_TypeError,
+                           "Expected string argument for property");
+          return NULL;
+      }
+
+      property_name = PyString_AsString (py_property);
+
+      pspec = clutter_container_class_find_child_property (klass, 
+                                                           property_name);
+
+      if (!pspec) {
+          PyErr_SetString (PyExc_TypeError, "child does not have property");
+          return NULL;
+      }
+
+      g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
+
+      if (pyg_value_from_pyobject (&value, py_value)) {
+          PyErr_SetString (PyExc_TypeError, "Can't convert to GValue");
+          return NULL;
+      }
+
+      clutter_container_child_set_property (CLUTTER_CONTAINER (table),
+                                            CLUTTER_ACTOR (child),
+                                            property_name, &value);
+
+      g_value_unset (&value);
+  }
+
+  Py_INCREF (Py_None);
+  return Py_None;
 }
 
 
