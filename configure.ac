@@ -9,8 +9,8 @@ m4_define(pynbtk_version_micro, 1)
 m4_define(pynbtk_version, pynbtk_version_major.pynbtk_version_minor.pynbtk_version_micro)
 
 m4_define(clutter_required_version,      1.0.0)
-m4_define(nbtk_required_version,         1.0.0)
-m4_define(nbtkgtk_required_version,      1.0.0)
+m4_define(nbtk_required_version,         1.1.0)
+m4_define(nbtkgtk_required_version,      1.1.0)
 m4_define(pyclutter_required_version,    0.9.1)
 m4_define(pygtk_required_version,        2.8.0)
 
@@ -132,6 +132,7 @@ AC_CONFIG_FILES([
 		build/autotools/shave
         pynbtk.pc
         nbtk/Makefile
+		examples/Makefile
 ])
 
 AC_OUTPUT

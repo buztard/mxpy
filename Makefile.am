@@ -1,4 +1,4 @@
-SUBDIRS = nbtk
+SUBDIRS = build nbtk examples
 
 pynbtk-$(PYNBTK_MAJOR_VERSION).$(PYNBTK_MINOR_VERSION).pc: pynbtk.pc
 	@cp -f $< $(@F)
@@ -10,7 +10,9 @@ pkgconfig_DATA = $(pkgfiles)
 DISTCHECK_CONFIGURE_FLAGS = --enable-docs
 
 DIST_SUBDIRS = \
-	nbtk
+	nbtk \
+	build \
+	examples
 
 EXTRA_DIST = createdefs.py py-compile Makefile.tmpl
 
