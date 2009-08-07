@@ -76,12 +76,14 @@
   (in-module "Nbtk")
   (c-name "NbtkDraggable")
   (gtype-id "NBTK_TYPE_DRAGGABLE")
+  (vtable "NbtkDraggableIface")
 )
 
 (define-interface Droppable
   (in-module "Nbtk")
   (c-name "NbtkDroppable")
   (gtype-id "NBTK_TYPE_DROPPABLE")
+  (vtable "NbtkDroppableIface")
 )
 
 (define-object Clipboard

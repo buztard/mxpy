@@ -356,7 +356,7 @@
   (return-type "GType")
 )
 
-(define-method set_axis
+(define-method draggable_set_axis
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_axis")
   (return-type "none")
@@ -365,7 +365,7 @@
   )
 )
 
-(define-method get_axis
+(define-method draggable_get_axis
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_axis")
   (return-type "NbtkDragAxis")
@@ -386,7 +386,7 @@
   (return-type "guint")
 )
 
-(define-method set_containment_type
+(define-method draggable_set_containment_type
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_containment_type")
   (return-type "none")
@@ -395,13 +395,13 @@
   )
 )
 
-(define-method get_containment_type
+(define-method draggable_get_containment_type
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_containment_type")
   (return-type "NbtkDragContainment")
 )
 
-(define-method set_containment_area
+(define-method draggable_set_containment_area
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_containment_area")
   (return-type "none")
@@ -413,7 +413,7 @@
   )
 )
 
-(define-method get_containment_area
+(define-method draggable_get_containment_area
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_containment_area")
   (return-type "none")
@@ -425,25 +425,62 @@
   )
 )
 
-(define-method disable
+(define-method draggable_disable
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_disable")
   (return-type "none")
 )
 
-(define-method enable
+(define-virtual disable
+  (of-object "NbtkDraggable")
+  (return-type "none")
+)
+
+(define-method draggable_enable
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_enable")
   (return-type "none")
 )
 
-(define-method is_enabled
+(define-virtual enable
+  (of-object "NbtkDraggable")
+  (return-type "none")
+)
+
+(define-method draggable_is_enabled
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_is_enabled")
   (return-type "gboolean")
 )
 
+(define-virtual drag_begin
+  (of-object "NbtkDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "event_x")
+    '("gfloat" "event_y")
+    '("gint" "event_button")
+    '("ClutterModifierType" "modifiers")
+  )
+)
 
+(define-virtual drag_motion
+  (of-object "NbtkDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "delta_x")
+    '("gfloat" "delta_y")
+  )
+)
+
+(define-virtual drag_end
+  (of-object "NbtkDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "event_x")
+    '("gfloat" "event_y")
+  )
+)
 
 ;; From nbtk-droppable.h
 
@@ -458,9 +495,19 @@
   (return-type "none")
 )
 
+(define-virtual enable
+  (of-object "NbtkDroppable")
+  (return-type "none")
+)
+
 (define-method disable
   (of-object "NbtkDroppable")
   (c-name "nbtk_droppable_disable")
+  (return-type "none")
+)
+
+(define-virtual disable
+  (of-object "NbtkDroppable")
   (return-type "none")
 )
 
@@ -473,6 +520,14 @@
 (define-method accept_drop
   (of-object "NbtkDroppable")
   (c-name "nbtk_droppable_accept_drop")
+  (return-type "gboolean")
+  (parameters
+    '("NbtkDraggable*" "draggable")
+  )
+)
+
+(define-virtual accept_drop
+  (of-object "NbtkDroppable")
   (return-type "gboolean")
   (parameters
     '("NbtkDraggable*" "draggable")
