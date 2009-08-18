@@ -2445,7 +2445,7 @@
 (define-method get_index
   (of-object "NbtkComboBox")
   (c-name "nbtk_combo_box_get_index")
-  (return-type "const-gint")
+  (return-type "gint")
 )
 
 ;; From nbtk-item-factory.h
