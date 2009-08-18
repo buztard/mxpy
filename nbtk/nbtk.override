@@ -5,7 +5,6 @@ headers
 #include "pygobject.h"
 #include <nbtk/nbtk.h>
 #include <nbtk/nbtk-gtk.h>
-#include <nbtk/nbtk-subtexture.h>
 %%
 modulename nbtk                     
 %%
