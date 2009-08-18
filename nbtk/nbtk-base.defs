@@ -1047,6 +1047,14 @@
   (return-type "none")
 )
 
+(define-method set_factory
+  (of-object "NbtkItemView")
+  (c-name "nbtk_item_view_set_factory")
+  (return-type "none")
+  (parameters
+    '("NbtkItemFactory*" "factory")
+  )
+)
 
 
 ;; From nbtk-label.h
@@ -1153,6 +1161,14 @@
   (return-type "none")
 )
 
+(define-method set_factory
+  (of-object "NbtkListView")
+  (c-name "nbtk_list_view_set_factory")
+  (return-type "none")
+  (parameters
+    '("NbtkItemFactory*" "factory")
+  )
+)
 
 
 ;; From nbtk-progress-bar.h
@@ -1322,7 +1338,6 @@
   (c-name "nbtk_scroll_view_get_mouse_scrolling")
   (return-type "gboolean")
 )
-
 
 
 ;; From nbtk-stylable.h
@@ -2284,6 +2299,202 @@
 (define-method draw_background
   (of-object "NbtkWidget")
   (c-name "nbtk_widget_draw_background")
+  (return-type "none")
+)
+
+;; From nbtk-action.h
+
+(define-function action_get_type
+  (c-name "nbtk_action_get_type")
+  (return-type "GType")
+)
+
+(define-function action_new
+  (c-name "nbtk_action_new")
+  (is-constructor-of "NbtkAction")
+  (return-type "NbtkAction*")
+)
+
+(define-function action_new_full
+  (c-name "nbtk_action_new_full")
+  (return-type "NbtkAction*")
+  (parameters
+    '("const-gchar*" "name")
+    '("GCallback" "activated_cb")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method get_name
+  (of-object "NbtkAction")
+  (c-name "nbtk_action_get_name")
+  (return-type "const-gchar*")
+)
+
+(define-method set_name
+  (of-object "NbtkAction")
+  (c-name "nbtk_action_set_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method get_active
+  (of-object "NbtkAction")
+  (c-name "nbtk_action_get_active")
+  (return-type "gboolean")
+)
+
+(define-method set_active
+  (of-object "NbtkAction")
+  (c-name "nbtk_action_set_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "active")
+  )
+)
+
+;; From nbtk-box-layout-child.h
+
+(define-function box_layout_child_get_type
+  (c-name "nbtk_box_layout_child_get_type")
+  (return-type "GType")
+)
+
+(define-function box_layout_child_new
+  (c-name "nbtk_box_layout_child_new")
+  (is-constructor-of "NbtkBoxLayoutChild")
+  (return-type "NbtkBoxLayoutChild*")
+)
+
+;; From nbtk-combo-box.h
+
+(define-function combo_box_get_type
+  (c-name "nbtk_combo_box_get_type")
+  (return-type "GType")
+)
+
+(define-function combo_box_new
+  (c-name "nbtk_combo_box_new")
+  (is-constructor-of "NbtkComboBox")
+  (return-type "NbtkComboBox*")
+)
+
+(define-method insert_text
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_insert_text")
+  (return-type "none")
+  (parameters
+    '("gint" "position")
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method append_text
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_append_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method prepend_text
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_prepend_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method remove_text
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_remove_text")
+  (return-type "none")
+  (parameters
+    '("gint" "position")
+  )
+)
+
+(define-method set_title
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_set_title")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "title")
+  )
+)
+
+(define-method get_title
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_get_title")
+  (return-type "const-gchar*")
+)
+
+(define-method set_index
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_set_index")
+  (return-type "none")
+  (parameters
+    '("gint" "index")
+  )
+)
+
+(define-method get_index
+  (of-object "NbtkComboBox")
+  (c-name "nbtk_combo_box_get_index")
+  (return-type "const-gint")
+)
+
+;; From nbtk-item-factory.h
+
+(define-function item_factory_get_type
+  (c-name "nbtk_item_factory_get_type")
+  (return-type "GType")
+)
+
+(define-method create
+  (of-object "NbtkItemFactory")
+  (c-name "nbtk_item_factory_create")
+  (return-type "ClutterActor*")
+)
+
+;; From nbtk-popup.h
+
+(define-function popup_get_type
+  (c-name "nbtk_popup_get_type")
+  (return-type "GType")
+)
+
+(define-function popup_new
+  (c-name "nbtk_popup_new")
+  (is-constructor-of "NbtkPopup")
+  (return-type "NbtkWidget*")
+)
+
+(define-method add_action
+  (of-object "NbtkPopup")
+  (c-name "nbtk_popup_add_action")
+  (return-type "none")
+  (parameters
+    '("NbtkAction*" "action")
+  )
+)
+
+(define-method remove_action
+  (of-object "NbtkPopup")
+  (c-name "nbtk_popup_remove_action")
+  (return-type "none")
+  (parameters
+    '("NbtkAction*" "action")
+  )
+)
+
+(define-method clear
+  (of-object "NbtkPopup")
+  (c-name "nbtk_popup_clear")
   (return-type "none")
 )
 

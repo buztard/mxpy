@@ -219,6 +219,41 @@
   (vtable "NbtkStylableIface")
 )
 
+(define-object Action
+  (in-module "Nbtk")
+  (parent "GObject")
+  (c-name "NbtkAction")
+  (gtype-id "NBTK_TYPE_ACTION")
+)
+
+(define-object BoxLayoutChild
+  (in-module "Nbtk")
+  (parent "ClutterChildMeta")
+  (c-name "NbtkBoxLayoutChild")
+  (gtype-id "NBTK_TYPE_BOX_LAYOUT_CHILD")
+)
+
+(define-interface ItemFactory
+  (in-module "Nbtk")
+  (c-name "NbtkItemFactory")
+  (gtype-id "NBTK_TYPE_ITEM_FACTORY")
+  (vtable "NbtkItemFactoryIface")
+)
+
+(define-object Popup
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkPopup")
+  (gtype-id "NBTK_TYPE_POPUP")
+)
+
+(define-object ComboBox
+  (in-module "Nbtk")
+  (parent "NbtkWidget")
+  (c-name "NbtkComboBox")
+  (gtype-id "NBTK_TYPE_COMBO_BOX")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis
