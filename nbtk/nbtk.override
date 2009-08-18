@@ -24,6 +24,7 @@ ignore-glob
 ignore
   nbtk_clipboard_get_text
   nbtk_style_get_valist
+  nbtk_action_new_full
 %%
 new-constructor NBTK_TYPE_WIDGET
 %%
