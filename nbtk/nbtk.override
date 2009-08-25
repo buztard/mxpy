@@ -966,3 +966,26 @@ _wrap_NbtkStylable__do_get_viewport (PyObject *cls, PyObject *args)
   Py_INCREF (Py_None);
   return Py_None;
 }
+%%
+override nbtk_stylable_iface_install_property classmethod
+static PyObject *
+_wrap_nbtk_stylable_iface_install_property (PyObject *self, PyObject *args)
+{
+  NbtkStylableIface *iface;
+  GType type;
+  GParamSpec *pspec;
+  gpointer klass;
+
+  if ((type = pyg_type_from_object (self)) == 0)
+    return NULL;
+
+  klass = g_type_class_peek (type);
+  iface = (NbtkStylableIface *)
+    g_type_interface_peek (klass, NBTK_TYPE_STYLABLE);
+
+  pspec = pyg_param_spec_from_object (args);
+  nbtk_stylable_iface_install_property (iface, type, pspec);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}

@@ -1348,7 +1348,7 @@
 )
 
 (define-method install_property
-  (of-object "NbtkStylableIface")
+  (of-object "NbtkStylable")
   (c-name "nbtk_stylable_iface_install_property")
   (return-type "none")
   (parameters
