@@ -2461,6 +2461,11 @@
   (return-type "ClutterActor*")
 )
 
+(define-virtual create
+  (of-object "NbtkItemFactory")
+  (return-type "ClutterActor*")
+)
+
 ;; From nbtk-popup.h
 
 (define-function popup_get_type
