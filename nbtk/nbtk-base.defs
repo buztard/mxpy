@@ -1069,7 +1069,7 @@
   (is-constructor-of "NbtkLabel")
   (return-type "NbtkWidget*")
   (properties
-    '("text")
+    '("text" (optional))
   )
 )
 
