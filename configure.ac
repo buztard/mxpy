@@ -11,7 +11,7 @@ m4_define(pynbtk_version, pynbtk_version_major.pynbtk_version_minor.pynbtk_versi
 m4_define(clutter_required_version,      1.0.0)
 m4_define(nbtk_required_version,         1.1.0)
 m4_define(nbtkgtk_required_version,      1.1.0)
-m4_define(pyclutter_required_version,    0.9.1)
+m4_define(pyclutter_required_version,    1.0.0)
 m4_define(pygtk_required_version,        2.8.0)
 
 AC_INIT([pynbtk], [pynbtk_version],
@@ -75,11 +75,11 @@ fi
 PYGOBJECT_CODEGEN_DEFINES=
 
 dnl check for pyclutter
-PKG_CHECK_MODULES(PYCLUTTER, pyclutter-0.9 >= pyclutter_required_version)
+PKG_CHECK_MODULES(PYCLUTTER, pyclutter-1.0 >= pyclutter_required_version)
 AC_SUBST(PYCLUTTER_CFLAGS)
 
 AC_MSG_CHECKING(for pyclutter defs)
-PYCLUTTER_DEFSDIR=`$PKG_CONFIG --variable=defsdir pyclutter-0.9`
+PYCLUTTER_DEFSDIR=`$PKG_CONFIG --variable=defsdir pyclutter-1.0`
 AC_SUBST(PYCLUTTER_DEFSDIR)
 AC_MSG_RESULT($PYCLUTTER_DEFSDIR)
 
