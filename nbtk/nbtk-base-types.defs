@@ -86,6 +86,13 @@
   (vtable "NbtkDroppableIface")
 )
 
+(define-interface Scrollable
+  (in-module "Nbtk")
+  (c-name "NbtkScrollable")
+  (gtype-id "NBTK_TYPE_SCROLLABLE")
+  (vtable "NbtkScrollableInterface")
+)
+
 (define-object Clipboard
   (in-module "Nbtk")
   (parent "GObject")

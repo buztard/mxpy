@@ -989,3 +989,117 @@ _wrap_nbtk_stylable_iface_install_property (PyObject *self, PyObject *args)
   Py_INCREF (Py_None);
   return Py_None;
 }
+%%
+override nbtk_scrollable_get_adjustments noargs
+static PyObject *
+_wrap_nbtk_scrollable_get_adjustments (PyGObject *self)
+{
+  NbtkAdjustment *hadj, *vadj;
+  PyObject *py_hadj, *py_vadj;
+
+  nbtk_scrollable_get_adjustments (NBTK_SCROLLABLE (self->obj),
+                                   &hadj, &vadj);
+
+  py_hadj = pygobject_new ((GObject *)hadj);
+  py_vadj = pygobject_new ((GObject *)vadj);
+
+  return Py_BuildValue ("(NN)", py_hadj, py_vadj);
+}
+%%
+override NbtkScrollable__proxy_do_get_adjustments
+void
+_wrap_NbtkScrollable__proxy_do_get_adjustments (NbtkScrollable  *scrollable,
+                                                NbtkAdjustment **hadjustment,
+                                                NbtkAdjustment **vadjustment)
+{
+  PyGILState_STATE state;
+  PyObject *self, *py_ret, *py_hadj, *py_vadj;
+
+  state = pyg_gil_state_ensure ();
+  self = pygobject_new ((GObject *)scrollable);
+
+  py_ret = PyObject_CallMethod (self, "do_get_adjustments", "");
+
+  if (!py_ret) {
+      PyErr_Print ();
+      Py_DECREF (self);
+      pyg_gil_state_release (state);
+      return;
+  }
+  Py_DECREF (self);
+
+  if (!PyArg_ParseTuple (py_ret, "OO", &py_hadj, &py_vadj)) {
+      PyErr_Print ();
+      Py_DECREF (py_ret);
+      pyg_gil_state_release (state);
+      return;
+  }
+  Py_DECREF (py_ret);
+
+  if (hadjustment) {
+      if (pygobject_check (py_hadj, &PyNbtkAdjustment_Type))
+        *hadjustment = NBTK_ADJUSTMENT (((PyGObject *)py_hadj)->obj);
+      else if (py_hadj == Py_None)
+        *hadjustment = NULL;
+      else {
+          PyErr_SetString (PyExc_TypeError,
+                           "do_get_adjustments must return a two-tuple with "
+                           "either nbtk.Adjustment or None");
+          PyErr_Print ();
+          Py_DECREF (py_hadj);
+          Py_DECREF (py_vadj);
+          pyg_gil_state_release (state);
+          return;
+      }
+  }
+
+  if (vadjustment) {
+      if (pygobject_check (py_vadj, &PyNbtkAdjustment_Type))
+        *vadjustment = NBTK_ADJUSTMENT (((PyGObject *)py_vadj)->obj);
+      else if (py_vadj == Py_None)
+        *vadjustment = NULL;
+      else {
+          PyErr_SetString (PyExc_TypeError,
+                           "do_get_adjustments must return a two-tuple with "
+                           "either nbtk.Adjustment or None");
+          PyErr_Print ();
+          Py_DECREF (py_hadj);
+          Py_DECREF (py_vadj);
+          pyg_gil_state_release (state);
+          return;
+      }
+  }
+
+  pyg_gil_state_release (state);
+}
+%%
+override NbtkScrollable__do_get_adjustments
+static PyObject *
+_wrap_NbtkScrollable__do_get_adjustments (PyObject *cls, PyObject *args)
+{
+  NbtkScrollableInterface *iface;
+  PyGObject *self;
+  PyObject *py_hadj, *py_vadj;
+  NbtkAdjustment *hadj, *vadj;
+
+  if (!PyArg_ParseTuple (args, "O!:Scrollable.do_get_adjustments",
+                         &PyNbtkScrollable_Type, &self))
+    return NULL;
+
+  iface = g_type_interface_peek (g_type_class_peek (pyg_type_from_object (cls)),
+                                 NBTK_TYPE_SCROLLABLE);
+
+  if (iface->get_adjustments)
+    iface->get_adjustments (NBTK_SCROLLABLE (self->obj), &hadj, &vadj);
+  else {
+      PyErr_SetString (PyExc_NotImplementedError,
+                       "interface method Nbtk.Scrollable.get_adjustments "
+                       "not implemented");
+      return NULL;
+  }
+
+  py_hadj = pygobject_new ((GObject *)hadj);
+  py_vadj = pygobject_new ((GObject *)vadj);
+
+  return Py_BuildValue ("(NN)", py_hadj, py_vadj);
+}

@@ -1218,6 +1218,15 @@
   )
 )
 
+(define-virtual set_adjustments
+  (of-object "NbtkScrollable")
+  (return-type "none")
+  (parameters
+    '("NbtkAdjustment*" "hadjustment")
+    '("NbtkAdjustment*" "vadjustment")
+  )
+)
+
 (define-method get_adjustments
   (of-object "NbtkScrollable")
   (c-name "nbtk_scrollable_get_adjustments")
@@ -1228,6 +1237,14 @@
   )
 )
 
+(define-virtual get_adjustments
+  (of-object "NbtkScrollable")
+  (return-type "none")
+  (parameters
+    '("NbtkAdjustment**" "hadjustment")
+    '("NbtkAdjustment**" "vadjustment")
+  )
+)
 
 
 ;; From nbtk-scroll-bar.h
