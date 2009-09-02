@@ -356,7 +356,7 @@
   (return-type "GType")
 )
 
-(define-method draggable_set_axis
+(define-method set_axis
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_axis")
   (return-type "none")
@@ -365,7 +365,7 @@
   )
 )
 
-(define-method draggable_get_axis
+(define-method get_axis
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_axis")
   (return-type "NbtkDragAxis")
@@ -386,7 +386,7 @@
   (return-type "guint")
 )
 
-(define-method draggable_set_containment_type
+(define-method set_containment_type
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_containment_type")
   (return-type "none")
@@ -395,13 +395,13 @@
   )
 )
 
-(define-method draggable_get_containment_type
+(define-method get_containment_type
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_containment_type")
   (return-type "NbtkDragContainment")
 )
 
-(define-method draggable_set_containment_area
+(define-method set_containment_area
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_set_containment_area")
   (return-type "none")
@@ -413,7 +413,7 @@
   )
 )
 
-(define-method draggable_get_containment_area
+(define-method get_containment_area
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_get_containment_area")
   (return-type "none")
@@ -425,7 +425,7 @@
   )
 )
 
-(define-method draggable_disable
+(define-method disable
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_disable")
   (return-type "none")
@@ -436,7 +436,7 @@
   (return-type "none")
 )
 
-(define-method draggable_enable
+(define-method enable
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_enable")
   (return-type "none")
@@ -447,7 +447,7 @@
   (return-type "none")
 )
 
-(define-method draggable_is_enabled
+(define-method is_enabled
   (of-object "NbtkDraggable")
   (c-name "nbtk_draggable_is_enabled")
   (return-type "gboolean")
