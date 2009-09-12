@@ -5,6 +5,13 @@ headers
 #include "pygobject.h"
 #include <nbtk/nbtk.h>
 #include <nbtk/nbtk-gtk.h>
+
+/* This should be fixed in nbtk upstream */
+#define NBTK_H_INSIDE
+#include <nbtk/nbtk-action.h>
+#include <nbtk/nbtk-popup.h>
+#include <nbtk/nbtk-box-layout-child.h>
+#include <nbtk/nbtk-subtexture.h>
 %%
 modulename nbtk                     
 %%
