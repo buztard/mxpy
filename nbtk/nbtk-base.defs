@@ -146,8 +146,8 @@
   (c-name "nbtk_bin_set_alignment")
   (return-type "none")
   (parameters
-    '("NbtkAlignment" "x_align")
-    '("NbtkAlignment" "y_align")
+    '("NbtkAlign" "x_align")
+    '("NbtkAlign" "y_align")
   )
 )
 
@@ -156,8 +156,8 @@
   (c-name "nbtk_bin_get_alignment")
   (return-type "none")
   (parameters
-    '("NbtkAlignment*" "x_align")
-    '("NbtkAlignment*" "y_align")
+    '("NbtkAlign" "x_align")
+    '("NbtkAlign" "y_align")
   )
 )
 
@@ -482,6 +482,21 @@
   )
 )
 
+(define-method set_drag_actor
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_set_drag_actor")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+  )
+)
+
+(define-method get_drag_actor
+  (of-object "NbtkDraggable")
+  (c-name "nbtk_draggable_get_drag_actor")
+  (return-type "ClutterActor*")
+)
+
 ;; From nbtk-droppable.h
 
 (define-function droppable_get_type
@@ -679,28 +694,6 @@
   )
 )
 
-
-
-;; From nbtk-fade-button.h
-
-(define-function fade_button_get_type
-  (c-name "nbtk_fade_button_get_type")
-  (return-type "GType")
-)
-
-(define-function fade_button_new
-  (c-name "nbtk_fade_button_new")
-  (is-constructor-of "NbtkFadeButton")
-  (return-type "NbtkWidget*")
-)
-
-(define-function fade_button_new_with_label
-  (c-name "nbtk_fade_button_new_with_label")
-  (return-type "NbtkWidget*")
-  (parameters
-    '("const-gchar*" "text")
-  )
-)
 
 
 
@@ -1792,44 +1785,6 @@
   )
 )
 
-(define-method child_get_col_expand
-  (of-object "NbtkTable")
-  (c-name "nbtk_table_child_get_col_expand")
-  (return-type "gboolean")
-  (parameters
-    '("ClutterActor*" "child")
-  )
-)
-
-(define-method child_set_col_expand
-  (of-object "NbtkTable")
-  (c-name "nbtk_table_child_set_col_expand")
-  (return-type "none")
-  (parameters
-    '("ClutterActor*" "child")
-    '("gboolean" "expand")
-  )
-)
-
-(define-method child_get_row_expand
-  (of-object "NbtkTable")
-  (c-name "nbtk_table_child_get_row_expand")
-  (return-type "gboolean")
-  (parameters
-    '("ClutterActor*" "child")
-  )
-)
-
-(define-method child_set_row_expand
-  (of-object "NbtkTable")
-  (c-name "nbtk_table_child_set_row_expand")
-  (return-type "none")
-  (parameters
-    '("ClutterActor*" "child")
-    '("gboolean" "expand")
-  )
-)
-
 (define-method child_get_x_align
   (of-object "NbtkTable")
   (c-name "nbtk_table_child_get_x_align")
@@ -1887,6 +1842,43 @@
   )
 )
 
+(define-method child_get_x_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_x_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_x_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+(define-method child_get_y_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_get_y_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_expand
+  (of-object "NbtkTable")
+  (c-name "nbtk_table_child_set_y_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
 
 
 ;; From nbtk-table.h
@@ -1988,7 +1980,6 @@
   (return-type "ClutterTexture*")
   (parameters
     '("const-gchar*" "path")
-    '("gboolean" "want_clone")
   )
 )
 
@@ -2161,17 +2152,6 @@
   (return-type "NbtkWidget*")
 )
 
-(define-method set_originu
-  (of-object "NbtkViewport")
-  (c-name "nbtk_viewport_set_originu")
-  (return-type "none")
-  (parameters
-    '("gfloat" "x")
-    '("gfloat" "y")
-    '("gfloat" "z")
-  )
-)
-
 (define-method set_origin
   (of-object "NbtkViewport")
   (c-name "nbtk_viewport_set_origin")
@@ -2180,17 +2160,6 @@
     '("gint" "x")
     '("gint" "y")
     '("gint" "z")
-  )
-)
-
-(define-method get_originu
-  (of-object "NbtkViewport")
-  (c-name "nbtk_viewport_get_originu")
-  (return-type "none")
-  (parameters
-    '("gfloat*" "x")
-    '("gfloat*" "y")
-    '("gfloat*" "z")
   )
 )
 

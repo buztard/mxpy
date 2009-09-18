@@ -9,8 +9,8 @@ m4_define(pynbtk_version_micro, 1)
 m4_define(pynbtk_version, pynbtk_version_major.pynbtk_version_minor.pynbtk_version_micro)
 
 m4_define(clutter_required_version,      1.0.0)
-m4_define(nbtk_required_version,         1.1.2)
-m4_define(nbtkgtk_required_version,      1.1.2)
+m4_define(nbtk_required_version,         1.1.4)
+m4_define(nbtkgtk_required_version,      1.1.4)
 m4_define(pyclutter_required_version,    1.0.0)
 m4_define(pygtk_required_version,        2.8.0)
 
@@ -101,7 +101,7 @@ if test -n "$export_dynamic"; then
 fi
 
 dnl check for nbtk
-PKG_CHECK_MODULES(NBTK, nbtk-1.0 = nbtk_required_version)
+PKG_CHECK_MODULES(NBTK, nbtk-1.2 = nbtk_required_version)
 AC_SUBST(NBTK_CFLAGS)
 AC_SUBST(NBTK_LIBS)
 if test -n "$export_dynamic"; then
@@ -109,7 +109,7 @@ if test -n "$export_dynamic"; then
 fi
 
 dnl check for nbtk-gtk
-PKG_CHECK_MODULES(NBTKGTK, nbtk-gtk-1.0 >= nbtkgtk_required_version)
+PKG_CHECK_MODULES(NBTKGTK, nbtk-gtk-1.2 >= nbtkgtk_required_version)
 AC_SUBST(NBTKGTK_CFLAGS)
 AC_SUBST(NBTKGTK_LIBS)
 if test -n "$export_dynamic"; then

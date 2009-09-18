@@ -1,6 +1,5 @@
 #include <pygobject.h>
 #include <nbtk/nbtk.h>
-#include <nbtk/nbtk-action.h>
  
 void pynbtk_register_classes (PyObject *d); 
 void pynbtk_add_constants (PyObject *module, const gchar *prefix);

@@ -50,13 +50,6 @@
   (gtype-id "NBTK_TYPE_BUTTON")
 )
 
-(define-object FadeButton
-  (in-module "Nbtk")
-  (parent "NbtkButton")
-  (c-name "NbtkFadeButton")
-  (gtype-id "NBTK_TYPE_FADE_BUTTON")
-)
-
 (define-object ScrollView
   (in-module "Nbtk")
   (parent "NbtkBin")
@@ -305,19 +298,6 @@
     '("y-expand" "NBTK_Y_EXPAND")
     '("x-fill" "NBTK_X_FILL")
     '("y-fill" "NBTK_Y_FILL")
-  )
-)
-
-(define-enum Alignment
-  (in-module "Nbtk")
-  (c-name "NbtkAlignment")
-  (gtype-id "NBTK_TYPE_ALIGNMENT")
-  (values
-    '("top" "NBTK_ALIGN_TOP")
-    '("right" "NBTK_ALIGN_RIGHT")
-    '("bottom" "NBTK_ALIGN_BOTTOM")
-    '("left" "NBTK_ALIGN_LEFT")
-    '("center" "NBTK_ALIGN_CENTER")
   )
 )
 

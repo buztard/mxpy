@@ -8,10 +8,9 @@ headers
 
 /* This should be fixed in nbtk upstream */
 #define NBTK_H_INSIDE
-#include <nbtk/nbtk-action.h>
-#include <nbtk/nbtk-popup.h>
 #include <nbtk/nbtk-box-layout-child.h>
 #include <nbtk/nbtk-subtexture.h>
+
 %%
 modulename nbtk                     
 %%
@@ -52,13 +51,13 @@ override nbtk_bin_get_alignment noargs
 static PyObject *
 _wrap_nbtk_bin_get_alignment (PyGObject *self)
 {
-  NbtkAlignment x_align, y_align;
+  NbtkAlign x_align, y_align;
 
   nbtk_bin_get_alignment (NBTK_BIN (self->obj), &x_align, &y_align);
 
   return Py_BuildValue ("(OO)",
-                        pyg_enum_from_gtype (NBTK_TYPE_ALIGNMENT, x_align),
-                        pyg_enum_from_gtype (NBTK_TYPE_ALIGNMENT, y_align));
+                        pyg_enum_from_gtype (NBTK_TYPE_ALIGN, x_align),
+                        pyg_enum_from_gtype (NBTK_TYPE_ALIGN, y_align));
 }
 %%
 override nbtk_bin_get_fill noargs
@@ -72,23 +71,11 @@ _wrap_nbtk_bin_get_fill (PyGObject *self)
   return Py_BuildValue ("(ii)", x_fill, y_fill);
 }
 %%
-override nbtk_viewport_get_originu noargs
-static PyObject *
-_wrap_nbtk_viewport_get_originu (PyGObject *self)
-{
-  gfloat x, y, z;
-  x = y = z = 0.f;
-
-  nbtk_viewport_get_originu (NBTK_VIEWPORT (self->obj), &x, &y, &z);
-
-  return Py_BuildValue ("(fff)", x, y, z);
-}
-%%
 override nbtk_viewport_get_origin noargs
 static PyObject *
 _wrap_nbtk_viewport_get_origin (PyGObject *self)
 {
-  gint x, y, z;
+  gfloat x, y, z;
   x = y = z = 0;
 
   nbtk_viewport_get_origin (NBTK_VIEWPORT (self->obj), &x, &y, &z);
