@@ -2385,4 +2385,31 @@
   (return-type "none")
 )
 
+;; From mx-toggle.h
+
+(define-function toggle_get_type
+  (c-name "mx_toggle_get_type")
+  (return-type "GType")
+)
+
+(define-function toggle_new
+  (c-name "mx_toggle_new")
+  (is-constructor-of "MxToggle")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_active
+  (of-object "MxToggle")
+  (c-name "mx_toggle_set_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "active")
+  )
+)
+
+(define-method get_active
+  (of-object "MxToggle")
+  (c-name "mx_toggle_get_active")
+  (return-type "gboolean")
+)
 

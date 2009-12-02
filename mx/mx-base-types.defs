@@ -149,6 +149,13 @@
   (gtype-id "MX_TYPE_TABLE")
 )
 
+(define-object Toggle
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxToggle")
+  (gtype-id "MX_TYPE_TOGGLE")
+)
+
 (define-object ProgressBar
   (in-module "Mx")
   (parent "MxWidget")
