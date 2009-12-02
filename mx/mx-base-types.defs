@@ -312,3 +312,10 @@
   )
 )
 
+(define-object Notebook
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxNotebook")
+  (gtype-id "MX_TYPE_NOTEBOOK")
+)
+

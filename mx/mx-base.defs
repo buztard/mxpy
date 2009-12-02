@@ -2413,3 +2413,31 @@
   (return-type "gboolean")
 )
 
+;; From mx-notebook.h
+
+(define-function notebook_get_type
+  (c-name "mx_notebook_get_type")
+  (return-type "GType")
+)
+
+(define-function notebook_new
+  (c-name "mx_notebook_new")
+  (is-constructor-of "MxNotebook")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_page
+  (of-object "MxNotebook")
+  (c-name "mx_notebook_set_page")
+  (return-type "none")
+  (parameters
+    '("gint" "page")
+  )
+)
+
+(define-method get_page
+  (of-object "MxNotebook")
+  (c-name "mx_notebook_get_page")
+  (return-type "gint")
+)
+
