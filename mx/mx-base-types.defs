@@ -312,6 +312,17 @@
   )
 )
 
+(define-enum LongPressAction
+  (in-module "Mx")
+  (c-name "MxLongPressAction")
+  (gtype-id "MX_TYPE_LONG_PRESS_ACTION")
+  (values
+    '("query" "MX_LONG_PRESS_QUERY")
+    '("action" "MX_LONG_PRESS_ACTION")
+    '("cancel" "MX_LONG_PRESS_CANCEL")
+  )
+)
+
 (define-object Notebook
   (in-module "Mx")
   (parent "MxWidget")

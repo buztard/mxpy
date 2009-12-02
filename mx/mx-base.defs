@@ -655,6 +655,11 @@
   (return-type "GType")
 )
 
+(define-function long_press_action_get_type
+  (c-name "mx_long_press_action_get_type")
+  (return-type "GType")
+)
+
 
 
 ;; From mx-expander.h
