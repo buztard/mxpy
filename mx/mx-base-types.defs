@@ -1,4 +1,29 @@
 ;; -*- scheme -*-
+
+; interface definitions ...
+
+(define-interface Draggable
+  (in-module "Mx")
+  (c-name "MxDraggable")
+  (gtype-id "MX_TYPE_DRAGGABLE")
+  (vtable "MxDraggableIface")
+)
+
+(define-interface Droppable
+  (in-module "Mx")
+  (c-name "MxDroppable")
+  (gtype-id "MX_TYPE_DROPPABLE")
+  (vtable "MxDroppableIface")
+)
+
+(define-interface Scrollable
+  (in-module "Mx")
+  (c-name "MxScrollable")
+  (gtype-id "MX_TYPE_SCROLLABLE")
+  (vtable "MxScrollableInterface")
+)
+
+
 ; object definitions ...
 
 (define-object Widget
@@ -62,28 +87,6 @@
   (parent "GObject")
   (c-name "MxAdjustment")
   (gtype-id "MX_TYPE_ADJUSTMENT")
-)
-
-
-(define-interface Draggable
-  (in-module "Mx")
-  (c-name "MxDraggable")
-  (gtype-id "MX_TYPE_DRAGGABLE")
-  (vtable "MxDraggableIface")
-)
-
-(define-interface Droppable
-  (in-module "Mx")
-  (c-name "MxDroppable")
-  (gtype-id "MX_TYPE_DROPPABLE")
-  (vtable "MxDroppableIface")
-)
-
-(define-interface Scrollable
-  (in-module "Mx")
-  (c-name "MxScrollable")
-  (gtype-id "MX_TYPE_SCROLLABLE")
-  (vtable "MxScrollableInterface")
 )
 
 (define-object Clipboard
@@ -254,6 +257,20 @@
   (gtype-id "MX_TYPE_COMBO_BOX")
 )
 
+(define-object Notebook
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxNotebook")
+  (gtype-id "MX_TYPE_NOTEBOOK")
+)
+
+(define-object ButtonGroup
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxButtonGroup")
+  (gtype-id "MX_TYPE_BUTTON_GROUP")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis
@@ -322,18 +339,3 @@
     '("cancel" "MX_LONG_PRESS_CANCEL")
   )
 )
-
-(define-object Notebook
-  (in-module "Mx")
-  (parent "MxWidget")
-  (c-name "MxNotebook")
-  (gtype-id "MX_TYPE_NOTEBOOK")
-)
-
-(define-object ButtonGroup
-  (in-module "Mx")
-  (parent "GObject")
-  (c-name "MxButtonGroup")
-  (gtype-id "MX_TYPE_BUTTON_GROUP")
-)
-
