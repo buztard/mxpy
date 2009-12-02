@@ -32,6 +32,7 @@ ignore
   mx_style_get_valist
   mx_action_new_full
   mx_button_group_foreach
+  mx_button_new_with_label
 %%
 new-constructor MX_TYPE_WIDGET
 %%
