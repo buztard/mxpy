@@ -2441,3 +2441,54 @@
   (return-type "gint")
 )
 
+;; From mx-button-group.h
+
+(define-function button_group_get_type
+  (c-name "mx_button_group_get_type")
+  (return-type "GType")
+)
+
+(define-function button_group_new
+  (c-name "mx_button_group_new")
+  (is-constructor-of "MxButtonGroup")
+  (return-type "MxButtonGroup*")
+)
+
+(define-method add
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_add")
+  (return-type "none")
+  (parameters
+    '("MxButton*" "button")
+  )
+)
+
+(define-method remove
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_remove")
+  (return-type "none")
+  (parameters
+    '("MxButton*" "button")
+  )
+)
+
+(define-method foreach
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_foreach")
+  (return-type "none")
+  (parameters
+    '("ClutterCallback" "callback")
+    '("gpointer" "userdata")
+  )
+)
+
+(define-method set_active_button
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_set_active_button")
+  (return-type "none")
+  (parameters
+    '("MxButton*" "button")
+  )
+)
+
+

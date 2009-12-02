@@ -31,6 +31,7 @@ ignore
   mx_clipboard_get_text
   mx_style_get_valist
   mx_action_new_full
+  mx_button_group_foreach
 %%
 new-constructor MX_TYPE_WIDGET
 %%

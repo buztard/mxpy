@@ -319,3 +319,10 @@
   (gtype-id "MX_TYPE_NOTEBOOK")
 )
 
+(define-object ButtonGroup
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxButtonGroup")
+  (gtype-id "MX_TYPE_BUTTON_GROUP")
+)
+

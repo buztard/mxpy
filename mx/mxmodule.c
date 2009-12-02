@@ -13,6 +13,13 @@ sink_mxaction (GObject *object)
     g_object_ref_sink (object);
 }
 
+static void
+sink_mxbuttongroup (GObject *object)
+{
+  if (g_object_is_floating (object))
+    g_object_ref_sink (object);
+}
+
 DL_EXPORT(void)
 init_mx(void)
 {
@@ -21,6 +28,7 @@ init_mx(void)
     init_pygobject_check (2, 12, 0);
  
     pygobject_register_sinkfunc (MX_TYPE_ACTION, sink_mxaction);
+    pygobject_register_sinkfunc (MX_TYPE_BUTTON_GROUP, sink_mxbuttongroup);
 
     m = Py_InitModule ("_mx", pymx_functions);
     d = PyModule_GetDict (m);
