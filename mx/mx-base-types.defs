@@ -1,0 +1,307 @@
+;; -*- scheme -*-
+; object definitions ...
+
+(define-object Widget
+  (in-module "Mx")
+  (parent "ClutterActor")
+  (c-name "MxWidget")
+  (gtype-id "MX_TYPE_WIDGET")
+)
+
+(define-object Bin
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxBin")
+  (gtype-id "MX_TYPE_BIN")
+)
+
+(define-object Viewport
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxViewport")
+  (gtype-id "MX_TYPE_VIEWPORT")
+)
+
+(define-object Tooltip
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxTooltip")
+  (gtype-id "MX_TYPE_TOOLTIP")
+)
+
+(define-object ScrollBar
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxScrollBar")
+  (gtype-id "MX_TYPE_SCROLL_BAR")
+)
+
+(define-object Expander
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxExpander")
+  (gtype-id "MX_TYPE_EXPANDER")
+)
+
+(define-object Button
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxButton")
+  (gtype-id "MX_TYPE_BUTTON")
+)
+
+(define-object ScrollView
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxScrollView")
+  (gtype-id "MX_TYPE_SCROLL_VIEW")
+)
+
+(define-object Adjustment
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxAdjustment")
+  (gtype-id "MX_TYPE_ADJUSTMENT")
+)
+
+
+(define-interface Draggable
+  (in-module "Mx")
+  (c-name "MxDraggable")
+  (gtype-id "MX_TYPE_DRAGGABLE")
+  (vtable "MxDraggableIface")
+)
+
+(define-interface Droppable
+  (in-module "Mx")
+  (c-name "MxDroppable")
+  (gtype-id "MX_TYPE_DROPPABLE")
+  (vtable "MxDroppableIface")
+)
+
+(define-interface Scrollable
+  (in-module "Mx")
+  (c-name "MxScrollable")
+  (gtype-id "MX_TYPE_SCROLLABLE")
+  (vtable "MxScrollableInterface")
+)
+
+(define-object Clipboard
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxClipboard")
+  (gtype-id "MX_TYPE_CLIPBOARD")
+)
+
+(define-object GtkFrame
+  (in-module "Mx")
+  (parent "GtkFrame")
+  (c-name "MxGtkFrame")
+  (gtype-id "MX_GTK_TYPE_FRAME")
+)
+
+(define-object GtkLightSwitch
+  (in-module "Mx")
+  (parent "GtkDrawingArea")
+  (c-name "MxGtkLightSwitch")
+  (gtype-id "MX_GTK_TYPE_LIGHT_SWITCH")
+)
+
+(define-object Style
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxStyle")
+  (gtype-id "MX_TYPE_STYLE")
+)
+
+(define-object Subtexture
+  (in-module "Mx")
+  (parent "ClutterActor")
+  (c-name "MxSubtexture")
+  (gtype-id "MX_TYPE_SUBTEXTURE")
+)
+
+(define-object TableChild
+  (in-module "Mx")
+  (parent "ClutterChildMeta")
+  (c-name "MxTableChild")
+  (gtype-id "MX_TYPE_TABLE_CHILD")
+)
+
+(define-object TextureCache
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxTextureCache")
+  (gtype-id "MX_TYPE_TEXTURE_CACHE")
+)
+
+(define-object TextureFrame
+  (in-module "Mx")
+  (parent "ClutterActor")
+  (c-name "MxTextureFrame")
+  (gtype-id "MX_TYPE_TEXTURE_FRAME")
+)
+
+(define-object Table
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxTable")
+  (gtype-id "MX_TYPE_TABLE")
+)
+
+(define-object ProgressBar
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxProgressBar")
+  (gtype-id "MX_TYPE_PROGRESS_BAR")
+)
+
+(define-object Label
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxLabel")
+  (gtype-id "MX_TYPE_LABEL")
+)
+
+(define-object Icon
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxIcon")
+  (gtype-id "MX_TYPE_ICON")
+)
+
+(define-object Grid
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxGrid")
+  (gtype-id "MX_TYPE_GRID")
+)
+
+(define-object ListView
+  (in-module "Mx")
+  (parent "MxGrid")
+  (c-name "MxListView")
+  (gtype-id "MX_TYPE_LIST_VIEW")
+)
+
+(define-object ItemView
+  (in-module "Mx")
+  (parent "MxGrid")
+  (c-name "MxItemView")
+  (gtype-id "MX_TYPE_ITEM_VIEW")
+)
+
+(define-object Entry
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxEntry")
+  (gtype-id "MX_TYPE_ENTRY")
+)
+
+(define-object BoxLayout
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxBoxLayout")
+  (gtype-id "MX_TYPE_BOX_LAYOUT")
+)
+
+(define-interface Stylable
+  (in-module "Mx")
+  (c-name "MxStylable")
+  (gtype-id "MX_TYPE_STYLABLE")
+  (vtable "MxStylableIface")
+)
+
+(define-object Action
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxAction")
+  (gtype-id "MX_TYPE_ACTION")
+)
+
+(define-object BoxLayoutChild
+  (in-module "Mx")
+  (parent "ClutterChildMeta")
+  (c-name "MxBoxLayoutChild")
+  (gtype-id "MX_TYPE_BOX_LAYOUT_CHILD")
+)
+
+(define-interface ItemFactory
+  (in-module "Mx")
+  (c-name "MxItemFactory")
+  (gtype-id "MX_TYPE_ITEM_FACTORY")
+  (vtable "MxItemFactoryIface")
+)
+
+(define-object Popup
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxPopup")
+  (gtype-id "MX_TYPE_POPUP")
+)
+
+(define-object ComboBox
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxComboBox")
+  (gtype-id "MX_TYPE_COMBO_BOX")
+)
+
+;; Enumerations and flags ...
+
+(define-enum DragAxis
+  (in-module "Mx")
+  (c-name "MxDragAxis")
+  (gtype-id "MX_TYPE_DRAG_AXIS")
+  (values
+    '("no-axis" "MX_NO_AXIS")
+    '("x-axis" "MX_X_AXIS")
+    '("y-axis" "MX_Y_AXIS")
+  )
+)
+
+(define-enum DragContainment
+  (in-module "Mx")
+  (c-name "MxDragContainment")
+  (gtype-id "MX_TYPE_DRAG_CONTAINMENT")
+  (values
+    '("disable-containment" "MX_DISABLE_CONTAINMENT")
+    '("contain-in-stage" "MX_CONTAIN_IN_STAGE")
+    '("contain-in-parent" "MX_CONTAIN_IN_PARENT")
+    '("contain-in-area" "MX_CONTAIN_IN_AREA")
+  )
+)
+
+(define-enum StyleError
+  (in-module "Mx")
+  (c-name "MxStyleError")
+  (gtype-id "MX_TYPE_STYLE_ERROR")
+  (values
+    '("file" "MX_STYLE_ERROR_INVALID_FILE")
+  )
+)
+
+(define-flags TableChildOptions
+  (in-module "Mx")
+  (c-name "MxTableChildOptions")
+  (gtype-id "MX_TYPE_TABLE_CHILD_OPTIONS")
+  (values
+    '("keep-aspect-ratio" "MX_KEEP_ASPECT_RATIO")
+    '("x-expand" "MX_X_EXPAND")
+    '("y-expand" "MX_Y_EXPAND")
+    '("x-fill" "MX_X_FILL")
+    '("y-fill" "MX_Y_FILL")
+  )
+)
+
+(define-enum Align
+  (in-module "Mx")
+  (c-name "MxAlign")
+  (gtype-id "MX_TYPE_ALIGN")
+  (values
+    '("start" "MX_ALIGN_START")
+    '("middle" "MX_ALIGN_MIDDLE")
+    '("end" "MX_ALIGN_END")
+  )
+)
+

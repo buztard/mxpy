@@ -1,9 +1,9 @@
 """
-This test is adopted form nbtk, but since it's summer it uses
+This test is adopted form mx, but since it's summer it uses
 Munich's most famous Beergarden instead of places in London ;)
 """
 import clutter
-import nbtk
+import mx
 
 def title_changed_cb(box, pspec):
     print 'title now:', box.get_title()
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     stage = clutter.Stage()
     stage.connect('destroy', clutter.main_quit)
 
-    combo = nbtk.ComboBox()
+    combo = mx.ComboBox()
     stage.add(combo)
     combo.set_title('Munich')
 

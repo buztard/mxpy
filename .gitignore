@@ -7,9 +7,9 @@ autom4te.cache
 .libs
 *.la
 *.lo
-nbtk/nbtk.c
-nbtk/nbtk-types.defs
-nbtk/nbtk.defs
+mx/mx.c
+mx/mx-types.defs
+mx/mx.defs
 *.pyc
 compile
 config.guess
@@ -26,6 +26,6 @@ libtool
 ltmain.sh
 missing
 py-compile
-pynbtk-0.0.pc
-pynbtk.pc
+pymx-0.0.pc
+pymx.pc
 stamp-h1

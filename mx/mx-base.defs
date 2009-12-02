@@ -1,0 +1,2388 @@
+;; -*- scheme -*-
+
+(include "mx-base-types.defs")
+
+;; From mx-adjustment.h
+
+(define-function adjustment_get_type
+  (c-name "mx_adjustment_get_type")
+  (return-type "GType")
+)
+
+(define-function adjustment_new
+  (c-name "mx_adjustment_new")
+  (is-constructor-of "MxAdjustment")
+  (return-type "MxAdjustment*")
+  (properties
+    '("value")
+    '("lower")
+    '("upper")
+    '("step_increment")
+    '("page_increment")
+    '("page_size")
+  )
+)
+
+(define-method get_value
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_value")
+  (return-type "gdouble")
+)
+
+(define-method set_value
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_value")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method clamp_page
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_clamp_page")
+  (return-type "none")
+  (parameters
+    '("gdouble" "lower")
+    '("gdouble" "upper")
+  )
+)
+
+(define-method set_values
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_values")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+    '("gdouble" "lower")
+    '("gdouble" "upper")
+    '("gdouble" "step_increment")
+    '("gdouble" "page_increment")
+    '("gdouble" "page_size")
+  )
+)
+
+(define-method get_values
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_values")
+  (return-type "none")
+  (parameters
+    '("gdouble*" "value")
+    '("gdouble*" "lower")
+    '("gdouble*" "upper")
+    '("gdouble*" "step_increment")
+    '("gdouble*" "page_increment")
+    '("gdouble*" "page_size")
+  )
+)
+
+(define-method interpolate
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_interpolate")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+    '("guint" "duration")
+  )
+)
+
+(define-method get_elastic
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_elastic")
+  (return-type "gboolean")
+)
+
+(define-method set_elastic
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_elastic")
+  (return-type "none")
+  (parameters
+    '("gboolean" "elastic")
+  )
+)
+
+(define-method clamp
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_clamp")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "interpolate")
+    '("guint" "duration")
+  )
+)
+
+
+
+;; From mx-bin.h
+
+(define-function bin_get_type
+  (c-name "mx_bin_get_type")
+  (return-type "GType")
+)
+
+(define-function bin_new
+  (c-name "mx_bin_new")
+  (is-constructor-of "MxBin")
+  (return-type "MxWidget*")
+)
+
+(define-method set_child
+  (of-object "MxBin")
+  (c-name "mx_bin_set_child")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method get_child
+  (of-object "MxBin")
+  (c-name "mx_bin_get_child")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_alignment
+  (of-object "MxBin")
+  (c-name "mx_bin_set_alignment")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "x_align")
+    '("MxAlign" "y_align")
+  )
+)
+
+(define-method get_alignment
+  (of-object "MxBin")
+  (c-name "mx_bin_get_alignment")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "x_align")
+    '("MxAlign" "y_align")
+  )
+)
+
+(define-method set_fill
+  (of-object "MxBin")
+  (c-name "mx_bin_set_fill")
+  (return-type "none")
+  (parameters
+    '("gboolean" "x_fill")
+    '("gboolean" "y_fill")
+  )
+)
+
+(define-method get_fill
+  (of-object "MxBin")
+  (c-name "mx_bin_get_fill")
+  (return-type "none")
+  (parameters
+    '("gboolean*" "x_fill")
+    '("gboolean*" "y_fill")
+  )
+)
+
+
+
+;; From mx-box-layout.h
+
+(define-function box_layout_get_type
+  (c-name "mx_box_layout_get_type")
+  (return-type "GType")
+)
+
+(define-function box_layout_new
+  (c-name "mx_box_layout_new")
+  (is-constructor-of "MxBoxLayout")
+  (return-type "MxWidget*")
+)
+
+(define-method set_vertical
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_set_vertical")
+  (return-type "none")
+  (parameters
+    '("gboolean" "vertical")
+  )
+)
+
+(define-method get_vertical
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_get_vertical")
+  (return-type "gboolean")
+)
+
+(define-method set_pack_start
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_set_pack_start")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pack_start")
+  )
+)
+
+(define-method get_pack_start
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_get_pack_start")
+  (return-type "gboolean")
+)
+
+(define-method set_spacing
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_set_spacing")
+  (return-type "none")
+  (parameters
+    '("guint" "spacing")
+  )
+)
+
+(define-method get_spacing
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_get_spacing")
+  (return-type "guint")
+)
+
+
+
+;; From mx-button.h
+
+(define-function button_get_type
+  (c-name "mx_button_get_type")
+  (return-type "GType")
+)
+
+(define-function button_new
+  (c-name "mx_button_new")
+  (is-constructor-of "MxButton")
+  (return-type "MxWidget*")
+  (properties
+    '("label" (optional))
+  )
+)
+
+(define-function button_new_with_label
+  (c-name "mx_button_new_with_label")
+  (return-type "MxWidget*")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_label
+  (of-object "MxButton")
+  (c-name "mx_button_get_label")
+  (return-type "const-gchar*")
+)
+
+(define-method set_label
+  (of-object "MxButton")
+  (c-name "mx_button_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method set_toggle_mode
+  (of-object "MxButton")
+  (c-name "mx_button_set_toggle_mode")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method get_toggle_mode
+  (of-object "MxButton")
+  (c-name "mx_button_get_toggle_mode")
+  (return-type "gboolean")
+)
+
+(define-method set_checked
+  (of-object "MxButton")
+  (c-name "mx_button_set_checked")
+  (return-type "none")
+  (parameters
+    '("gboolean" "checked")
+  )
+)
+
+(define-method get_checked
+  (of-object "MxButton")
+  (c-name "mx_button_get_checked")
+  (return-type "gboolean")
+)
+
+
+
+;; From mx-clipboard.h
+
+(define-function clipboard_get_type
+  (c-name "mx_clipboard_get_type")
+  (return-type "GType")
+)
+
+(define-function clipboard_get_default
+  (c-name "mx_clipboard_get_default")
+  (return-type "MxClipboard*")
+  (parameters
+  )
+)
+
+(define-method get_text
+  (of-object "MxClipboard")
+  (c-name "mx_clipboard_get_text")
+  (return-type "none")
+  (parameters
+    '("MxClipboardCallbackFunc" "callback")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method set_text
+  (of-object "MxClipboard")
+  (c-name "mx_clipboard_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+
+
+;; From mx-draggable.h
+
+(define-function draggable_get_type
+  (c-name "mx_draggable_get_type")
+  (return-type "GType")
+)
+
+(define-method set_axis
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_set_axis")
+  (return-type "none")
+  (parameters
+    '("MxDragAxis" "axis")
+  )
+)
+
+(define-method get_axis
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_get_axis")
+  (return-type "MxDragAxis")
+)
+
+(define-method set_drag_threshold
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_set_drag_threshold")
+  (return-type "none")
+  (parameters
+    '("guint" "threshold")
+  )
+)
+
+(define-method get_drag_threshold
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_get_drag_threshold")
+  (return-type "guint")
+)
+
+(define-method set_containment_type
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_set_containment_type")
+  (return-type "none")
+  (parameters
+    '("MxDragContainment" "containment")
+  )
+)
+
+(define-method get_containment_type
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_get_containment_type")
+  (return-type "MxDragContainment")
+)
+
+(define-method set_containment_area
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_set_containment_area")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x_1")
+    '("gfloat" "y_1")
+    '("gfloat" "x_2")
+    '("gfloat" "y_2")
+  )
+)
+
+(define-method get_containment_area
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_get_containment_area")
+  (return-type "none")
+  (parameters
+    '("gfloat*" "x_1")
+    '("gfloat*" "y_1")
+    '("gfloat*" "x_2")
+    '("gfloat*" "y_2")
+  )
+)
+
+(define-method disable
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_disable")
+  (return-type "none")
+)
+
+(define-virtual disable
+  (of-object "MxDraggable")
+  (return-type "none")
+)
+
+(define-method enable
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_enable")
+  (return-type "none")
+)
+
+(define-virtual enable
+  (of-object "MxDraggable")
+  (return-type "none")
+)
+
+(define-method is_enabled
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_is_enabled")
+  (return-type "gboolean")
+)
+
+(define-virtual drag_begin
+  (of-object "MxDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "event_x")
+    '("gfloat" "event_y")
+    '("gint" "event_button")
+    '("ClutterModifierType" "modifiers")
+  )
+)
+
+(define-virtual drag_motion
+  (of-object "MxDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "delta_x")
+    '("gfloat" "delta_y")
+  )
+)
+
+(define-virtual drag_end
+  (of-object "MxDraggable")
+  (return-type "none")
+  (parameters
+    '("gfloat" "event_x")
+    '("gfloat" "event_y")
+  )
+)
+
+(define-method set_drag_actor
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_set_drag_actor")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+  )
+)
+
+(define-method get_drag_actor
+  (of-object "MxDraggable")
+  (c-name "mx_draggable_get_drag_actor")
+  (return-type "ClutterActor*")
+)
+
+;; From mx-droppable.h
+
+(define-function droppable_get_type
+  (c-name "mx_droppable_get_type")
+  (return-type "GType")
+)
+
+(define-method enable
+  (of-object "MxDroppable")
+  (c-name "mx_droppable_enable")
+  (return-type "none")
+)
+
+(define-virtual enable
+  (of-object "MxDroppable")
+  (return-type "none")
+)
+
+(define-method disable
+  (of-object "MxDroppable")
+  (c-name "mx_droppable_disable")
+  (return-type "none")
+)
+
+(define-virtual disable
+  (of-object "MxDroppable")
+  (return-type "none")
+)
+
+(define-method is_enabled
+  (of-object "MxDroppable")
+  (c-name "mx_droppable_is_enabled")
+  (return-type "gboolean")
+)
+
+(define-method accept_drop
+  (of-object "MxDroppable")
+  (c-name "mx_droppable_accept_drop")
+  (return-type "gboolean")
+  (parameters
+    '("MxDraggable*" "draggable")
+  )
+)
+
+(define-virtual accept_drop
+  (of-object "MxDroppable")
+  (return-type "gboolean")
+  (parameters
+    '("MxDraggable*" "draggable")
+  )
+)
+
+
+
+;; From mx-entry.h
+
+(define-function entry_get_type
+  (c-name "mx_entry_get_type")
+  (return-type "GType")
+)
+
+(define-function entry_new
+  (c-name "mx_entry_new")
+  (is-constructor-of "MxEntry")
+  (return-type "MxWidget*")
+  (properties
+    '("text" (optional))
+  )
+)
+
+(define-method get_text
+  (of-object "MxEntry")
+  (c-name "mx_entry_get_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_text
+  (of-object "MxEntry")
+  (c-name "mx_entry_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_clutter_text
+  (of-object "MxEntry")
+  (c-name "mx_entry_get_clutter_text")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_hint_text
+  (of-object "MxEntry")
+  (c-name "mx_entry_set_hint_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_hint_text
+  (of-object "MxEntry")
+  (c-name "mx_entry_get_hint_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_primary_icon_from_file
+  (of-object "MxEntry")
+  (c-name "mx_entry_set_primary_icon_from_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "filename")
+  )
+)
+
+(define-method set_secondary_icon_from_file
+  (of-object "MxEntry")
+  (c-name "mx_entry_set_secondary_icon_from_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "filename")
+  )
+)
+
+
+
+;; From mx-enum-types.h
+
+(define-function drag_axis_get_type
+  (c-name "mx_drag_axis_get_type")
+  (return-type "GType")
+)
+
+(define-function drag_containment_get_type
+  (c-name "mx_drag_containment_get_type")
+  (return-type "GType")
+)
+
+(define-function style_error_get_type
+  (c-name "mx_style_error_get_type")
+  (return-type "GType")
+)
+
+(define-function table_child_options_get_type
+  (c-name "mx_table_child_options_get_type")
+  (return-type "GType")
+)
+
+(define-function alignment_get_type
+  (c-name "mx_alignment_get_type")
+  (return-type "GType")
+)
+
+(define-function align_get_type
+  (c-name "mx_align_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From mx-expander.h
+
+(define-function expander_get_type
+  (c-name "mx_expander_get_type")
+  (return-type "GType")
+)
+
+(define-function expander_new
+  (c-name "mx_expander_new")
+  (is-constructor-of "MxExpander")
+  (return-type "MxWidget*")
+)
+
+(define-method set_label
+  (of-object "MxExpander")
+  (c-name "mx_expander_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "label")
+  )
+)
+
+(define-method get_expanded
+  (of-object "MxExpander")
+  (c-name "mx_expander_get_expanded")
+  (return-type "gboolean")
+)
+
+(define-method set_expanded
+  (of-object "MxExpander")
+  (c-name "mx_expander_set_expanded")
+  (return-type "none")
+  (parameters
+    '("gboolean" "expanded")
+  )
+)
+
+
+
+
+;; From mx-grid.h
+
+(define-function grid_get_type
+  (c-name "mx_grid_get_type")
+  (return-type "GType")
+)
+
+(define-function grid_new
+  (c-name "mx_grid_new")
+  (is-constructor-of "MxGrid")
+  (return-type "MxWidget*")
+)
+
+(define-method set_end_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_end_align")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_end_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_end_align")
+  (return-type "gboolean")
+)
+
+(define-method set_homogenous_rows
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_homogenous_rows")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_homogenous_rows
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_homogenous_rows")
+  (return-type "gboolean")
+)
+
+(define-method set_homogenous_columns
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_homogenous_columns")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_homogenous_columns
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_homogenous_columns")
+  (return-type "gboolean")
+)
+
+(define-method set_column_major
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_column_major")
+  (return-type "none")
+  (parameters
+    '("gboolean" "value")
+  )
+)
+
+(define-method get_column_major
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_column_major")
+  (return-type "gboolean")
+)
+
+(define-method set_row_gap
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_row_gap")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method get_row_gap
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_row_gap")
+  (return-type "gfloat")
+)
+
+(define-method set_column_gap
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_column_gap")
+  (return-type "none")
+  (parameters
+    '("gfloat" "value")
+  )
+)
+
+(define-method get_column_gap
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_column_gap")
+  (return-type "gfloat")
+)
+
+(define-method set_valign
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_valign")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method get_valign
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_valign")
+  (return-type "gdouble")
+)
+
+(define-method set_halign
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_halign")
+  (return-type "none")
+  (parameters
+    '("gdouble" "value")
+  )
+)
+
+(define-method get_halign
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_halign")
+  (return-type "gdouble")
+)
+
+(define-method set_max_stride
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_max_stride")
+  (return-type "none")
+  (parameters
+    '("gint" "value")
+  )
+)
+
+(define-method get_max_stride
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_max_stride")
+  (return-type "gint")
+)
+
+
+
+;; From mx-gtk-expander.h
+
+(define-function gtk_expander_get_type
+  (c-name "mx_gtk_expander_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_expander_new
+  (c-name "mx_gtk_expander_new")
+  (is-constructor-of "MxGtkExpander")
+  (return-type "GtkWidget*")
+)
+
+(define-method set_expanded
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_set_expanded")
+  (return-type "none")
+  (parameters
+    '("gboolean" "expanded")
+  )
+)
+
+(define-method get_expanded
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_get_expanded")
+  (return-type "gboolean")
+)
+
+(define-method set_label_widget
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_set_label_widget")
+  (return-type "none")
+  (parameters
+    '("GtkWidget*" "label")
+  )
+)
+
+(define-method get_label_widget
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_get_label_widget")
+  (return-type "GtkWidget*")
+)
+
+(define-method set_has_indicator
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_set_has_indicator")
+  (return-type "none")
+  (parameters
+    '("gboolean" "has_indicator")
+  )
+)
+
+(define-method get_has_indicator
+  (of-object "MxGtkExpander")
+  (c-name "mx_gtk_expander_get_has_indicator")
+  (return-type "gboolean")
+)
+
+
+
+;; From mx-gtk-frame.h
+
+(define-function gtk_frame_get_type
+  (c-name "mx_gtk_frame_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_frame_new
+  (c-name "mx_gtk_frame_new")
+  (is-constructor-of "MxGtkFrame")
+  (return-type "GtkWidget*")
+)
+
+
+
+;; From mx-gtk.h
+
+
+
+;; From mx-gtk-light-switch.h
+
+(define-function gtk_light_switch_get_type
+  (c-name "mx_gtk_light_switch_get_type")
+  (return-type "GType")
+)
+
+(define-method set_active
+  (of-object "MxGtkLightSwitch")
+  (c-name "mx_gtk_light_switch_set_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "active")
+  )
+)
+
+(define-method get_active
+  (of-object "MxGtkLightSwitch")
+  (c-name "mx_gtk_light_switch_get_active")
+  (return-type "gboolean")
+)
+
+(define-function gtk_light_switch_new
+  (c-name "mx_gtk_light_switch_new")
+  (is-constructor-of "MxGtkLightSwitch")
+  (return-type "GtkWidget*")
+)
+
+
+
+;; From mx.h
+
+
+
+;; From mx-icon.h
+
+(define-function icon_get_type
+  (c-name "mx_icon_get_type")
+  (return-type "GType")
+)
+
+(define-function icon_new
+  (c-name "mx_icon_new")
+  (is-constructor-of "MxIcon")
+  (return-type "MxIcon*")
+)
+
+
+
+;; From mx-item-view.h
+
+(define-function item_view_get_type
+  (c-name "mx_item_view_get_type")
+  (return-type "GType")
+)
+
+(define-function item_view_new
+  (c-name "mx_item_view_new")
+  (is-constructor-of "MxItemView")
+  (return-type "MxWidget*")
+)
+
+(define-method set_model
+  (of-object "MxItemView")
+  (c-name "mx_item_view_set_model")
+  (return-type "none")
+  (parameters
+    '("ClutterModel*" "model")
+  )
+)
+
+(define-method get_model
+  (of-object "MxItemView")
+  (c-name "mx_item_view_get_model")
+  (return-type "ClutterModel*")
+)
+
+(define-method set_item_type
+  (of-object "MxItemView")
+  (c-name "mx_item_view_set_item_type")
+  (return-type "none")
+  (parameters
+    '("GType" "item_type")
+  )
+)
+
+(define-method get_item_type
+  (of-object "MxItemView")
+  (c-name "mx_item_view_get_item_type")
+  (return-type "GType")
+)
+
+(define-method add_attribute
+  (of-object "MxItemView")
+  (c-name "mx_item_view_add_attribute")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "attribute")
+    '("gint" "column")
+  )
+)
+
+(define-method freeze
+  (of-object "MxItemView")
+  (c-name "mx_item_view_freeze")
+  (return-type "none")
+)
+
+(define-method thaw
+  (of-object "MxItemView")
+  (c-name "mx_item_view_thaw")
+  (return-type "none")
+)
+
+(define-method set_factory
+  (of-object "MxItemView")
+  (c-name "mx_item_view_set_factory")
+  (return-type "none")
+  (parameters
+    '("MxItemFactory*" "factory")
+  )
+)
+
+
+;; From mx-label.h
+
+(define-function label_get_type
+  (c-name "mx_label_get_type")
+  (return-type "GType")
+)
+
+(define-function label_new
+  (c-name "mx_label_new")
+  (is-constructor-of "MxLabel")
+  (return-type "MxWidget*")
+  (properties
+    '("text" (optional))
+  )
+)
+
+(define-method get_text
+  (of-object "MxLabel")
+  (c-name "mx_label_get_text")
+  (return-type "const-gchar*")
+)
+
+(define-method set_text
+  (of-object "MxLabel")
+  (c-name "mx_label_set_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_clutter_text
+  (of-object "MxLabel")
+  (c-name "mx_label_get_clutter_text")
+  (return-type "ClutterActor*")
+)
+
+
+
+;; From mx-list-view.h
+
+(define-function list_view_get_type
+  (c-name "mx_list_view_get_type")
+  (return-type "GType")
+)
+
+(define-function list_view_new
+  (c-name "mx_list_view_new")
+  (is-constructor-of "MxListView")
+  (return-type "MxWidget*")
+)
+
+(define-method set_model
+  (of-object "MxListView")
+  (c-name "mx_list_view_set_model")
+  (return-type "none")
+  (parameters
+    '("ClutterModel*" "model")
+  )
+)
+
+(define-method get_model
+  (of-object "MxListView")
+  (c-name "mx_list_view_get_model")
+  (return-type "ClutterModel*")
+)
+
+(define-method set_item_type
+  (of-object "MxListView")
+  (c-name "mx_list_view_set_item_type")
+  (return-type "none")
+  (parameters
+    '("GType" "item_type")
+  )
+)
+
+(define-method get_item_type
+  (of-object "MxListView")
+  (c-name "mx_list_view_get_item_type")
+  (return-type "GType")
+)
+
+(define-method add_attribute
+  (of-object "MxListView")
+  (c-name "mx_list_view_add_attribute")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "attribute")
+    '("gint" "column")
+  )
+)
+
+(define-method freeze
+  (of-object "MxListView")
+  (c-name "mx_list_view_freeze")
+  (return-type "none")
+)
+
+(define-method thaw
+  (of-object "MxListView")
+  (c-name "mx_list_view_thaw")
+  (return-type "none")
+)
+
+(define-method set_factory
+  (of-object "MxListView")
+  (c-name "mx_list_view_set_factory")
+  (return-type "none")
+  (parameters
+    '("MxItemFactory*" "factory")
+  )
+)
+
+
+;; From mx-progress-bar.h
+
+(define-function progress_bar_get_type
+  (c-name "mx_progress_bar_get_type")
+  (return-type "GType")
+)
+
+(define-function progress_bar_new
+  (c-name "mx_progress_bar_new")
+  (is-constructor-of "MxProgressBar")
+  (return-type "MxWidget*")
+)
+
+(define-method set_progress
+  (of-object "MxProgressBar")
+  (c-name "mx_progress_bar_set_progress")
+  (return-type "none")
+  (parameters
+    '("gdouble" "progress")
+  )
+)
+
+(define-method get_progress
+  (of-object "MxProgressBar")
+  (c-name "mx_progress_bar_get_progress")
+  (return-type "gdouble")
+)
+
+
+
+;; From mx-scrollable.h
+
+(define-function scrollable_get_type
+  (c-name "mx_scrollable_get_type")
+  (return-type "GType")
+)
+
+(define-method set_adjustments
+  (of-object "MxScrollable")
+  (c-name "mx_scrollable_set_adjustments")
+  (return-type "none")
+  (parameters
+    '("MxAdjustment*" "hadjustment")
+    '("MxAdjustment*" "vadjustment")
+  )
+)
+
+(define-virtual set_adjustments
+  (of-object "MxScrollable")
+  (return-type "none")
+  (parameters
+    '("MxAdjustment*" "hadjustment")
+    '("MxAdjustment*" "vadjustment")
+  )
+)
+
+(define-method get_adjustments
+  (of-object "MxScrollable")
+  (c-name "mx_scrollable_get_adjustments")
+  (return-type "none")
+  (parameters
+    '("MxAdjustment**" "hadjustment")
+    '("MxAdjustment**" "vadjustment")
+  )
+)
+
+(define-virtual get_adjustments
+  (of-object "MxScrollable")
+  (return-type "none")
+  (parameters
+    '("MxAdjustment**" "hadjustment")
+    '("MxAdjustment**" "vadjustment")
+  )
+)
+
+
+;; From mx-scroll-bar.h
+
+(define-function scroll_bar_get_type
+  (c-name "mx_scroll_bar_get_type")
+  (return-type "GType")
+)
+
+(define-function scroll_bar_new
+  (c-name "mx_scroll_bar_new")
+  (is-constructor-of "MxScrollBar")
+  (return-type "MxWidget*")
+  (properties
+    '("adjustment")
+  )
+)
+
+(define-method set_adjustment
+  (of-object "MxScrollBar")
+  (c-name "mx_scroll_bar_set_adjustment")
+  (return-type "none")
+  (parameters
+    '("MxAdjustment*" "adjustment")
+  )
+)
+
+(define-method get_adjustment
+  (of-object "MxScrollBar")
+  (c-name "mx_scroll_bar_get_adjustment")
+  (return-type "MxAdjustment*")
+)
+
+
+
+;; From mx-scroll-view.h
+
+(define-function scroll_view_get_type
+  (c-name "mx_scroll_view_get_type")
+  (return-type "GType")
+)
+
+(define-function scroll_view_new
+  (c-name "mx_scroll_view_new")
+  (is-constructor-of "MxScrollView")
+  (return-type "MxWidget*")
+)
+
+(define-method get_hscroll_bar
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_hscroll_bar")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_vscroll_bar
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_vscroll_bar")
+  (return-type "ClutterActor*")
+)
+
+;(define-method get_child
+;  (of-object "MxScrollView")
+;  (c-name "mx_scroll_view_get_child")
+;  (return-type "ClutterActor*")
+;)
+
+(define-method get_column_size
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_column_size")
+  (return-type "gfloat")
+)
+
+(define-method set_column_size
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_set_column_size")
+  (return-type "none")
+  (parameters
+    '("gfloat" "column_size")
+  )
+)
+
+(define-method get_row_size
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_row_size")
+  (return-type "gfloat")
+)
+
+(define-method set_row_size
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_set_row_size")
+  (return-type "none")
+  (parameters
+    '("gfloat" "row_size")
+  )
+)
+
+(define-method set_mouse_scrolling
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_set_mouse_scrolling")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)
+
+(define-method get_mouse_scrolling
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_mouse_scrolling")
+  (return-type "gboolean")
+)
+
+
+;; From mx-stylable.h
+
+
+(define-function mx_stylable_get_type
+  (c-name "mx_stylable_get_type")
+  (return-type "GType")
+)
+
+(define-method install_property
+  (of-object "MxStylableIface")
+  (c-name "mx_stylable_iface_install_property")
+  (return-type "none")
+  (parameters
+    '("GType" "owner_type")
+    '("GParamSpec*" "pspec")
+  )
+)
+
+(define-method freeze_notify
+  (of-object "MxStylable")
+  (c-name "mx_stylable_freeze_notify")
+  (return-type "none")
+)
+
+(define-method notify
+  (of-object "MxStylable")
+  (c-name "mx_stylable_notify")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "property_name")
+  )
+)
+
+(define-method thaw_notify
+  (of-object "MxStylable")
+  (c-name "mx_stylable_thaw_notify")
+  (return-type "none")
+)
+
+(define-method list_properties
+  (of-object "MxStylable")
+  (c-name "mx_stylable_list_properties")
+  (return-type "GParamSpec**")
+  (parameters
+    '("guint*" "n_props")
+  )
+)
+
+(define-method find_property
+  (of-object "MxStylable")
+  (c-name "mx_stylable_find_property")
+  (return-type "GParamSpec*")
+  (parameters
+    '("const-gchar*" "property_name")
+  )
+)
+
+(define-method set_style
+  (of-object "MxStylable")
+  (c-name "mx_stylable_set_style")
+  (return-type "none")
+  (parameters
+    '("MxStyle*" "style")
+  )
+)
+
+(define-virtual set_style
+  (of-object "MxStylable")
+  (return-type "none")
+  (parameters
+    '("MxStyle*" "style")
+  )
+)
+
+(define-method get_style
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get_style")
+  (return-type "MxStyle*")
+)
+
+(define-virtual get_style
+  (of-object "MxStylable")
+  (return-type "MxStyle*")
+)
+
+(define-method get
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_property
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get_property")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "property_name")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get_default_value
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get_default_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property_name")
+    '("GValue*" "value_out")
+  )
+)
+
+(define-method changed
+  (of-object "MxStylable")
+  (c-name "mx_stylable_changed")
+  (return-type "none")
+)
+
+
+
+
+;; From mx-style.h
+
+(define-function style_get_type
+  (c-name "mx_style_get_type")
+  (return-type "GType")
+)
+
+(define-function style_get_default
+  (c-name "mx_style_get_default")
+  (return-type "MxStyle*")
+)
+
+(define-function style_new
+  (c-name "mx_style_new")
+  (is-constructor-of "MxStyle")
+  (return-type "MxStyle*")
+)
+
+(define-method load_from_file
+  (of-object "MxStyle")
+  (c-name "mx_style_load_from_file")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "filename")
+    '("GError**" "error")
+  )
+)
+
+(define-method get_property
+  (of-object "MxStyle")
+  (c-name "mx_style_get_property")
+  (return-type "none")
+  (parameters
+    '("MxStylable*" "stylable")
+    '("GParamSpec*" "pspec")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get
+  (of-object "MxStyle")
+  (c-name "mx_style_get")
+  (return-type "none")
+  (parameters
+    '("MxStylable*" "stylable")
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_valist
+  (of-object "MxStyle")
+  (c-name "mx_style_get_valist")
+  (return-type "none")
+  (parameters
+    '("MxStylable*" "stylable")
+    '("const-gchar*" "first_property_name")
+    '("va_list" "va_args")
+  )
+)
+
+
+
+;; From mx-subtexture.h
+
+(define-function subtexture_get_type
+  (c-name "mx_subtexture_get_type")
+  (return-type "GType")
+)
+
+(define-function subtexture_new
+  (c-name "mx_subtexture_new")
+  (is-constructor-of "MxSubtexture")
+  (return-type "ClutterActor*")
+  (properties
+    '("texture")
+    '("top")
+    '("left")
+    '("width")
+    '("height")
+  )
+)
+
+(define-method set_parent_texture
+  (of-object "MxSubtexture")
+  (c-name "mx_subtexture_set_parent_texture")
+  (return-type "none")
+  (parameters
+    '("ClutterTexture*" "texture")
+  )
+)
+
+(define-method get_parent_texture
+  (of-object "MxSubtexture")
+  (c-name "mx_subtexture_get_parent_texture")
+  (return-type "ClutterTexture*")
+)
+
+(define-method set_frame
+  (of-object "MxSubtexture")
+  (c-name "mx_subtexture_set_frame")
+  (return-type "none")
+  (parameters
+    '("gint" "top")
+    '("gint" "left")
+    '("gint" "width")
+    '("gint" "height")
+  )
+)
+
+(define-method get_frame
+  (of-object "MxSubtexture")
+  (c-name "mx_subtexture_get_frame")
+  (return-type "none")
+  (parameters
+    '("gint*" "top")
+    '("gint*" "left")
+    '("gint*" "width")
+    '("gint*" "height")
+  )
+)
+
+
+
+;; From mx-table-child.h
+
+(define-function table_child_get_type
+  (c-name "mx_table_child_get_type")
+  (return-type "GType")
+)
+
+(define-method child_get_col_span
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_col_span")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_col_span
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_col_span")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "span")
+  )
+)
+
+(define-method child_get_row_span
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_row_span")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_row_span
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_row_span")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "span")
+  )
+)
+
+(define-method child_get_x_fill
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_x_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_fill
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_x_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "fill")
+  )
+)
+
+(define-method child_get_y_fill
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_y_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_fill
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_y_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "fill")
+  )
+)
+
+(define-method child_get_x_align
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_x_align")
+  (return-type "MxAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_align
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_x_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("MxAlign" "align")
+  )
+)
+
+(define-method child_get_y_align
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_y_align")
+  (return-type "MxAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_align
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_y_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("MxAlign" "align")
+  )
+)
+
+;(define-method child_set_allocate_hidden
+;  (of-object "MxTable")
+;  (c-name "mx_table_child_set_allocate_hidden")
+;  (return-type "none")
+;  (parameters
+;    '("ClutterActor*" "child")
+;    '("gboolean" "value")
+;  )
+;)
+
+;(define-method child_get_allocate_hidden
+;  (of-object "MxTable")
+;  (c-name "mx_table_child_get_allocate_hidden")
+;  (return-type "gboolean")
+;  (parameters
+;    '("ClutterActor*" "child")
+;  )
+;)
+
+(define-method child_get_x_expand
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_x_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_expand
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_x_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+(define-method child_get_y_expand
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_y_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_expand
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_y_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+
+;; From mx-table.h
+
+(define-function table_get_type
+  (c-name "mx_table_get_type")
+  (return-type "GType")
+)
+
+(define-function table_new
+  (c-name "mx_table_new")
+  (is-constructor-of "MxTable")
+  (return-type "MxWidget*")
+)
+
+(define-method set_col_spacing
+  (of-object "MxTable")
+  (c-name "mx_table_set_col_spacing")
+  (return-type "none")
+  (parameters
+    '("gint" "spacing")
+  )
+)
+
+(define-method set_row_spacing
+  (of-object "MxTable")
+  (c-name "mx_table_set_row_spacing")
+  (return-type "none")
+  (parameters
+    '("gint" "spacing")
+  )
+)
+
+(define-method get_col_spacing
+  (of-object "MxTable")
+  (c-name "mx_table_get_col_spacing")
+  (return-type "gint")
+)
+
+(define-method get_row_spacing
+  (of-object "MxTable")
+  (c-name "mx_table_get_row_spacing")
+  (return-type "gint")
+)
+
+(define-method add_actor
+  (of-object "MxTable")
+  (c-name "mx_table_add_actor")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "row")
+    '("gint" "column")
+  )
+)
+
+(define-method add_actor_with_properties
+  (of-object "MxTable")
+  (c-name "mx_table_add_actor_with_properties")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "row")
+    '("gint" "column")
+    '("const-gchar*" "first_property_name")
+  )
+  (varargs #t)
+)
+
+(define-method get_row_count
+  (of-object "MxTable")
+  (c-name "mx_table_get_row_count")
+  (return-type "gint")
+)
+
+(define-method get_column_count
+  (of-object "MxTable")
+  (c-name "mx_table_get_column_count")
+  (return-type "gint")
+)
+
+
+
+;; From mx-texture-cache.h
+
+(define-function texture_cache_get_type
+  (c-name "mx_texture_cache_get_type")
+  (return-type "GType")
+)
+
+(define-function texture_cache_get_default
+  (c-name "mx_texture_cache_get_default")
+  (return-type "MxTextureCache*")
+)
+
+(define-method get_texture
+  (of-object "MxTextureCache")
+  (c-name "mx_texture_cache_get_texture")
+  (return-type "ClutterTexture*")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method get_actor
+  (of-object "MxTextureCache")
+  (c-name "mx_texture_cache_get_actor")
+  (return-type "ClutterActor*")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method get_size
+  (of-object "MxTextureCache")
+  (c-name "mx_texture_cache_get_size")
+  (return-type "gint")
+)
+
+(define-method load_cache
+  (of-object "MxTextureCache")
+  (c-name "mx_texture_cache_load_cache")
+  (return-type "none")
+  (parameters
+    '("char*" "filename")
+  )
+)
+
+
+
+;; From mx-texture-frame.h
+
+(define-function texture_frame_get_type
+  (c-name "mx_texture_frame_get_type")
+  (return-type "GType")
+)
+
+(define-function texture_frame_new
+  (c-name "mx_texture_frame_new")
+  (is-constructor-of "MxTextureFrame")
+  (return-type "ClutterActor*")
+  (properties
+    '("texture")
+    '("top")
+    '("right")
+    '("bottom")
+    '("left")
+  )
+)
+
+(define-method set_parent_texture
+  (of-object "MxTextureFrame")
+  (c-name "mx_texture_frame_set_parent_texture")
+  (return-type "none")
+  (parameters
+    '("ClutterTexture*" "texture")
+  )
+)
+
+(define-method get_parent_texture
+  (of-object "MxTextureFrame")
+  (c-name "mx_texture_frame_get_parent_texture")
+  (return-type "ClutterTexture*")
+)
+
+(define-method set_frame
+  (of-object "MxTextureFrame")
+  (c-name "mx_texture_frame_set_frame")
+  (return-type "none")
+  (parameters
+    '("gfloat" "top")
+    '("gfloat" "right")
+    '("gfloat" "bottom")
+    '("gfloat" "left")
+  )
+)
+
+(define-method get_frame
+  (of-object "MxTextureFrame")
+  (c-name "mx_texture_frame_get_frame")
+  (return-type "none")
+  (parameters
+    '("gfloat*" "top")
+    '("gfloat*" "right")
+    '("gfloat*" "bottom")
+    '("gfloat*" "left")
+  )
+)
+
+
+
+;; From mx-tooltip.h
+
+(define-function tooltip_get_type
+  (c-name "mx_tooltip_get_type")
+  (return-type "GType")
+)
+
+(define-method get_label
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_get_label")
+  (return-type "const-gchar*")
+)
+
+(define-method set_label
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_set_label")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method show
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_show")
+  (return-type "none")
+)
+
+(define-method hide
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_hide")
+  (return-type "none")
+)
+
+(define-method set_tip_area
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_set_tip_area")
+  (return-type "none")
+  (parameters
+    '("const-ClutterGeometry*" "area")
+  )
+)
+
+(define-method get_tip_area
+  (of-object "MxTooltip")
+  (c-name "mx_tooltip_get_tip_area")
+  (return-type "const-ClutterGeometry*")
+)
+
+
+
+;; From mx-types.h
+
+(define-function border_image_get_type
+  (c-name "mx_border_image_get_type")
+  (return-type "GType")
+)
+
+(define-function padding_get_type
+  (c-name "mx_padding_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From mx-version.h
+
+
+
+;; From mx-viewport.h
+
+(define-function viewport_get_type
+  (c-name "mx_viewport_get_type")
+  (return-type "GType")
+)
+
+(define-function viewport_new
+  (c-name "mx_viewport_new")
+  (is-constructor-of "MxViewport")
+  (return-type "MxWidget*")
+)
+
+(define-method set_origin
+  (of-object "MxViewport")
+  (c-name "mx_viewport_set_origin")
+  (return-type "none")
+  (parameters
+    '("gint" "x")
+    '("gint" "y")
+    '("gint" "z")
+  )
+)
+
+(define-method get_origin
+  (of-object "MxViewport")
+  (c-name "mx_viewport_get_origin")
+  (return-type "none")
+  (parameters
+    '("gint*" "x")
+    '("gint*" "y")
+    '("gint*" "z")
+  )
+)
+
+
+
+;; From mx-widget.h
+
+(define-function widget_get_type
+  (c-name "mx_widget_get_type")
+  (return-type "GType")
+)
+
+(define-method set_style_pseudo_class
+  (of-object "MxWidget")
+  (c-name "mx_widget_set_style_pseudo_class")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "pseudo_class")
+  )
+)
+
+(define-method get_style_pseudo_class
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_style_pseudo_class")
+  (return-type "const-gchar*")
+)
+
+(define-method set_style_class_name
+  (of-object "MxWidget")
+  (c-name "mx_widget_set_style_class_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "style_class")
+  )
+)
+
+(define-method get_style_class_name
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_style_class_name")
+  (return-type "const-gchar*")
+)
+
+(define-method set_has_tooltip
+  (of-object "MxWidget")
+  (c-name "mx_widget_set_has_tooltip")
+  (return-type "none")
+  (parameters
+    '("gboolean" "has_tooltip")
+  )
+)
+
+(define-method get_has_tooltip
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_has_tooltip")
+  (return-type "gboolean")
+)
+
+(define-method set_tooltip_text
+  (of-object "MxWidget")
+  (c-name "mx_widget_set_tooltip_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method get_tooltip_text
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_tooltip_text")
+  (return-type "const-gchar*")
+)
+
+(define-method show_tooltip
+  (of-object "MxWidget")
+  (c-name "mx_widget_show_tooltip")
+  (return-type "none")
+)
+
+(define-method hide_tooltip
+  (of-object "MxWidget")
+  (c-name "mx_widget_hide_tooltip")
+  (return-type "none")
+)
+
+(define-method ensure_style
+  (of-object "MxWidget")
+  (c-name "mx_widget_ensure_style")
+  (return-type "none")
+)
+
+(define-method get_background_image
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_background_image")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_border_image
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_border_image")
+  (return-type "ClutterActor*")
+)
+
+(define-method get_padding
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_padding")
+  (return-type "none")
+  (parameters
+    '("MxPadding*" "padding")
+  )
+)
+
+(define-method draw_background
+  (of-object "MxWidget")
+  (c-name "mx_widget_draw_background")
+  (return-type "none")
+)
+
+;; From mx-action.h
+
+(define-function action_get_type
+  (c-name "mx_action_get_type")
+  (return-type "GType")
+)
+
+(define-function action_new
+  (c-name "mx_action_new")
+  (is-constructor-of "MxAction")
+  (return-type "MxAction*")
+)
+
+(define-function action_new_full
+  (c-name "mx_action_new_full")
+  (return-type "MxAction*")
+  (parameters
+    '("const-gchar*" "name")
+    '("GCallback" "activated_cb")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method get_name
+  (of-object "MxAction")
+  (c-name "mx_action_get_name")
+  (return-type "const-gchar*")
+)
+
+(define-method set_name
+  (of-object "MxAction")
+  (c-name "mx_action_set_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method get_active
+  (of-object "MxAction")
+  (c-name "mx_action_get_active")
+  (return-type "gboolean")
+)
+
+(define-method set_active
+  (of-object "MxAction")
+  (c-name "mx_action_set_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "active")
+  )
+)
+
+;; From mx-box-layout-child.h
+
+(define-function box_layout_child_get_type
+  (c-name "mx_box_layout_child_get_type")
+  (return-type "GType")
+)
+
+(define-function box_layout_child_new
+  (c-name "mx_box_layout_child_new")
+  (is-constructor-of "MxBoxLayoutChild")
+  (return-type "MxBoxLayoutChild*")
+)
+
+;; From mx-combo-box.h
+
+(define-function combo_box_get_type
+  (c-name "mx_combo_box_get_type")
+  (return-type "GType")
+)
+
+(define-function combo_box_new
+  (c-name "mx_combo_box_new")
+  (is-constructor-of "MxComboBox")
+  (return-type "MxComboBox*")
+)
+
+(define-method insert_text
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_insert_text")
+  (return-type "none")
+  (parameters
+    '("gint" "position")
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method append_text
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_append_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method prepend_text
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_prepend_text")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
+(define-method remove_text
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_remove_text")
+  (return-type "none")
+  (parameters
+    '("gint" "position")
+  )
+)
+
+(define-method set_title
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_set_title")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "title")
+  )
+)
+
+(define-method get_title
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_get_title")
+  (return-type "const-gchar*")
+)
+
+(define-method set_index
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_set_index")
+  (return-type "none")
+  (parameters
+    '("gint" "index")
+  )
+)
+
+(define-method get_index
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_get_index")
+  (return-type "gint")
+)
+
+;; From mx-item-factory.h
+
+(define-function item_factory_get_type
+  (c-name "mx_item_factory_get_type")
+  (return-type "GType")
+)
+
+(define-method create
+  (of-object "MxItemFactory")
+  (c-name "mx_item_factory_create")
+  (return-type "ClutterActor*")
+)
+
+(define-virtual create
+  (of-object "MxItemFactory")
+  (return-type "ClutterActor*")
+)
+
+;; From mx-popup.h
+
+(define-function popup_get_type
+  (c-name "mx_popup_get_type")
+  (return-type "GType")
+)
+
+(define-function popup_new
+  (c-name "mx_popup_new")
+  (is-constructor-of "MxPopup")
+  (return-type "MxWidget*")
+)
+
+(define-method add_action
+  (of-object "MxPopup")
+  (c-name "mx_popup_add_action")
+  (return-type "none")
+  (parameters
+    '("MxAction*" "action")
+  )
+)
+
+(define-method remove_action
+  (of-object "MxPopup")
+  (c-name "mx_popup_remove_action")
+  (return-type "none")
+  (parameters
+    '("MxAction*" "action")
+  )
+)
+
+(define-method clear
+  (of-object "MxPopup")
+  (c-name "mx_popup_clear")
+  (return-type "none")
+)
+
+

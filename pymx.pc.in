@@ -5,11 +5,11 @@ datadir=@datarootdir@
 
 # you can use the --variable=defsdir argument to
 # pkg-config to get this value.
-defsdir=${datadir}/pynbtk/1.0/defs
+defsdir=${datadir}/pymx/1.0/defs
 
-pynbtkincludedir=${includedir}/pynbtk-1.0
+pymxincludedir=${includedir}/pymx-1.0
 
-Name: PyNbtk
-Description: Python bindings for Nbtk
+Name: PyMx
+Description: Python bindings for Mx
 Version: @VERSION@
-Cflags: -I${pynbtkincludedir}
+Cflags: -I${pymxincludedir}

@@ -6,7 +6,7 @@ test -z "$srcdir" && srcdir=.
 
 REQUIRED_AUTOMAKE_VERSION=1.9
 
-PKG_NAME="PyNbtk"
+PKG_NAME="PyMx"
 
 #name of package
 PKG_NAME=${PKG_NAME:-Package}

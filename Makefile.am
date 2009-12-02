@@ -1,16 +1,16 @@
-SUBDIRS = build nbtk examples
+SUBDIRS = build mx examples
 
-pynbtk-$(PYNBTK_MAJOR_VERSION).$(PYNBTK_MINOR_VERSION).pc: pynbtk.pc
+pymx-$(PYMX_MAJOR_VERSION).$(PYMX_MINOR_VERSION).pc: pymx.pc
 	@cp -f $< $(@F)
 
-pkgfiles = pynbtk-$(PYNBTK_MAJOR_VERSION).$(PYNBTK_MINOR_VERSION).pc
+pkgfiles = pymx-$(PYMX_MAJOR_VERSION).$(PYMX_MINOR_VERSION).pc
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = $(pkgfiles)
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-docs
 
 DIST_SUBDIRS = \
-	nbtk \
+	mx \
 	build \
 	examples
 

@@ -1,5 +1,5 @@
 import clutter
-import nbtk
+import mx
 
 def expand_completed_cb (expander):
     print "expand complete", expander.get_expanded()
@@ -18,21 +18,21 @@ if __name__ == '__main__':
     stage.set_color((255, 255, 255, 255))
     stage.set_user_resizable(True)
 
-    expander = nbtk.Expander()
+    expander = mx.Expander()
     expander.set_label("Expander")
     expander.set_position(10, 10)
     expander.connect('expand-complete', expand_completed_cb)
     stage.add(expander)
 
-    scroll = nbtk.ScrollView()
+    scroll = mx.ScrollView()
     expander.add(scroll)
     scroll.set_size(320, 240)
 
-    grid = nbtk.Grid()
+    grid = mx.Grid()
     scroll.add(grid)
 
     for i in range(50):
-        button = nbtk.Button("Button %i" % i)
+        button = mx.Button("Button %i" % i)
         grid.add(button)
 
     stage.connect('notify::width', stage_size_notify_cb, expander)

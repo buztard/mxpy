@@ -1,5 +1,5 @@
 import clutter
-import nbtk
+import mx
 
 def stage_size_notify_cb(stage, pspec, scroll):
     scroll.set_size(stage.get_width()-100, stage.get_height()-100)
@@ -16,14 +16,14 @@ if __name__ == '__main__':
     stage.set_user_resizable(True)
     stage.set_color((255, 255, 255, 255))
 
-    scroll = nbtk.ScrollView()
+    scroll = mx.ScrollView()
     stage.add(scroll)
 
-    grid = nbtk.Grid()
+    grid = mx.Grid()
     scroll.add(grid)
 
     for i in range(200):
-        button = nbtk.Button("Button %i" % i)
+        button = mx.Button("Button %i" % i)
         button.set_tooltip_text("Tooltip %i" % i)
         button.connect('clicked', swap_orientation, grid)
         grid.add(button)

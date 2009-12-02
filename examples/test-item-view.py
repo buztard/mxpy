@@ -1,7 +1,7 @@
 from random import randint
 import gobject
 import clutter
-import nbtk
+import mx
 
 sort_set = False
 filter_set = False
@@ -38,11 +38,11 @@ if __name__ == '__main__':
     stage.set_size(320, 240)
     color = clutter.Color(0x0, 0xf, 0xf, 0xf)
 
-    scroll = nbtk.ScrollView()
+    scroll = mx.ScrollView()
     scroll.set_size(*stage.get_size())
     stage.add(scroll)
 
-    view = nbtk.ItemView()
+    view = mx.ItemView()
     scroll.add(view)
 
     model = clutter.ListModel(clutter.Color, "color", float, "size")

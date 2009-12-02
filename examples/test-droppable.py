@@ -1,21 +1,21 @@
 import clutter
-import nbtk
+import mx
 import gobject
 
-class DraggableRectangle(clutter.Rectangle, nbtk.Draggable):
+class DraggableRectangle(clutter.Rectangle, mx.Draggable):
     __gtype_name__ = 'DraggableRectangle'
     __gproperties__ = {
         'enabled': (gobject.TYPE_BOOLEAN, 'enabled', 'enabled', False,
                     gobject.PARAM_READWRITE),
-        'axis': (nbtk.DragAxis, 'axis', 'axis', nbtk.NO_AXIS,
+        'axis': (mx.DragAxis, 'axis', 'axis', mx.NO_AXIS,
                  gobject.PARAM_READWRITE),
         'drag-threshold': (gobject.TYPE_UINT,
                            'drag threshold', 'drag threshold',
                            0, gobject.G_MAXUINT, 0,
                            gobject.PARAM_READWRITE),
-        'containment-type': (nbtk.DragContainment,
+        'containment-type': (mx.DragContainment,
                              'containment type', 'containment type',
-                             nbtk.DISABLE_CONTAINMENT, gobject.PARAM_READWRITE),
+                             mx.DISABLE_CONTAINMENT, gobject.PARAM_READWRITE),
         'containment-area': (clutter.ActorBox,
                              'containment area', 'containment area',
                              gobject.PARAM_READWRITE),
@@ -24,9 +24,9 @@ class DraggableRectangle(clutter.Rectangle, nbtk.Draggable):
     def __init__(self):
         clutter.Rectangle.__init__(self)
         self._is_enabled = False
-        self._axis = nbtk.NO_AXIS
+        self._axis = mx.NO_AXIS
         self._drag_threshold = 0
-        self._containment_type = nbtk.DISABLE_CONTAINMENT
+        self._containment_type = mx.DISABLE_CONTAINMENT
         self._containment_area = clutter.ActorBox()
 
     def do_get_property(self, pspec):
@@ -66,7 +66,7 @@ class DraggableRectangle(clutter.Rectangle, nbtk.Draggable):
         self.animate(clutter.EASE_OUT_CUBIC, 250, 'opacity', 255)
 
 
-class DroppableGroup(clutter.Group, nbtk.Droppable):
+class DroppableGroup(clutter.Group, mx.Droppable):
     __gproperties__ = {
         'enabled': (gobject.TYPE_BOOLEAN, 'enabled', 'enabled', False,
                     gobject.PARAM_READWRITE),

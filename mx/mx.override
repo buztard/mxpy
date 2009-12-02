@@ -3,16 +3,16 @@ headers
 #define NO_IMPORT_PYGOBJECT
 #include <Python.h>               
 #include "pygobject.h"
-#include <nbtk/nbtk.h>
-#include <nbtk/nbtk-gtk.h>
+#include <mx/mx.h>
+#include <mx/mx-gtk.h>
 
-/* This should be fixed in nbtk upstream */
-#define NBTK_H_INSIDE
-#include <nbtk/nbtk-box-layout-child.h>
-#include <nbtk/nbtk-subtexture.h>
+/* This should be fixed in mx upstream */
+#define MX_H_INSIDE
+#include <mx/mx-box-layout-child.h>
+#include <mx/mx-subtexture.h>
 
 %%
-modulename nbtk                     
+modulename mx                     
 %%
 import gobject.GObject as PyGObject_Type
 import clutter.Actor as PyClutterActor_Type       
@@ -28,68 +28,68 @@ ignore-glob
   *_get_type                            
 %%
 ignore
-  nbtk_clipboard_get_text
-  nbtk_style_get_valist
-  nbtk_action_new_full
+  mx_clipboard_get_text
+  mx_style_get_valist
+  mx_action_new_full
 %%
-new-constructor NBTK_TYPE_WIDGET
+new-constructor MX_TYPE_WIDGET
 %%
-override nbtk_widget_get_padding noargs
+override mx_widget_get_padding noargs
 static PyObject *
-_wrap_nbtk_widget_get_padding (PyGObject *self)
+_wrap_mx_widget_get_padding (PyGObject *self)
 {
-  NbtkPadding padding;
+  MxPadding padding;
 
-  nbtk_widget_get_padding (NBTK_WIDGET (self->obj), &padding);
+  mx_widget_get_padding (MX_WIDGET (self->obj), &padding);
 
   return Py_BuildValue ("(ffff)", 
                         padding.top, padding.right,
                         padding.bottom, padding.left);
 }
 %%
-override nbtk_bin_get_alignment noargs
+override mx_bin_get_alignment noargs
 static PyObject *
-_wrap_nbtk_bin_get_alignment (PyGObject *self)
+_wrap_mx_bin_get_alignment (PyGObject *self)
 {
-  NbtkAlign x_align, y_align;
+  MxAlign x_align, y_align;
 
-  nbtk_bin_get_alignment (NBTK_BIN (self->obj), &x_align, &y_align);
+  mx_bin_get_alignment (MX_BIN (self->obj), &x_align, &y_align);
 
   return Py_BuildValue ("(OO)",
-                        pyg_enum_from_gtype (NBTK_TYPE_ALIGN, x_align),
-                        pyg_enum_from_gtype (NBTK_TYPE_ALIGN, y_align));
+                        pyg_enum_from_gtype (MX_TYPE_ALIGN, x_align),
+                        pyg_enum_from_gtype (MX_TYPE_ALIGN, y_align));
 }
 %%
-override nbtk_bin_get_fill noargs
+override mx_bin_get_fill noargs
 static PyObject *
-_wrap_nbtk_bin_get_fill (PyGObject *self)
+_wrap_mx_bin_get_fill (PyGObject *self)
 {
   gboolean x_fill, y_fill;
 
-  nbtk_bin_get_fill (NBTK_BIN (self->obj), &x_fill, &y_fill);
+  mx_bin_get_fill (MX_BIN (self->obj), &x_fill, &y_fill);
 
   return Py_BuildValue ("(ii)", x_fill, y_fill);
 }
 %%
-override nbtk_viewport_get_origin noargs
+override mx_viewport_get_origin noargs
 static PyObject *
-_wrap_nbtk_viewport_get_origin (PyGObject *self)
+_wrap_mx_viewport_get_origin (PyGObject *self)
 {
   gfloat x, y, z;
   x = y = z = 0;
 
-  nbtk_viewport_get_origin (NBTK_VIEWPORT (self->obj), &x, &y, &z);
+  mx_viewport_get_origin (MX_VIEWPORT (self->obj), &x, &y, &z);
 
   return Py_BuildValue ("(iii)", x, y, z);
 }
 %%
-override nbtk_adjustment_get_values noargs
+override mx_adjustment_get_values noargs
 static PyObject *
-_wrap_nbtk_adjustment_get_values (PyGObject *self)
+_wrap_mx_adjustment_get_values (PyGObject *self)
 {
   gdouble value, lower, upper, step_increment, page_increment, page_size;
 
-  nbtk_adjustment_get_values (NBTK_ADJUSTMENT (self->obj),
+  mx_adjustment_get_values (MX_ADJUSTMENT (self->obj),
                               &value, &lower, &upper, &step_increment,
                               &page_increment, &page_size);
 
@@ -97,79 +97,79 @@ _wrap_nbtk_adjustment_get_values (PyGObject *self)
                         page_increment, page_size);
 }
 %%
-override nbtk_draggable_get_containment_area noargs
+override mx_draggable_get_containment_area noargs
 static PyObject *
-_wrap_nbtk_draggable_get_containment_area (PyGObject *self)
+_wrap_mx_draggable_get_containment_area (PyGObject *self)
 {
   gfloat x_1, y_1, x_2, y_2;
 
-  nbtk_draggable_get_containment_area (NBTK_DRAGGABLE (self->obj),
+  mx_draggable_get_containment_area (MX_DRAGGABLE (self->obj),
                                        &x_1, &y_1, &x_2, &y_2);
 
   return Py_BuildValue ("(ffff)", x_1, y_1, x_2, y_2);
 }
 %%
-override nbtk_subtexture_get_frame noargs
+override mx_subtexture_get_frame noargs
 static PyObject *
-_wrap_nbtk_subtexture_get_frame (PyGObject *self)
+_wrap_mx_subtexture_get_frame (PyGObject *self)
 {
   gint top, left, width, height;
   top = left = width = height = 0;
 
-  nbtk_subtexture_get_frame (NBTK_SUBTEXTURE (self->obj),
+  mx_subtexture_get_frame (MX_SUBTEXTURE (self->obj),
                              &top, &left, &width, &height);
 
   return Py_BuildValue ("(iiii)", top, left, width, height);
 }
 %%
-override nbtk_texture_frame_get_frame noargs
+override mx_texture_frame_get_frame noargs
 static PyObject *
-_wrap_nbtk_texture_frame_get_frame (PyGObject *self)
+_wrap_mx_texture_frame_get_frame (PyGObject *self)
 {
   gfloat top, right, bottom, left;
   top = right = bottom = left = 0.f;
 
-  nbtk_texture_frame_get_frame (NBTK_TEXTURE_FRAME (self->obj),
+  mx_texture_frame_get_frame (MX_TEXTURE_FRAME (self->obj),
                                 &top, &right, &bottom, &left);
 
   return Py_BuildValue ("(ffff)", top, right, bottom, left);
 }
 %%
-override nbtk_gtk_expander_set_label_widget
+override mx_gtk_expander_set_label_widget
 static PyObject *
-_wrap_nbtk_gtk_expander_set_label_widget (PyGObject *self, PyObject *args)
+_wrap_mx_gtk_expander_set_label_widget (PyGObject *self, PyObject *args)
 {
   GtkWidget *widget;
 
-  if (!PyArg_ParseTuple (args, "O!nbtk.GtkExpander.set_label_widget",
+  if (!PyArg_ParseTuple (args, "O!mx.GtkExpander.set_label_widget",
                          &PyGtkWidget_Type, &widget))
     return NULL;
 
-  nbtk_gtk_expander_set_label_widget (NBTK_GTK_EXPANDER (self->obj), widget);
+  mx_gtk_expander_set_label_widget (MX_GTK_EXPANDER (self->obj), widget);
 
   Py_INCREF (Py_None);
   return Py_None;
 }
 %%
-override nbtk_gtk_expander_get_label_widget noargs
+override mx_gtk_expander_get_label_widget noargs
 static PyObject *
-_wrap_nbtk_gtk_expander_get_label_widget (PyGObject *self)
+_wrap_mx_gtk_expander_get_label_widget (PyGObject *self)
 {
   GtkWidget *widget;
 
-  widget = nbtk_gtk_expander_get_label_widget (NBTK_GTK_EXPANDER (self->obj));
+  widget = mx_gtk_expander_get_label_widget (MX_GTK_EXPANDER (self->obj));
 
   return pygobject_new ((GObject *)widget);
 }
 %%
-override nbtk_table_add_actor_with_properties
+override mx_table_add_actor_with_properties
 static PyObject * 
-_wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
+_wrap_mx_table_add_actor_with_properties (PyGObject *self, PyObject *args)
 {
   PyGObject    *py_child;
   ClutterActor *child;
   gint len, i, row, column;
-  NbtkTable *table;
+  MxTable *table;
   GObjectClass *klass;
 
   if ((len = PyTuple_Size (args)) < 3) {
@@ -205,7 +205,7 @@ _wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
       return NULL;
   }
 
-  table = NBTK_TABLE (self->obj);
+  table = MX_TABLE (self->obj);
   child = CLUTTER_ACTOR (py_child->obj);
 
   if ((len - 3) % 2) {
@@ -216,7 +216,7 @@ _wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
 
   klass = G_OBJECT_GET_CLASS (self->obj);
 
-  nbtk_table_add_actor (table, child, row, column);
+  mx_table_add_actor (table, child, row, column);
 
   for (i = 3; i < len; i += 2) {
       PyObject *py_property = PyTuple_GetItem (args, i);
@@ -259,9 +259,9 @@ _wrap_nbtk_table_add_actor_with_properties (PyGObject *self, PyObject *args)
   return Py_None;
 }
 %%
-override nbtk_style_get
+override mx_style_get
 static PyObject *
-_wrap_nbtk_style_get (PyGObject *self, PyObject *args)
+_wrap_mx_style_get (PyGObject *self, PyObject *args)
 {
   PyGObject *py_child;
   gint len, i;
@@ -273,9 +273,9 @@ _wrap_nbtk_style_get (PyGObject *self, PyObject *args)
   }
 
   py_child = (PyGObject *) PyTuple_GetItem (args, 0);
-  if (!pygobject_check (py_child, &PyNbtkStylable_Type)) {
+  if (!pygobject_check (py_child, &PyMxStylable_Type)) {
       PyErr_SetString (PyExc_TypeError, 
-                       "first argument must be a nbtk.Stylable");
+                       "first argument must be a mx.Stylable");
       return NULL;
   }
 
@@ -293,7 +293,7 @@ _wrap_nbtk_style_get (PyGObject *self, PyObject *args)
       }
 
       property_name = PyString_AsString (py_property);
-      pspec = nbtk_stylable_find_property (NBTK_STYLABLE (py_child->obj),
+      pspec = mx_stylable_find_property (MX_STYLABLE (py_child->obj),
                                             property_name);
 
       if (!pspec) {
@@ -303,8 +303,8 @@ _wrap_nbtk_style_get (PyGObject *self, PyObject *args)
       }
 
       g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
-      nbtk_style_get_property (NBTK_STYLE (self->obj),
-                               NBTK_STYLABLE (py_child->obj),
+      mx_style_get_property (MX_STYLE (self->obj),
+                               MX_STYLABLE (py_child->obj),
                                pspec, &value);
 
       PyTuple_SetItem (py_ret, i-1,
@@ -316,21 +316,21 @@ _wrap_nbtk_style_get (PyGObject *self, PyObject *args)
   return py_ret;
 }
 %%
-override nbtk_style_get_property
+override mx_style_get_property
 static PyObject *
-_wrap_nbtk_style_get_property (PyGObject *self, PyObject *args)
+_wrap_mx_style_get_property (PyGObject *self, PyObject *args)
 {
   gchar *property_name;
   PyGObject *py_child;
   GParamSpec *pspec;
   GValue value = { 0, };
 
-  if (!PyArg_ParseTuple (args, "O!s:nbtk.Stylable.get_property",
-                         &PyNbtkStylable_Type, &py_child,
+  if (!PyArg_ParseTuple (args, "O!s:mx.Stylable.get_property",
+                         &PyMxStylable_Type, &py_child,
                          &property_name))
     return NULL;
 
-  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (py_child->obj),
+  pspec = mx_stylable_find_property (MX_STYLABLE (py_child->obj),
                                        property_name);
 
   if (!pspec) {
@@ -340,23 +340,23 @@ _wrap_nbtk_style_get_property (PyGObject *self, PyObject *args)
   }
 
   g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
-  nbtk_style_get_property (NBTK_STYLE (self->obj),
-                           NBTK_STYLABLE (py_child->obj),
+  mx_style_get_property (MX_STYLE (self->obj),
+                           MX_STYLABLE (py_child->obj),
                            pspec, &value);
 
   return pyg_value_as_pyobject (&value, TRUE);
 }
 %%
-override nbtk_stylable_list_properties noargs
+override mx_stylable_list_properties noargs
 static PyObject *
-_wrap_nbtk_stylable_list_properties (PyGObject *self)
+_wrap_mx_stylable_list_properties (PyGObject *self)
 {
   guint n_props;
   GParamSpec **properties;
   PyObject *py_properties;
   gint i;
 
-  properties = nbtk_stylable_list_properties (NBTK_STYLABLE (self->obj),
+  properties = mx_stylable_list_properties (MX_STYLABLE (self->obj),
                                               &n_props);
 
   py_properties = PyTuple_New (n_props);
@@ -373,18 +373,18 @@ _wrap_nbtk_stylable_list_properties (PyGObject *self)
   return py_properties;
 }
 %%
-override nbtk_stylable_find_property
+override mx_stylable_find_property
 static PyObject *
-_wrap_nbtk_stylable_find_property (PyGObject *self, PyObject *args)
+_wrap_mx_stylable_find_property (PyGObject *self, PyObject *args)
 {
   const gchar *property_name;
   GParamSpec *pspec;
 
-  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.find_property",
+  if (!PyArg_ParseTuple (args, "s:mx.Stylable.find_property",
                          &property_name))
     return NULL;
 
-  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+  pspec = mx_stylable_find_property (MX_STYLABLE (self->obj),
                                        property_name);
 
   if (pspec)
@@ -394,14 +394,14 @@ _wrap_nbtk_stylable_find_property (PyGObject *self, PyObject *args)
   return Py_None;
 }
 %%
-override nbtk_stylable_get_viewport noargs
+override mx_stylable_get_viewport noargs
 static PyObject *
-_wrap_nbtk_stylable_get_viewport (PyGObject *self)
+_wrap_mx_stylable_get_viewport (PyGObject *self)
 {
   gboolean ret;
   gint x, y, width, height;
 
-  ret = nbtk_stylable_get_viewport (NBTK_STYLABLE (self->obj),
+  ret = mx_stylable_get_viewport (MX_STYLABLE (self->obj),
                                     &x, &y, &width, &height);
 
   if (ret)
@@ -411,19 +411,19 @@ _wrap_nbtk_stylable_get_viewport (PyGObject *self)
   return Py_None;
 }
 %%
-override nbtk_stylable_get_default_value
+override mx_stylable_get_default_value
 static PyObject *
-_wrap_nbtk_stylable_get_default_value (PyGObject *self, PyObject *args)
+_wrap_mx_stylable_get_default_value (PyGObject *self, PyObject *args)
 {
   gboolean ret;
   const gchar *property_name;
   GValue value = { 0, };
 
-  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.get_default_value",
+  if (!PyArg_ParseTuple (args, "s:mx.Stylable.get_default_value",
                          &property_name))
     return NULL;
 
-  ret = nbtk_stylable_get_default_value (NBTK_STYLABLE (self->obj),
+  ret = mx_stylable_get_default_value (MX_STYLABLE (self->obj),
                                          property_name, &value);
 
   if (ret)
@@ -433,9 +433,9 @@ _wrap_nbtk_stylable_get_default_value (PyGObject *self, PyObject *args)
   return Py_None;
 }
 %%
-override nbtk_stylable_get
+override mx_stylable_get
 static PyObject *
-_wrap_nbtk_stylable_get (PyGObject *self, PyObject *args)
+_wrap_mx_stylable_get (PyGObject *self, PyObject *args)
 {
   gint len, i;
   PyObject *py_ret;
@@ -460,7 +460,7 @@ _wrap_nbtk_stylable_get (PyGObject *self, PyObject *args)
 
       property_name = PyString_AsString (py_property);
 
-      pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+      pspec = mx_stylable_find_property (MX_STYLABLE (self->obj),
                                            property_name);
       if (!pspec) {
           PyErr_SetString (PyExc_TypeError,
@@ -469,7 +469,7 @@ _wrap_nbtk_stylable_get (PyGObject *self, PyObject *args)
       }
       g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
 
-      nbtk_stylable_get_property (NBTK_STYLABLE (self->obj),
+      mx_stylable_get_property (MX_STYLABLE (self->obj),
                                   property_name, &value);
 
 
@@ -482,19 +482,19 @@ _wrap_nbtk_stylable_get (PyGObject *self, PyObject *args)
   return py_ret;
 }
 %%
-override nbtk_stylable_get_property
+override mx_stylable_get_property
 static PyObject *
-_wrap_nbtk_stylable_get_property (PyGObject *self, PyObject *args)
+_wrap_mx_stylable_get_property (PyGObject *self, PyObject *args)
 {
   gchar *property_name;
   GParamSpec *pspec;
   GValue value = { 0, };
 
-  if (!PyArg_ParseTuple (args, "s:nbtk.Stylable.get_property",
+  if (!PyArg_ParseTuple (args, "s:mx.Stylable.get_property",
                          &property_name))
     return NULL;
 
-  pspec = nbtk_stylable_find_property (NBTK_STYLABLE (self->obj),
+  pspec = mx_stylable_find_property (MX_STYLABLE (self->obj),
                                        property_name);
   if (!pspec) {
       PyErr_SetString (PyExc_TypeError,
@@ -503,7 +503,7 @@ _wrap_nbtk_stylable_get_property (PyGObject *self, PyObject *args)
   }
   g_value_init (&value, G_PARAM_SPEC_VALUE_TYPE (pspec));
 
-  nbtk_stylable_get_property (NBTK_STYLABLE (self->obj),
+  mx_stylable_get_property (MX_STYLABLE (self->obj),
                               property_name, &value);
 
 
@@ -511,9 +511,9 @@ _wrap_nbtk_stylable_get_property (PyGObject *self, PyObject *args)
   return pyg_value_as_pyobject (&value, TRUE);
 }
 %%
-override NbtkStylable__proxy_do_get_style_id
+override MxStylable__proxy_do_get_style_id
 const gchar *
-_wrap_NbtkStylable__proxy_do_get_style_id (NbtkStylable *self)
+_wrap_MxStylable__proxy_do_get_style_id (MxStylable *self)
 {
   PyGILState_STATE state;
   PyObject *py_self, *py_method, *py_retval;
@@ -568,26 +568,26 @@ _wrap_NbtkStylable__proxy_do_get_style_id (NbtkStylable *self)
   return ret;
 }
 %%
-override NbtkStylable__do_get_style_id
+override MxStylable__do_get_style_id
 static PyObject *
-_wrap_NbtkStylable__do_get_style_id (PyObject *cls, PyObject *args)
+_wrap_MxStylable__do_get_style_id (PyObject *cls, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   PyGObject *self;
   const gchar *ret = NULL;
 
-  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_id",
-                         &PyNbtkStylable_Type, &self))
+  if (!PyArg_ParseTuple (args, "O!:mx.Stylable.get_style_id",
+                         &PyMxStylable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
-                                NBTK_TYPE_STYLABLE);
+                                MX_TYPE_STYLABLE);
 
   if (iface->get_style_id)
-    ret = iface->get_style_id (NBTK_STYLABLE (self->obj));
+    ret = iface->get_style_id (MX_STYLABLE (self->obj));
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method nbtk.Stylable.get_style_id not "
+                       "interface method mx.Stylable.get_style_id not "
                        "implemented");
       return NULL;
   }
@@ -599,9 +599,9 @@ _wrap_NbtkStylable__do_get_style_id (PyObject *cls, PyObject *args)
   return Py_None;
 }
 %%
-override NbtkStylable__proxy_do_get_style_type
+override MxStylable__proxy_do_get_style_type
 const gchar *
-_wrap_NbtkStylable__proxy_do_get_style_type (NbtkStylable *self)
+_wrap_MxStylable__proxy_do_get_style_type (MxStylable *self)
 {
   PyGILState_STATE state;
   PyObject *py_self, *py_method, *py_retval;
@@ -656,26 +656,26 @@ _wrap_NbtkStylable__proxy_do_get_style_type (NbtkStylable *self)
   return ret;
 }
 %%
-override NbtkStylable__do_get_style_type
+override MxStylable__do_get_style_type
 static PyObject *
-_wrap_NbtkStylable__do_get_style_type (PyObject *cls, PyObject *args)
+_wrap_MxStylable__do_get_style_type (PyObject *cls, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   PyGObject *self;
   const gchar *ret = NULL;
 
-  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_type",
-                         &PyNbtkStylable_Type, &self))
+  if (!PyArg_ParseTuple (args, "O!:mx.Stylable.get_style_type",
+                         &PyMxStylable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
-                                NBTK_TYPE_STYLABLE);
+                                MX_TYPE_STYLABLE);
 
   if (iface->get_style_type)
-    ret = iface->get_style_type (NBTK_STYLABLE (self->obj));
+    ret = iface->get_style_type (MX_STYLABLE (self->obj));
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method nbtk.Stylable.get_style_type not "
+                       "interface method mx.Stylable.get_style_type not "
                        "implemented");
       return NULL;
   }
@@ -687,9 +687,9 @@ _wrap_NbtkStylable__do_get_style_type (PyObject *cls, PyObject *args)
   return Py_None;
 }
 %%
-override NbtkStylable__proxy_do_get_style_class
+override MxStylable__proxy_do_get_style_class
 const gchar *
-_wrap_NbtkStylable__proxy_do_get_style_class (NbtkStylable *self)
+_wrap_MxStylable__proxy_do_get_style_class (MxStylable *self)
 {
   PyGILState_STATE state;
   PyObject *py_self, *py_method, *py_retval;
@@ -744,26 +744,26 @@ _wrap_NbtkStylable__proxy_do_get_style_class (NbtkStylable *self)
   return ret;
 }
 %%
-override NbtkStylable__do_get_style_class
+override MxStylable__do_get_style_class
 static PyObject *
-_wrap_NbtkStylable__do_get_style_class (PyObject *cls, PyObject *args)
+_wrap_MxStylable__do_get_style_class (PyObject *cls, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   PyGObject *self;
   const gchar *ret = NULL;
 
-  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_style_class",
-                         &PyNbtkStylable_Type, &self))
+  if (!PyArg_ParseTuple (args, "O!:mx.Stylable.get_style_class",
+                         &PyMxStylable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
-                                NBTK_TYPE_STYLABLE);
+                                MX_TYPE_STYLABLE);
 
   if (iface->get_style_class)
-    ret = iface->get_style_class (NBTK_STYLABLE (self->obj));
+    ret = iface->get_style_class (MX_STYLABLE (self->obj));
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method nbtk.Stylable.get_style_class not "
+                       "interface method mx.Stylable.get_style_class not "
                        "implemented");
       return NULL;
   }
@@ -775,9 +775,9 @@ _wrap_NbtkStylable__do_get_style_class (PyObject *cls, PyObject *args)
   return Py_None;
 }
 %%
-override NbtkStylable__proxy_do_get_pseudo_class
+override MxStylable__proxy_do_get_pseudo_class
 const gchar *
-_wrap_NbtkStylable__proxy_do_get_pseudo_class (NbtkStylable *self)
+_wrap_MxStylable__proxy_do_get_pseudo_class (MxStylable *self)
 {
   PyGILState_STATE state;
   PyObject *py_self, *py_method, *py_retval;
@@ -832,26 +832,26 @@ _wrap_NbtkStylable__proxy_do_get_pseudo_class (NbtkStylable *self)
   return ret;
 }
 %%
-override NbtkStylable__do_get_pseudo_class
+override MxStylable__do_get_pseudo_class
 static PyObject *
-_wrap_NbtkStylable__do_get_pseudo_class (PyObject *cls, PyObject *args)
+_wrap_MxStylable__do_get_pseudo_class (PyObject *cls, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   PyGObject *self;
   const gchar *ret = NULL;
 
-  if (!PyArg_ParseTuple (args, "O!:nbtk.Stylable.get_pseudo_class",
-                         &PyNbtkStylable_Type, &self))
+  if (!PyArg_ParseTuple (args, "O!:mx.Stylable.get_pseudo_class",
+                         &PyMxStylable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
-                                NBTK_TYPE_STYLABLE);
+                                MX_TYPE_STYLABLE);
 
   if (iface->get_pseudo_class)
-    ret = iface->get_pseudo_class (NBTK_STYLABLE (self->obj));
+    ret = iface->get_pseudo_class (MX_STYLABLE (self->obj));
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method nbtk.Stylable.get_pseudo_class not "
+                       "interface method mx.Stylable.get_pseudo_class not "
                        "implemented");
       return NULL;
   }
@@ -863,9 +863,9 @@ _wrap_NbtkStylable__do_get_pseudo_class (PyObject *cls, PyObject *args)
   return Py_None;
 }
 %%
-override NbtkStylable__proxy_do_get_viewport
+override MxStylable__proxy_do_get_viewport
 static gboolean
-_wrap_NbtkStylable__proxy_do_get_viewport (NbtkStylable *self,
+_wrap_MxStylable__proxy_do_get_viewport (MxStylable *self,
                                            gint         *x,
                                            gint         *y,
                                            gint         *width,
@@ -928,28 +928,28 @@ _wrap_NbtkStylable__proxy_do_get_viewport (NbtkStylable *self,
   return TRUE;
 }
 %%
-override NbtkStylable__do_get_viewport noargs
+override MxStylable__do_get_viewport noargs
 static PyObject *
-_wrap_NbtkStylable__do_get_viewport (PyObject *cls, PyObject *args)
+_wrap_MxStylable__do_get_viewport (PyObject *cls, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   PyGObject *self;
   gint x, y, width, height;
   gboolean ret;
 
-  if (!PyArg_ParseTuple (args, "O!nbtk.Stylable.do_get_viewport",
-                         &PyNbtkStylable_Type, &self))
+  if (!PyArg_ParseTuple (args, "O!mx.Stylable.do_get_viewport",
+                         &PyMxStylable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)),
-                                NBTK_TYPE_STYLABLE);
+                                MX_TYPE_STYLABLE);
 
   if (iface->get_viewport)
-    ret = iface->get_viewport (NBTK_STYLABLE (self->obj),
+    ret = iface->get_viewport (MX_STYLABLE (self->obj),
                                &x, &y, &width, &height);
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method nbtk.Stylable.get_viewport not "
+                       "interface method mx.Stylable.get_viewport not "
                        "implemented");
       return NULL;
   }
@@ -961,11 +961,11 @@ _wrap_NbtkStylable__do_get_viewport (PyObject *cls, PyObject *args)
   return Py_None;
 }
 %%
-override nbtk_stylable_iface_install_property classmethod
+override mx_stylable_iface_install_property classmethod
 static PyObject *
-_wrap_nbtk_stylable_iface_install_property (PyObject *self, PyObject *args)
+_wrap_mx_stylable_iface_install_property (PyObject *self, PyObject *args)
 {
-  NbtkStylableIface *iface;
+  MxStylableIface *iface;
   GType type;
   GParamSpec *pspec;
   gpointer klass;
@@ -974,24 +974,24 @@ _wrap_nbtk_stylable_iface_install_property (PyObject *self, PyObject *args)
     return NULL;
 
   klass = g_type_class_peek (type);
-  iface = (NbtkStylableIface *)
-    g_type_interface_peek (klass, NBTK_TYPE_STYLABLE);
+  iface = (MxStylableIface *)
+    g_type_interface_peek (klass, MX_TYPE_STYLABLE);
 
   pspec = pyg_param_spec_from_object (args);
-  nbtk_stylable_iface_install_property (iface, type, pspec);
+  mx_stylable_iface_install_property (iface, type, pspec);
 
   Py_INCREF (Py_None);
   return Py_None;
 }
 %%
-override nbtk_scrollable_get_adjustments noargs
+override mx_scrollable_get_adjustments noargs
 static PyObject *
-_wrap_nbtk_scrollable_get_adjustments (PyGObject *self)
+_wrap_mx_scrollable_get_adjustments (PyGObject *self)
 {
-  NbtkAdjustment *hadj, *vadj;
+  MxAdjustment *hadj, *vadj;
   PyObject *py_hadj, *py_vadj;
 
-  nbtk_scrollable_get_adjustments (NBTK_SCROLLABLE (self->obj),
+  mx_scrollable_get_adjustments (MX_SCROLLABLE (self->obj),
                                    &hadj, &vadj);
 
   py_hadj = pygobject_new ((GObject *)hadj);
@@ -1000,11 +1000,11 @@ _wrap_nbtk_scrollable_get_adjustments (PyGObject *self)
   return Py_BuildValue ("(NN)", py_hadj, py_vadj);
 }
 %%
-override NbtkScrollable__proxy_do_get_adjustments
+override MxScrollable__proxy_do_get_adjustments
 void
-_wrap_NbtkScrollable__proxy_do_get_adjustments (NbtkScrollable  *scrollable,
-                                                NbtkAdjustment **hadjustment,
-                                                NbtkAdjustment **vadjustment)
+_wrap_MxScrollable__proxy_do_get_adjustments (MxScrollable  *scrollable,
+                                                MxAdjustment **hadjustment,
+                                                MxAdjustment **vadjustment)
 {
   PyGILState_STATE state;
   PyObject *self, *py_ret, *py_hadj, *py_vadj;
@@ -1031,14 +1031,14 @@ _wrap_NbtkScrollable__proxy_do_get_adjustments (NbtkScrollable  *scrollable,
   Py_DECREF (py_ret);
 
   if (hadjustment) {
-      if (pygobject_check (py_hadj, &PyNbtkAdjustment_Type))
-        *hadjustment = NBTK_ADJUSTMENT (((PyGObject *)py_hadj)->obj);
+      if (pygobject_check (py_hadj, &PyMxAdjustment_Type))
+        *hadjustment = MX_ADJUSTMENT (((PyGObject *)py_hadj)->obj);
       else if (py_hadj == Py_None)
         *hadjustment = NULL;
       else {
           PyErr_SetString (PyExc_TypeError,
                            "do_get_adjustments must return a two-tuple with "
-                           "either nbtk.Adjustment or None");
+                           "either mx.Adjustment or None");
           PyErr_Print ();
           Py_DECREF (py_hadj);
           Py_DECREF (py_vadj);
@@ -1048,14 +1048,14 @@ _wrap_NbtkScrollable__proxy_do_get_adjustments (NbtkScrollable  *scrollable,
   }
 
   if (vadjustment) {
-      if (pygobject_check (py_vadj, &PyNbtkAdjustment_Type))
-        *vadjustment = NBTK_ADJUSTMENT (((PyGObject *)py_vadj)->obj);
+      if (pygobject_check (py_vadj, &PyMxAdjustment_Type))
+        *vadjustment = MX_ADJUSTMENT (((PyGObject *)py_vadj)->obj);
       else if (py_vadj == Py_None)
         *vadjustment = NULL;
       else {
           PyErr_SetString (PyExc_TypeError,
                            "do_get_adjustments must return a two-tuple with "
-                           "either nbtk.Adjustment or None");
+                           "either mx.Adjustment or None");
           PyErr_Print ();
           Py_DECREF (py_hadj);
           Py_DECREF (py_vadj);
@@ -1067,27 +1067,27 @@ _wrap_NbtkScrollable__proxy_do_get_adjustments (NbtkScrollable  *scrollable,
   pyg_gil_state_release (state);
 }
 %%
-override NbtkScrollable__do_get_adjustments
+override MxScrollable__do_get_adjustments
 static PyObject *
-_wrap_NbtkScrollable__do_get_adjustments (PyObject *cls, PyObject *args)
+_wrap_MxScrollable__do_get_adjustments (PyObject *cls, PyObject *args)
 {
-  NbtkScrollableInterface *iface;
+  MxScrollableInterface *iface;
   PyGObject *self;
   PyObject *py_hadj, *py_vadj;
-  NbtkAdjustment *hadj, *vadj;
+  MxAdjustment *hadj, *vadj;
 
   if (!PyArg_ParseTuple (args, "O!:Scrollable.do_get_adjustments",
-                         &PyNbtkScrollable_Type, &self))
+                         &PyMxScrollable_Type, &self))
     return NULL;
 
   iface = g_type_interface_peek (g_type_class_peek (pyg_type_from_object (cls)),
-                                 NBTK_TYPE_SCROLLABLE);
+                                 MX_TYPE_SCROLLABLE);
 
   if (iface->get_adjustments)
-    iface->get_adjustments (NBTK_SCROLLABLE (self->obj), &hadj, &vadj);
+    iface->get_adjustments (MX_SCROLLABLE (self->obj), &hadj, &vadj);
   else {
       PyErr_SetString (PyExc_NotImplementedError,
-                       "interface method Nbtk.Scrollable.get_adjustments "
+                       "interface method Mx.Scrollable.get_adjustments "
                        "not implemented");
       return NULL;
   }

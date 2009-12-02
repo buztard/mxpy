@@ -1,5 +1,5 @@
 import clutter
-import nbtk
+import mx
 
 def btn_clicked_cb(button, entry):
     entry.set_text("Here is some text")
@@ -18,28 +18,28 @@ if __name__ == '__main__':
     stage.connect('destroy', clutter.main_quit)
     stage.set_size(400, 300)
 
-    entry = nbtk.Entry("Hello world!")
+    entry = mx.Entry("Hello world!")
     entry.set_position(20, 20)
     entry.set_width(150)
     stage.add(entry)
     stage.set_key_focus(entry.get_clutter_text())
 
-    entry = nbtk.Entry()
+    entry = mx.Entry()
     entry.set_position(20, 70)
     stage.add(entry)
     entry.set_hint_text("hint hint...")
 
-    button = nbtk.Button("Set")
+    button = mx.Button("Set")
     button.set_position(20, 120)
     button.connect('clicked', btn_clicked_cb, entry)
 
-    clear_button = nbtk.Button("Clear")
+    clear_button = mx.Button("Clear")
     clear_button.set_position(70, 120)
     clear_button.connect('clicked', clear_btn_clicked_cb, entry)
 
     stage.add(button, clear_button)
 
-    entry = nbtk.Entry()
+    entry = mx.Entry()
     entry.set_position(20, 170)
     stage.add(entry)
     entry.set_hint_text("Search...")

@@ -1,35 +1,35 @@
 AC_PREREQ(2.53)
 
-# pynbtk package version number, (as distinct from shared library version)
+# pymx package version number, (as distinct from shared library version)
 # An odd micro number indicates in-progress development, (eg. from svn)
 # An even micro number indicates a released version.
-m4_define(pynbtk_version_major, 0)
-m4_define(pynbtk_version_minor, 0)
-m4_define(pynbtk_version_micro, 1)
-m4_define(pynbtk_version, pynbtk_version_major.pynbtk_version_minor.pynbtk_version_micro)
+m4_define(pymx_version_major, 0)
+m4_define(pymx_version_minor, 0)
+m4_define(pymx_version_micro, 1)
+m4_define(pymx_version, pymx_version_major.pymx_version_minor.pymx_version_micro)
 
 m4_define(clutter_required_version,      1.0.0)
-m4_define(nbtk_required_version,         1.1.4)
-m4_define(nbtkgtk_required_version,      1.1.4)
+m4_define(mx_required_version,         0.2.0)
+m4_define(mxgtk_required_version,      0.2.0)
 m4_define(pyclutter_required_version,    1.0.0)
 m4_define(pygtk_required_version,        2.8.0)
 
-AC_INIT([pynbtk], [pynbtk_version],
+AC_INIT([pymx], [pymx_version],
         [http://bugzilla.o-hand.com/enter_bug.cgi?product=Clutter])
 
-AC_DEFINE(PYNBTK_MAJOR_VERSION,
-          [pynbtk_version_major], [pynbtk major version])
-AC_SUBST(PYNBTK_MAJOR_VERSION, [pynbtk_version_major])
-AC_DEFINE(PYNBTK_MINOR_VERSION,
-          [pynbtk_version_minor], [pynbtk minor version])
-AC_SUBST(PYNBTK_MINOR_VERSION, [pynbtk_version_minor])
-AC_DEFINE(PYNBTK_MICRO_VERSION, [pynbtk_version_micro],
-          [pynbtk micro version])
-AC_SUBST(PYNBTK_MICRO_VERSION, [pynbtk_version_micro])
-AC_DEFINE(PYNBTK_VERSION, [pynbtk_version], [pynbtk version])
-AC_SUBST(PYNBTK_VERSION, [pynbtk_version])
+AC_DEFINE(PYMX_MAJOR_VERSION,
+          [pymx_version_major], [pymx major version])
+AC_SUBST(PYMX_MAJOR_VERSION, [pymx_version_major])
+AC_DEFINE(PYMX_MINOR_VERSION,
+          [pymx_version_minor], [pymx minor version])
+AC_SUBST(PYMX_MINOR_VERSION, [pymx_version_minor])
+AC_DEFINE(PYMX_MICRO_VERSION, [pymx_version_micro],
+          [pymx micro version])
+AC_SUBST(PYMX_MICRO_VERSION, [pymx_version_micro])
+AC_DEFINE(PYMX_VERSION, [pymx_version], [pymx version])
+AC_SUBST(PYMX_VERSION, [pymx_version])
 
-AC_CONFIG_SRCDIR([nbtk/nbtkmodule.c])
+AC_CONFIG_SRCDIR([mx/mxmodule.c])
 AC_CONFIG_MACRO_DIR([build/autotools])
 AM_CONFIG_HEADER(config.h)
 
@@ -100,20 +100,20 @@ if test -n "$export_dynamic"; then
   CLUTTER_LIBS=`echo $CLUTTER_LIBS | sed -e "s/$export_dynamic//"`
 fi
 
-dnl check for nbtk
-PKG_CHECK_MODULES(NBTK, nbtk-1.2 = nbtk_required_version)
-AC_SUBST(NBTK_CFLAGS)
-AC_SUBST(NBTK_LIBS)
+dnl check for mx
+PKG_CHECK_MODULES(MX, mx-1.0 = mx_required_version)
+AC_SUBST(MX_CFLAGS)
+AC_SUBST(MX_LIBS)
 if test -n "$export_dynamic"; then
-  NBTK_LIBS=`echo $NBTK_LIBS | sed -e "s/$export_dynamic//"`
+  MX_LIBS=`echo $MX_LIBS | sed -e "s/$export_dynamic//"`
 fi
 
-dnl check for nbtk-gtk
-PKG_CHECK_MODULES(NBTKGTK, nbtk-gtk-1.2 >= nbtkgtk_required_version)
-AC_SUBST(NBTKGTK_CFLAGS)
-AC_SUBST(NBTKGTK_LIBS)
+dnl check for mx-gtk
+PKG_CHECK_MODULES(MXGTK, mx-gtk-1.0 >= mxgtk_required_version)
+AC_SUBST(MXGTK_CFLAGS)
+AC_SUBST(MXGTK_LIBS)
 if test -n "$export_dynamic"; then
-  NBTKGTK_LIBS=`echo $NBTKGTK_LIBS | sed -e "s/$export_dynamic//"`
+  MXGTK_LIBS=`echo $MXGTK_LIBS | sed -e "s/$export_dynamic//"`
 fi
 
 
@@ -126,13 +126,13 @@ SHAVE_INIT([build/autotools], [enable])
 
 AC_CONFIG_FILES([
         Makefile
-		build/Makefile
-		build/autotools/Makefile
-		build/autotools/shave-libtool
-		build/autotools/shave
-        pynbtk.pc
-        nbtk/Makefile
-		examples/Makefile
+        build/Makefile
+        build/autotools/Makefile
+        build/autotools/shave-libtool
+        build/autotools/shave
+        pymx.pc
+        mx/Makefile
+        examples/Makefile
 ])
 
 AC_OUTPUT
