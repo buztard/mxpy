@@ -1,5 +1,5 @@
 import clutter
-import mx
+import mxpy as mx
 
 def stage_size_notify_cb(stage, pspec, scroll):
     scroll.set_size(stage.get_width()-100, stage.get_height()-100)

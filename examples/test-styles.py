@@ -1,5 +1,5 @@
 import clutter
-import mx
+import mxpy as mx
 
 def create_button(parent, text, x, y):
     button = mx.Button(text)

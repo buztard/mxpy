@@ -1,7 +1,7 @@
 from random import randint
 import gobject
 import clutter
-import mx
+import mxpy as mx
 
 sort_set = False
 filter_set = False

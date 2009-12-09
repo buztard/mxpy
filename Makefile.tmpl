@@ -6,6 +6,6 @@ PLATFORM_VERSION = 1.0
 pkgpythondir = $(pyexecdir)
 pkgpyexecdir = $(pyexecdir)
 
-pymx_common_includes = $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) -I$(top_builddir)/mx
-pymx_common_ldflags = -module -avoid-version
-pymx_defsdir = $(pkgdatadir)/$(PLATFORM_VERSION)/defs
+mxpy_common_includes = $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) -I$(top_builddir)/mx
+mxpy_common_ldflags = -module -avoid-version
+mxpy_defsdir = $(pkgdatadir)/$(PLATFORM_VERSION)/defs

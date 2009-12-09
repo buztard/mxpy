@@ -3,7 +3,7 @@ This test is adopted form mx, but since it's summer it uses
 Munich's most famous Beergarden instead of places in London ;)
 """
 import clutter
-import mx
+import mxpy as mx
 
 def title_changed_cb(box, pspec):
     print 'title now:', box.get_title()

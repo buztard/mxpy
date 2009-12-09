@@ -1,9 +1,9 @@
 SUBDIRS = build mx examples
 
-pymx-$(PYMX_MAJOR_VERSION).$(PYMX_MINOR_VERSION).pc: pymx.pc
+mxpy-$(MXPY_MAJOR_VERSION).$(MXPY_MINOR_VERSION).pc: mxpy.pc
 	@cp -f $< $(@F)
 
-pkgfiles = pymx-$(PYMX_MAJOR_VERSION).$(PYMX_MINOR_VERSION).pc
+pkgfiles = mxpy-$(MXPY_MAJOR_VERSION).$(MXPY_MINOR_VERSION).pc
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = $(pkgfiles)
 

@@ -6,7 +6,7 @@ test -z "$srcdir" && srcdir=.
 
 REQUIRED_AUTOMAKE_VERSION=1.9
 
-PKG_NAME="PyMx"
+PKG_NAME="MxPy"
 
 #name of package
 PKG_NAME=${PKG_NAME:-Package}

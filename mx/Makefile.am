@@ -2,19 +2,19 @@ include $(top_srcdir)/Makefile.tmpl
 
 CLEANFILES =
 EXTRA_DIST = 
-INCLUDES = $(pymx_common_includes)
+INCLUDES = $(mxpy_common_includes)
 
 CREATEDEFS = $(PYTHON) $(top_srcdir)/createdefs.py
 
 # mx python extension modules
-pymxexecdir = $(pkgpyexecdir)/mx
+mxpyexecdir = $(pkgpyexecdir)/mxpy
 
 # mx python scripts
-pymxdir = $(pkgpythondir)/mx
-pymx_PYTHON = __init__.py
+mxpydir = $(pkgpythondir)/mxpy
+mxpy_PYTHON = __init__.py
 
 # mx headers
-pkgincludedir = $(includedir)/pymx-$(PLATFORM_VERSION)/pymx
+pkgincludedir = $(includedir)/mxpy-$(PLATFORM_VERSION)/mxpy
 
 MX_DEFS = mx-base.defs
 
@@ -43,16 +43,16 @@ mx-types.defs: $(MX_TYPES_DEFS) Makefile
 mx.c: mx-types.defs mx.defs $(MX_OVERRIDES)
 
 _mx_la_CFLAGS  = $(PYCAIRO_CFLAGS) $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) $(MX_CFLAGS) $(MXGTK_CFLAGS)
-_mx_la_LDFLAGS = $(pymx_common_ldflags) -module -export-symbols-regex init_mx
+_mx_la_LDFLAGS = $(mxpy_common_ldflags) -module -export-symbols-regex init_mx
 _mx_la_LIBADD  = $(PYCAIRO_LIBS) $(PYGTK_LIBS) $(MX_LIBS) $(MXGTK_LIBS)
 _mx_la_SOURCES = 		\
 	mxmodule.c
 nodist__mx_la_SOURCES = mx.c
 
-pymxexec_LTLIBRARIES = _mx.la
+mxpyexec_LTLIBRARIES = _mx.la
 
 # defs files
-defsdir = $(pymx_defsdir)
+defsdir = $(mxpy_defsdir)
 defs_DATA = \
 	$(MX_DEFS) 	\
 	$(MX_TYPES_DEFS) 	\

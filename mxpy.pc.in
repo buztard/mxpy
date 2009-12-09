@@ -5,11 +5,11 @@ datadir=@datarootdir@
 
 # you can use the --variable=defsdir argument to
 # pkg-config to get this value.
-defsdir=${datadir}/pymx/1.0/defs
+defsdir=${datadir}/mxpy/1.0/defs
 
-pymxincludedir=${includedir}/pymx-1.0
+mxpyincludedir=${includedir}/mxpy-1.0
 
-Name: PyMx
-Description: Python bindings for Mx
+Name: MxPy
+Description: Python bindings for the Mx toolkit
 Version: @VERSION@
-Cflags: -I${pymxincludedir}
+Cflags: -I${mxpyincludedir}

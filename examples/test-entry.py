@@ -1,5 +1,5 @@
 import clutter
-import mx
+import mxpy as mx
 
 def btn_clicked_cb(button, entry):
     entry.set_text("Here is some text")

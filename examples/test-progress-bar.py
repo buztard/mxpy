@@ -1,5 +1,5 @@
 import clutter
-import mx
+import mxpy as mx
 
 if __name__ == '__main__':
     stage = clutter.Stage()

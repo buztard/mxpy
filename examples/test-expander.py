@@ -1,5 +1,5 @@
 import clutter
-import mx
+import mxpy as mx
 
 def expand_completed_cb (expander):
     print "expand complete", expander.get_expanded()

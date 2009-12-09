@@ -1,6 +1,6 @@
 import gobject
 import clutter
-import mx
+import mxpy as mx
 
 
 class DraggableRectangle(clutter.Rectangle, mx.Draggable):

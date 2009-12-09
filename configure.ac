@@ -1,12 +1,12 @@
 AC_PREREQ(2.53)
 
-# pymx package version number, (as distinct from shared library version)
+# mxpy package version number, (as distinct from shared library version)
 # An odd micro number indicates in-progress development, (eg. from svn)
 # An even micro number indicates a released version.
-m4_define(pymx_version_major, 0)
-m4_define(pymx_version_minor, 0)
-m4_define(pymx_version_micro, 1)
-m4_define(pymx_version, pymx_version_major.pymx_version_minor.pymx_version_micro)
+m4_define(mxpy_version_major, 0)
+m4_define(mxpy_version_minor, 0)
+m4_define(mxpy_version_micro, 1)
+m4_define(mxpy_version, mxpy_version_major.mxpy_version_minor.mxpy_version_micro)
 
 m4_define(clutter_required_version,      1.0.0)
 m4_define(mx_required_version,         0.2.0)
@@ -14,20 +14,20 @@ m4_define(mxgtk_required_version,      0.2.0)
 m4_define(pyclutter_required_version,    1.0.0)
 m4_define(pygtk_required_version,        2.8.0)
 
-AC_INIT([pymx], [pymx_version],
+AC_INIT([mxpy], [mxpy_version],
         [http://bugzilla.o-hand.com/enter_bug.cgi?product=Clutter])
 
-AC_DEFINE(PYMX_MAJOR_VERSION,
-          [pymx_version_major], [pymx major version])
-AC_SUBST(PYMX_MAJOR_VERSION, [pymx_version_major])
-AC_DEFINE(PYMX_MINOR_VERSION,
-          [pymx_version_minor], [pymx minor version])
-AC_SUBST(PYMX_MINOR_VERSION, [pymx_version_minor])
-AC_DEFINE(PYMX_MICRO_VERSION, [pymx_version_micro],
-          [pymx micro version])
-AC_SUBST(PYMX_MICRO_VERSION, [pymx_version_micro])
-AC_DEFINE(PYMX_VERSION, [pymx_version], [pymx version])
-AC_SUBST(PYMX_VERSION, [pymx_version])
+AC_DEFINE(MXPY_MAJOR_VERSION,
+          [mxpy_version_major], [mxpy major version])
+AC_SUBST(MXPY_MAJOR_VERSION, [mxpy_version_major])
+AC_DEFINE(MXPY_MINOR_VERSION,
+          [mxpy_version_minor], [mxpy minor version])
+AC_SUBST(MXPY_MINOR_VERSION, [mxpy_version_minor])
+AC_DEFINE(MXPY_MICRO_VERSION, [mxpy_version_micro],
+          [mxpy micro version])
+AC_SUBST(MXPY_MICRO_VERSION, [mxpy_version_micro])
+AC_DEFINE(MXPY_VERSION, [mxpy_version], [mxpy version])
+AC_SUBST(MXPY_VERSION, [mxpy_version])
 
 AC_CONFIG_SRCDIR([mx/mxmodule.c])
 AC_CONFIG_MACRO_DIR([build/autotools])
@@ -130,7 +130,7 @@ AC_CONFIG_FILES([
         build/autotools/Makefile
         build/autotools/shave-libtool
         build/autotools/shave
-        pymx.pc
+        mxpy.pc
         mx/Makefile
         examples/Makefile
 ])

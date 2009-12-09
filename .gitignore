@@ -26,6 +26,5 @@ libtool
 ltmain.sh
 missing
 py-compile
-pymx-0.0.pc
-pymx.pc
+mxpy*.pc
 stamp-h1
