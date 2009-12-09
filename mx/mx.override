@@ -10,6 +10,7 @@ headers
 #define MX_H_INSIDE
 #include <mx/mx-box-layout-child.h>
 #include <mx/mx-subtexture.h>
+#include <mx/mx-notebook.h>
 
 %%
 modulename mx                     
