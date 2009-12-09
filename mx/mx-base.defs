@@ -1363,8 +1363,8 @@
   (return-type "GType")
 )
 
-(define-method install_property
-  (of-object "MxStylableIface")
+(define-method install_style_property
+  (of-object "MxStylable")
   (c-name "mx_stylable_iface_install_property")
   (return-type "none")
   (parameters
@@ -1373,13 +1373,13 @@
   )
 )
 
-(define-method freeze_notify
+(define-method freeze_style_notify
   (of-object "MxStylable")
   (c-name "mx_stylable_freeze_notify")
   (return-type "none")
 )
 
-(define-method notify
+(define-method style_notify
   (of-object "MxStylable")
   (c-name "mx_stylable_notify")
   (return-type "none")
@@ -1388,13 +1388,13 @@
   )
 )
 
-(define-method thaw_notify
+(define-method thaw_style_notify
   (of-object "MxStylable")
   (c-name "mx_stylable_thaw_notify")
   (return-type "none")
 )
 
-(define-method list_properties
+(define-method list_style_properties
   (of-object "MxStylable")
   (c-name "mx_stylable_list_properties")
   (return-type "GParamSpec**")
@@ -1403,7 +1403,7 @@
   )
 )
 
-(define-method find_property
+(define-method find_style_property
   (of-object "MxStylable")
   (c-name "mx_stylable_find_property")
   (return-type "GParamSpec*")
@@ -1440,7 +1440,7 @@
   (return-type "MxStyle*")
 )
 
-(define-method get
+(define-method get_style_properties
   (of-object "MxStylable")
   (c-name "mx_stylable_get")
   (return-type "none")
@@ -1450,7 +1450,7 @@
   (varargs #t)
 )
 
-(define-method get_property
+(define-method get_style_property
   (of-object "MxStylable")
   (c-name "mx_stylable_get_property")
   (return-type "none")
@@ -1460,7 +1460,7 @@
   )
 )
 
-(define-method get_default_value
+(define-method get_style_default_value
   (of-object "MxStylable")
   (c-name "mx_stylable_get_default_value")
   (return-type "gboolean")
@@ -1470,7 +1470,7 @@
   )
 )
 
-(define-method changed
+(define-method style_changed
   (of-object "MxStylable")
   (c-name "mx_stylable_changed")
   (return-type "none")
