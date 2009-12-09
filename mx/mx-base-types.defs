@@ -271,6 +271,13 @@
   (gtype-id "MX_TYPE_BUTTON_GROUP")
 )
 
+(define-object FloatingWidget
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxFloatingWidget")
+  (gtype-id "MX_TYPE_FLOATING_WIDGET")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

@@ -2497,3 +2497,22 @@
 )
 
 
+;; From mx-floating-widget.h
+
+(define-function floating_widget_get_type
+  (c-name "mx_floating_widget_get_type")
+  (return-type "GType")
+)
+
+(define-virtual floating_pick
+  (of-object "ClutterActor")
+  (return-type "none")
+  (parameters
+    '("const-ClutterColor*" "color")
+  )
+)
+
+(define-virtual floating_paint
+  (of-object "ClutterActor")
+  (return-type "none")
+)
