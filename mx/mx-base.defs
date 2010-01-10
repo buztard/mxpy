@@ -760,48 +760,48 @@
   (return-type "gboolean")
 )
 
-(define-method set_column_major
+(define-method set_vertical
   (of-object "MxGrid")
-  (c-name "mx_grid_set_column_major")
+  (c-name "mx_grid_set_vertical")
   (return-type "none")
   (parameters
     '("gboolean" "value")
   )
 )
 
-(define-method get_column_major
+(define-method get_vertical
   (of-object "MxGrid")
-  (c-name "mx_grid_get_column_major")
+  (c-name "mx_grid_get_vertical")
   (return-type "gboolean")
 )
 
-(define-method set_row_gap
+(define-method set_row_spacing
   (of-object "MxGrid")
-  (c-name "mx_grid_set_row_gap")
+  (c-name "mx_grid_set_row_spacing")
   (return-type "none")
   (parameters
     '("gfloat" "value")
   )
 )
 
-(define-method get_row_gap
+(define-method get_row_spacing
   (of-object "MxGrid")
-  (c-name "mx_grid_get_row_gap")
+  (c-name "mx_grid_get_row_spacing")
   (return-type "gfloat")
 )
 
-(define-method set_column_gap
+(define-method set_column_spacing
   (of-object "MxGrid")
-  (c-name "mx_grid_set_column_gap")
+  (c-name "mx_grid_set_column_spacing")
   (return-type "none")
   (parameters
     '("gfloat" "value")
   )
 )
 
-(define-method get_column_gap
+(define-method get_column_spacing
   (of-object "MxGrid")
-  (c-name "mx_grid_get_column_gap")
+  (c-name "mx_grid_get_column_spacing")
   (return-type "gfloat")
 )
 
