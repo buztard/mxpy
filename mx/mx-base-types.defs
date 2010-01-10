@@ -312,19 +312,6 @@
   )
 )
 
-(define-flags TableChildOptions
-  (in-module "Mx")
-  (c-name "MxTableChildOptions")
-  (gtype-id "MX_TYPE_TABLE_CHILD_OPTIONS")
-  (values
-    '("keep-aspect-ratio" "MX_KEEP_ASPECT_RATIO")
-    '("x-expand" "MX_X_EXPAND")
-    '("y-expand" "MX_Y_EXPAND")
-    '("x-fill" "MX_X_FILL")
-    '("y-fill" "MX_Y_FILL")
-  )
-)
-
 (define-enum Align
   (in-module "Mx")
   (c-name "MxAlign")
