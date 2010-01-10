@@ -2084,36 +2084,6 @@
   (return-type "GType")
 )
 
-(define-method set_style_pseudo_class
-  (of-object "MxWidget")
-  (c-name "mx_widget_set_style_pseudo_class")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "pseudo_class")
-  )
-)
-
-(define-method get_style_pseudo_class
-  (of-object "MxWidget")
-  (c-name "mx_widget_get_style_pseudo_class")
-  (return-type "const-gchar*")
-)
-
-(define-method set_style_class_name
-  (of-object "MxWidget")
-  (c-name "mx_widget_set_style_class_name")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "style_class")
-  )
-)
-
-(define-method get_style_class_name
-  (of-object "MxWidget")
-  (c-name "mx_widget_get_style_class_name")
-  (return-type "const-gchar*")
-)
-
 (define-method set_has_tooltip
   (of-object "MxWidget")
   (c-name "mx_widget_set_has_tooltip")
@@ -2181,12 +2151,6 @@
   (parameters
     '("MxPadding*" "padding")
   )
-)
-
-(define-method draw_background
-  (of-object "MxWidget")
-  (c-name "mx_widget_draw_background")
-  (return-type "none")
 )
 
 ;; From mx-action.h
