@@ -2153,6 +2153,27 @@
   )
 )
 
+(define-method long_press_query
+  (of-object "MxWidget")
+  (c-name "mx_widget_long_press_query")
+  (return-type "none")
+  (parameters
+    '("ClutterButtonEvent*" "event")
+  )
+)
+
+(define-method long_press_cancel
+  (of-object "MxWidget")
+  (c-name "mx_widget_long_press_cancel")
+  (return-type "none")
+)
+
+(define-method paint_background
+  (of-object "MxWidget")
+  (c-name "mx_widget_paint_background")
+  (return-type "none")
+)
+
 ;; From mx-action.h
 
 (define-function action_get_type
