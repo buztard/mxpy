@@ -658,6 +658,21 @@
   )
 )
 
+(define-method set_password_char
+  (of-object "MxEntry")
+  (c-name "mx_entry_set_password_char")
+  (return-type "none")
+  (parameters
+    '("gunichar" "text")
+  )
+)
+
+(define-method get_password_char
+  (of-object "MxEntry")
+  (c-name "mx_entry_get_password_char")
+  (return-type "gunichar")
+)
+
 
 
 ;; From mx-enum-types.h
