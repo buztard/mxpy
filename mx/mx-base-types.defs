@@ -278,6 +278,13 @@
   (gtype-id "MX_TYPE_FLOATING_WIDGET")
 )
 
+(define-object Application
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxApplication")
+  (gtype-id "MX_TYPE_APPLICATION")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

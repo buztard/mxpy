@@ -2669,3 +2669,103 @@
   (of-object "ClutterActor")
   (return-type "none")
 )
+
+;; From mx-application.h
+
+(define-function application_get_type
+  (c-name "mx_application_get_type")
+  (return-type "GType")
+)
+
+(define-function application_new
+  (c-name "mx_application_new")
+  (is-constructor-of "MxApplication")
+  (return-type "MxApplication*")
+  (properties
+    '("flags")
+    '("application-name")
+  )
+)
+
+(define-method run
+  (of-object "MxApplication")
+  (c-name "mx_application_run")
+  (return-type "none")
+)
+
+(define-method quit
+  (of-object "MxApplication")
+  (c-name "mx_application_quit")
+  (return-type "none")
+)
+
+(define-method create_window
+  (of-object "MxApplication")
+  (c-name "mx_application_create_window")
+  (return-type "ClutterStage*")
+)
+
+(define-method add_window
+  (of-object "MxApplication")
+  (c-name "mx_application_add_window")
+  (return-type "none")
+  (parameters
+    '("ClutterStage*" "window")
+  )
+)
+
+(define-method remove_window
+  (of-object "MxApplication")
+  (c-name "mx_application_remove_window")
+  (return-type "none")
+  (parameters
+    '("ClutterStage*" "window")
+  )
+)
+
+(define-method get_windows
+  (of-object "MxApplication")
+  (c-name "mx_application_get_windows")
+  (return-type "const-GList*")
+)
+
+(define-method add_action
+  (of-object "MxApplication")
+  (c-name "mx_application_add_action")
+  (return-type "none")
+  (parameters
+    '("MxAction*" "action")
+  )
+)
+
+(define-method remove_action
+  (of-object "MxApplication")
+  (c-name "mx_application_remove_action")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method get_actions
+  (of-object "MxApplication")
+  (c-name "mx_application_get_actions")
+  (return-type "GList*")
+)
+
+(define-method invoke_action
+  (of-object "MxApplication")
+  (c-name "mx_application_invoke_action")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method is_running
+  (of-object "MxApplication")
+  (c-name "mx_application_is_running")
+  (return-type "gboolean")
+)
+
+
