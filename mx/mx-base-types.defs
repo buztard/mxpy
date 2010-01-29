@@ -299,6 +299,12 @@
   (gtype-id "MX_TYPE_TOOLBAR")
 )
 
+(define-object Frame
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxFrame")
+  (gtype-id "MX_TYPE_FRAME")
+)
 
 ;; Enumerations and flags ...
 

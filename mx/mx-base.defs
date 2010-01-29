@@ -2827,3 +2827,17 @@
 )
 
 
+;; From mx-frame.h
+
+(define-function frame_get_type
+  (c-name "mx_frame_get_type")
+  (return-type "GType")
+)
+
+(define-function frame_new
+  (c-name "mx_frame_new")
+  (is-constructor-of "MxFrame")
+  (return-type "ClutterActor*")
+)
+
+
