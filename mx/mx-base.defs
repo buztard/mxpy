@@ -194,6 +194,16 @@
   )
 )
 
+(define-method allocate_child
+  (of-object "MxBin")
+  (c-name "mx_bin_allocate_child")
+  (return-type "none")
+  (parameters
+    '("const-ClutterActorBox*" "box")
+    '("ClutterAllocationFlags" "flags")
+  )
+)
+
 
 
 ;; From mx-box-layout.h
