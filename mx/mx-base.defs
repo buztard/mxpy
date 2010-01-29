@@ -2512,6 +2512,33 @@
   )
 )
 
+(define-method get_active_button
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_get_active_button")
+  (return-type "MxButton*")
+)
+
+(define-method set_allow_no_active
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_set_allow_no_active")
+  (return-type "none")
+  (parameters
+    '("gboolean" "allow_no_active")
+  )
+)
+
+(define-method get_allow_no_active
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_get_allow_no_active")
+  (return-type "gboolean")
+)
+
+(define-method get_buttons
+  (of-object "MxButtonGroup")
+  (c-name "mx_button_group_get_buttons")
+  (return-type "const-GSList*")
+)
+
 
 ;; From mx-floating-widget.h
 
