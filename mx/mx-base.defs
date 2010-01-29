@@ -725,6 +725,9 @@
   (c-name "mx_expander_new")
   (is-constructor-of "MxExpander")
   (return-type "MxWidget*")
+  (properties
+    '("label" (optional))
+  )
 )
 
 (define-method set_label
