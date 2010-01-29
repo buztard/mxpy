@@ -1162,3 +1162,63 @@ _wrap_mx_button_group_get_buttons (PyGObject *self)
 
   return py_list;
 }
+%%
+override mx_application_get_windows noargs
+static PyObject *
+_wrap_mx_application_get_windows (PyGObject *self)
+{
+  const GList *windows;
+  GList *l;
+  PyObject *py_list;
+
+  windows = mx_application_get_windows (MX_APPLICATION (self->obj));
+
+  py_list = PyList_New (0);
+
+  for (l = (GList *)windows; l != NULL; l = l->next)
+    {
+      PyObject *py_window;
+
+      py_window = pygobject_new (G_OBJECT (l->data));
+      if (!py_window)
+        {
+          Py_DECREF (py_list);
+          return NULL;
+        }
+
+      PyList_Append (py_list, py_window);
+      Py_DECREF (py_window);
+    }
+
+  return py_list;
+}
+%%
+override mx_application_get_actions noargs
+static PyObject *
+_wrap_mx_application_get_actions (PyGObject *self)
+{
+  GList *actions, *l;
+  PyObject *py_list;
+
+  actions = mx_application_get_actions (MX_APPLICATION (self->obj));
+
+  py_list = PyList_New (0);
+
+  for (l = actions; l != NULL; l = l->next)
+    {
+      PyObject *py_action;
+
+      py_action = pygobject_new (G_OBJECT (l->data));
+      if (!py_action)
+        {
+          Py_DECREF (py_list);
+          return NULL;
+        }
+
+      PyList_Append (py_list, py_action);
+      Py_DECREF (py_action);
+    }
+
+  g_list_free (actions);
+  return py_list;
+}
