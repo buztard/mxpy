@@ -292,6 +292,14 @@
   (gtype-id "MX_TYPE_SLIDER")
 )
 
+(define-object Toolbar
+  (in-module "Mx")
+  (parent "MxBin")
+  (c-name "MxToolbar")
+  (gtype-id "MX_TYPE_TOOLBAR")
+)
+
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

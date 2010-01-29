@@ -2798,3 +2798,32 @@
 )
 
 
+;; From mx-toolbar.h
+
+(define-function toolbar_get_type
+  (c-name "mx_toolbar_get_type")
+  (return-type "GType")
+)
+
+(define-function toolbar_new
+  (c-name "mx_toolbar_new")
+  (is-constructor-of "MxToolbar")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_has_close_button
+  (of-object "MxToolbar")
+  (c-name "mx_toolbar_set_has_close_button")
+  (return-type "none")
+  (parameters
+    '("gboolean" "has_close_button")
+  )
+)
+
+(define-method get_has_close_button
+  (of-object "MxToolbar")
+  (c-name "mx_toolbar_get_has_close_button")
+  (return-type "gboolean")
+)
+
+
