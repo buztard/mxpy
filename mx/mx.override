@@ -20,6 +20,7 @@ import clutter.Actor as PyClutterActor_Type
 import clutter.Texture as PyClutterTexture_Type
 import clutter.Model as PyClutterModel_Type
 import clutter.ChildMeta as PyClutterChildMeta_Type
+import clutter.Text as PyClutterText_Type
 import gtk.Widget as PyGtkWidget_Type
 import gtk.Bin as PyGtkBin_Type
 import gtk.Frame as PyGtkFrame_Type

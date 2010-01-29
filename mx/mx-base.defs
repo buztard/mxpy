@@ -1507,6 +1507,44 @@
   (return-type "none")
 )
 
+(define-method get_style_class
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get_style_class")
+  (return-type "const-gchar*")
+)
+
+(define-method set_style_class
+  (of-object "MxStylable")
+  (c-name "mx_stylable_set_style_class")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "style_class")
+  )
+)
+
+(define-method get_style_pseudo_class
+  (of-object "MxStylable")
+  (c-name "mx_stylable_get_style_pseudo_class")
+  (return-type "const-gchar*")
+)
+
+(define-method set_style_pseudo_class
+  (of-object "MxStylable")
+  (c-name "mx_stylable_set_style_pseudo_class")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "pseudo_class")
+  )
+)
+
+(define-method apply_clutter_text_attributes
+  (of-object "MxStylable")
+  (c-name "mx_stylable_apply_clutter_text_attributes")
+  (return-type "none")
+  (parameters
+    '("ClutterText*" "text")
+  )
+)
 
 
 
