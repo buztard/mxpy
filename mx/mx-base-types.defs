@@ -361,3 +361,41 @@
     '("cancel" "MX_LONG_PRESS_CANCEL")
   )
 )
+
+(define-flags ApplicationFlags
+  (in-module "Mx")
+  (c-name "MxApplicationFlags")
+  (gtype-id "MX_TYPE_APPLICATION_FLAGS")
+  (values
+    '("single-instance" "MX_APPLICATION_SINGLE_INSTANCE")
+    '("keep-alive" "MX_APPLICATION_KEEP_ALIVE")
+    '("clutter-gtk" "MX_APPLICATION_CLUTTER_GTK")
+  )
+)
+
+(define-enum Direction
+  (in-module "Mx")
+  (c-name "MxDirection")
+  (gtype-id "MX_TYPE_DIRECTION")
+  (values
+    '("out" "MX_OUT")
+    '("up" "MX_UP")
+    '("down" "MX_DOWN")
+    '("left" "MX_LEFT")
+    '("right" "MX_RIGHT")
+    '("next" "MX_NEXT")
+    '("previous" "MX_PREVIOUS")
+  )
+)
+
+(define-enum FontWeight
+  (in-module "Mx")
+  (c-name "MxFontWeight")
+  (gtype-id "MX_TYPE_FONT_WEIGHT")
+  (values
+    '("normal" "MX_WEIGHT_NORMAL")
+    '("bold" "MX_WEIGHT_BOLD")
+    '("bolder" "MX_WEIGHT_BOLDER")
+    '("lighter" "MX_WEIGHT_LIGHTER")
+  )
+)
