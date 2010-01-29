@@ -2844,3 +2844,86 @@
 )
 
 
+;; From mx-focus-manager.h
+
+(define-function focus_manager_get_type
+  (c-name "mx_focus_manager_get_type")
+  (return-type "GType")
+)
+
+(define-function focus_manager_new
+  (c-name "mx_focus_manager_new")
+  (is-constructor-of "MxFocusManager")
+  (return-type "MxFocusManager*")
+  (properties
+    '("stage")
+  )
+)
+
+(define-method get_stage
+  (of-object "MxFocusManager")
+  (c-name "mx_focus_manager_get_stage")
+  (return-type "ClutterStage*")
+)
+
+(define-method set_stage
+  (of-object "MxFocusManager")
+  (c-name "mx_focus_manager_set_stage")
+  (return-type "none")
+  (parameters
+    '("ClutterStage*" "stage")
+  )
+)
+
+(define-method get_focused
+  (of-object "MxFocusManager")
+  (c-name "mx_focus_manager_get_focused")
+  (return-type "MxFocusable*")
+)
+
+(define-method push_focus
+  (of-object "MxFocusManager")
+  (c-name "mx_focus_manager_push_focus")
+  (return-type "none")
+  (parameters
+    '("MxFocusable*" "focusable")
+  )
+)
+
+
+;; From mx-focusable.h
+
+(define-function focusable_get_type
+  (c-name "mx_focusable_get_type")
+  (return-type "GType")
+)
+
+(define-method move_focus
+  (of-object "MxFocusable")
+  (c-name "mx_focusable_move_focus")
+  (return-type "MxFocusable*")
+  (parameters
+    '("MxDirection" "direction")
+    '("MxFocusable*" "from")
+  )
+)
+
+(define-virtual move_focus
+  (of-object "MxFocusable")
+  (return-type "MxFocusable*")
+  (parameters
+    '("MxDirection" "direction")
+    '("MxFocusable*" "from")
+  )
+)
+
+(define-method accept_focus
+  (of-object "MxFocusable")
+  (c-name "mx_focusable_accept_focus")
+  (return-type "MxFocusable*")
+)
+
+(define-virtual accept_focus
+  (of-object "MxFocusable")
+  (return-type "MxFocusable*")
+)

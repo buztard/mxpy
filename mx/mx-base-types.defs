@@ -23,6 +23,12 @@
   (vtable "MxScrollableInterface")
 )
 
+(define-interface Focusable
+  (in-module "Mx")
+  (c-name "MxFocusable")
+  (gtype-id "MX_TYPE_FOCUSABLE")
+  (vtable "MxFocusableIface")
+)
 
 ; object definitions ...
 
@@ -304,6 +310,13 @@
   (parent "MxBin")
   (c-name "MxFrame")
   (gtype-id "MX_TYPE_FRAME")
+)
+
+(define-object FocusManager
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxFocusManager")
+  (gtype-id "MX_TYPE_FOCUS_MANAGER")
 )
 
 ;; Enumerations and flags ...
