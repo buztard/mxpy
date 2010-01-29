@@ -264,6 +264,20 @@
   (return-type "guint")
 )
 
+(define-method get_enable_animations
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_get_enable_animations")
+  (return-type "gboolean")
+)
+
+(define-method set_enable_animations
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_set_enable_animations")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enable_animations")
+  )
+)
 
 
 ;; From mx-button.h
