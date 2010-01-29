@@ -2243,6 +2243,47 @@
   (return-type "none")
 )
 
+(define-method set_popup
+  (of-object "MxWidget")
+  (c-name "mx_widget_set_popup")
+  (return-type "none")
+  (parameters
+    '("MxPopup*" "popup")
+  )
+)
+
+(define-method get_popup
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_popup")
+  (return-type "MxPopup*")
+)
+
+(define-method show_popup
+  (of-object "MxWidget")
+  (c-name "mx_widget_show_popup")
+  (return-type "none")
+  (parameters
+    '("gfloat" "x")
+    '("gfloat" "y")
+  )
+)
+
+(define-method hide_popup
+  (of-object "MxWidget")
+  (c-name "mx_widget_hide_popup")
+  (return-type "none")
+)
+
+(define-method get_available_area
+  (of-object "MxWidget")
+  (c-name "mx_widget_get_available_area")
+  (return-type "none")
+  (parameters
+    '("const-ClutterActorBox*" "allocation")
+    '("ClutterActorBox*" "area")
+  )
+)
+
 ;; From mx-action.h
 
 (define-function action_get_type
