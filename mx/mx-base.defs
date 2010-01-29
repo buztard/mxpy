@@ -2477,6 +2477,22 @@
   (return-type "gint")
 )
 
+(define-method get_enable_gestures
+  (of-object "MxNotebook")
+  (c-name "mx_notebook_get_enable_gestures")
+  (return-type "gboolean")
+)
+
+(define-method set_enable_gestures
+  (of-object "MxNotebook")
+  (c-name "mx_notebook_set_enable_gestures")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)
+
+
 ;; From mx-button-group.h
 
 (define-function button_group_get_type
