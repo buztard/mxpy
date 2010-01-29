@@ -83,6 +83,18 @@
   (parameters
     '("gdouble" "value")
     '("guint" "duration")
+    '("gulong" "mode")
+  )
+)
+
+(define-method interpolate_relative
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_interpolate_relative")
+  (return-type "none")
+  (parameters
+    '("gdouble" "offset")
+    '("guint" "duration")
+    '("gulong" "mode")
   )
 )
 
@@ -108,6 +120,7 @@
   (parameters
     '("gboolean" "interpolate")
     '("guint" "duration")
+    '("gulong" "mode")
   )
 )
 
