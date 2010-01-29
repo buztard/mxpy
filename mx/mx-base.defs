@@ -1303,42 +1303,6 @@
   (return-type "ClutterActor*")
 )
 
-;(define-method get_child
-;  (of-object "MxScrollView")
-;  (c-name "mx_scroll_view_get_child")
-;  (return-type "ClutterActor*")
-;)
-
-(define-method get_column_size
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_get_column_size")
-  (return-type "gfloat")
-)
-
-(define-method set_column_size
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_set_column_size")
-  (return-type "none")
-  (parameters
-    '("gfloat" "column_size")
-  )
-)
-
-(define-method get_row_size
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_get_row_size")
-  (return-type "gfloat")
-)
-
-(define-method set_row_size
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_set_row_size")
-  (return-type "none")
-  (parameters
-    '("gfloat" "row_size")
-  )
-)
-
 (define-method set_mouse_scrolling
   (of-object "MxScrollView")
   (c-name "mx_scroll_view_set_mouse_scrolling")
@@ -1351,6 +1315,21 @@
 (define-method get_mouse_scrolling
   (of-object "MxScrollView")
   (c-name "mx_scroll_view_get_mouse_scrolling")
+  (return-type "gboolean")
+)
+
+(define-method set_enable_gestures
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_set_enable_gestures")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)
+
+(define-method get_enable_gestures
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_enable_gestures")
   (return-type "gboolean")
 )
 
