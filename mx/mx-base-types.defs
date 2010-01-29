@@ -285,6 +285,13 @@
   (gtype-id "MX_TYPE_APPLICATION")
 )
 
+(define-object Slider
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxSlider")
+  (gtype-id "MX_TYPE_SLIDER")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis
