@@ -1130,3 +1130,33 @@ _wrap_MxScrollable__do_get_adjustments (PyObject *cls, PyObject *args)
 
   return Py_BuildValue ("(NN)", py_hadj, py_vadj);
 }
+%%
+override mx_button_group_get_buttons noargs
+static PyObject *
+_wrap_mx_button_group_get_buttons (PyGObject *self)
+{
+  const GSList *buttons;
+  GSList *l;
+  PyObject *py_list;
+
+  buttons = mx_button_group_get_buttons (MX_BUTTON_GROUP (self->obj));
+
+  py_list = PyList_New (0);
+
+  for (l = (GSList *)buttons; l != NULL; l = l->next)
+    {
+      PyObject *py_button;
+
+      py_button = pygobject_new (G_OBJECT (l->data));
+      if (!py_button)
+        {
+          Py_DECREF (py_list);
+          return NULL;
+        }
+
+      PyList_Append (py_list, py_button);
+      Py_DECREF (py_button);
+    }
+
+  return py_list;
+}
