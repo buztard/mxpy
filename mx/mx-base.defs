@@ -2921,9 +2921,15 @@
   (of-object "MxFocusable")
   (c-name "mx_focusable_accept_focus")
   (return-type "MxFocusable*")
+  (parameters
+    '("MxFocusHint" "hint")
+  )
 )
 
 (define-virtual accept_focus
   (of-object "MxFocusable")
   (return-type "MxFocusable*")
+  (parameters
+    '("MxFocusHint" "hint")
+  )
 )

@@ -412,3 +412,14 @@
     '("lighter" "MX_WEIGHT_LIGHTER")
   )
 )
+
+(define-enum FocusHint
+  (in-module "Mx")
+  (c-name "MxFocusHint")
+  (gtype-id "MX_TYPE_FOCUS_HINT")
+  (values
+    '("first" "MX_FIRST")
+    '("last" "MX_LAST")
+  )
+)
+
