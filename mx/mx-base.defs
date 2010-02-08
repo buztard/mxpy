@@ -1177,6 +1177,35 @@
   (return-type "ClutterActor*")
 )
 
+(define-method set_x_align
+  (of-object "MxLabel")
+  (c-name "mx_label_set_x_align")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "align")
+  )
+)
+
+(define-method get_x_align
+  (of-object "MxLabel")
+  (c-name "mx_label_get_x_align")
+  (return-type "MxAlign")
+)
+
+(define-method set_y_align
+  (of-object "MxLabel")
+  (c-name "mx_label_set_y_align")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "align")
+  )
+)
+
+(define-method get_y_align
+  (of-object "MxLabel")
+  (c-name "mx_label_get_y_align")
+  (return-type "MxAlign")
+)
 
 
 ;; From mx-list-view.h
