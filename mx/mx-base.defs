@@ -2414,6 +2414,21 @@
   )
 )
 
+(define-method get_icon
+  (of-object "MxAction")
+  (c-name "mx_action_get_icon")
+  (return-type "const-gchar*")
+)
+
+(define-method set_icon
+  (of-object "MxAction")
+  (c-name "mx_action_set_icon")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "icon")
+  )
+)
+
 ;; From mx-box-layout-child.h
 
 (define-function box_layout_child_get_type
