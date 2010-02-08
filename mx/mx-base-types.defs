@@ -319,6 +319,14 @@
   (gtype-id "MX_TYPE_FOCUS_MANAGER")
 )
 
+(define-object IconTheme
+  (in-module "Mx")
+  (parent "GObject")
+  (c-name "MxIconTheme")
+  (gtype-id "MX_TYPE_ICON_THEME")
+)
+
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

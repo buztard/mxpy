@@ -36,6 +36,7 @@ ignore
   mx_action_new_full
   mx_button_group_foreach
   mx_button_new_with_label
+  mx_icon_theme_lookup
 %%
 new-constructor MX_TYPE_WIDGET
 %%
@@ -1221,4 +1222,67 @@ _wrap_mx_application_get_actions (PyGObject *self)
 
   g_list_free (actions);
   return py_list;
+}
+%%
+override mx_icon_theme_set_search_paths kwargs
+static PyObject *
+_wrap_mx_icon_theme_set_search_paths (PyGObject *self,
+                                     PyObject  *args,
+                                     PyObject  *kwargs)
+{
+  static char *kwlist[] = { "paths", NULL };
+  PyObject *py_paths;
+  int i;
+  GList *paths = NULL;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "O:IconTheme.set_search_paths",
+                                    kwlist, &py_paths))
+    return NULL;
+
+  if (!PySequence_Check (py_paths))
+    {
+      PyErr_SetString (PyExc_TypeError, "paths need to be a list or tuple "
+                       "of strings");
+      return NULL;
+    }
+
+  for (i = 0; i < PySequence_Size (py_paths); i++)
+    {
+      PyObject *py_path;
+      
+      py_path = PySequence_GetItem (py_paths, i);
+      if (!PyString_Check (py_path))
+        {
+          PyErr_SetString (PyExc_TypeError, "expecting a string");
+          g_list_free (paths);
+          return NULL;
+        }
+
+      paths = g_list_append (paths, g_strdup (PyString_AsString (py_path)));
+      Py_DECREF (py_path);
+    }
+  mx_icon_theme_set_search_paths (MX_ICON_THEME (self->obj), paths);
+  g_list_free (paths);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override mx_icon_theme_get_search_paths noargs
+static PyObject *
+_wrap_mx_icon_theme_get_search_paths (PyGObject *self)
+{
+  const GList *paths, *l;
+  PyObject *py_paths;
+  
+  py_paths = PyList_New (0);
+  paths = mx_icon_theme_get_search_paths (MX_ICON_THEME (self->obj));
+
+  for (l = paths; l != NULL; l = l->next)
+    {
+      PyList_Append (py_paths, PyString_FromString (l->data));
+    }
+
+  return py_paths;
 }
