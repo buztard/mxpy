@@ -333,6 +333,12 @@
   (gtype-id "MX_TYPE_PATH_BAR")
 )
 
+(define-object Window
+  (in-module "Mx")
+  (parent "ClutterStage")
+  (c-name "MxWindow")
+  (gtype-id "MX_TYPE_WINDOW")
+)
 
 ;; Enumerations and flags ...
 

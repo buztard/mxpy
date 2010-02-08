@@ -3139,3 +3139,53 @@
 )
 
 
+;; From mx-window.h
+
+(define-function window_get_type
+  (c-name "mx_window_get_type")
+  (return-type "GType")
+)
+
+(define-function window_new
+  (c-name "mx_window_new")
+  (is-constructor-of "MxWindow")
+  (return-type "MxWindow*")
+)
+
+(define-method get_child
+  (of-object "MxWindow")
+  (c-name "mx_window_get_child")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_child
+  (of-object "MxWindow")
+  (c-name "mx_window_set_child")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+  )
+)
+
+(define-method get_toolbar
+  (of-object "MxWindow")
+  (c-name "mx_window_get_toolbar")
+  (return-type "MxToolbar*")
+)
+
+(define-method get_has_toolbar
+  (of-object "MxWindow")
+  (c-name "mx_window_get_has_toolbar")
+  (return-type "gboolean")
+)
+
+(define-method set_has_toolbar
+  (of-object "MxWindow")
+  (c-name "mx_window_set_has_toolbar")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toolbar")
+  )
+)
+
+
