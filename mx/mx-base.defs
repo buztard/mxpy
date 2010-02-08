@@ -2522,6 +2522,17 @@
   (return-type "gint")
 )
 
+(define-method insert_text_with_icon
+  (of-object "MxComboBox")
+  (c-name "mx_combo_box_insert_text_with_icon")
+  (return-type "none")
+  (parameters
+    '("gint" "position")
+    '("const-gchar*" "text")
+    '("const-gchar*" "icon")
+  )
+)
+
 ;; From mx-item-factory.h
 
 (define-function item_factory_get_type
