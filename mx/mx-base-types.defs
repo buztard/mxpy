@@ -326,6 +326,13 @@
   (gtype-id "MX_TYPE_ICON_THEME")
 )
 
+(define-object PathBar
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxPathBar")
+  (gtype-id "MX_TYPE_PATH_BAR")
+)
+
 
 ;; Enumerations and flags ...
 
