@@ -3469,3 +3469,40 @@
   (return-type "none")
 )
 
+;; From mx-utils.h
+
+(define-function set_locale
+  (c-name "mx_set_locale")
+  (return-type "none")
+  (parameters
+  )
+)
+
+(define-function utils_format_time
+  (c-name "mx_utils_format_time")
+  (return-type "gchar*")
+  (parameters
+    '("GTimeVal*" "time_")
+  )
+)
+
+(define-function allocate_align_fill
+  (c-name "mx_allocate_align_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("ClutterActorBox*" "childbox")
+    '("MxAlign" "x_alignment")
+    '("MxAlign" "y_alignment")
+    '("gboolean" "x_fill")
+    '("gboolean" "y_fill")
+  )
+)
+
+(define-function actor_box_clamp_to_pixels
+  (c-name "mx_actor_box_clamp_to_pixels")
+  (return-type "none")
+  (parameters
+    '("ClutterActorBox*" "box")
+  )
+)
