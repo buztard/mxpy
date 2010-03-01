@@ -2176,6 +2176,30 @@
   (return-type "GType")
 )
 
+(define-function application_flags_get_type
+  (c-name "mx_application_flags_get_type")
+  (return-type "GType")
+)
+
+(define-function direction_get_type
+  (c-name "mx_direction_get_type")
+  (return-type "GType")
+)
+
+(define-function focus_hint_get_type
+  (c-name "mx_focus_hint_get_type")
+  (return-type "GType")
+)
+
+(define-function font_weight_get_type
+  (c-name "mx_font_weight_get_type")
+  (return-type "GType")
+)
+
+(define-function scroll_policy_get_type
+  (c-name "mx_scroll_policy_get_type")
+  (return-type "GType")
+)
 
 
 ;; From mx-version.h
