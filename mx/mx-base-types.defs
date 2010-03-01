@@ -340,6 +340,34 @@
   (gtype-id "MX_TYPE_WINDOW")
 )
 
+(define-object DeformTexture
+  (in-module "Mx")
+  (parent "MxWidget")
+  (c-name "MxDeformTexture")
+  (gtype-id "MX_TYPE_DEFORM_TEXTURE")
+)
+
+(define-object DeformBowtie
+  (in-module "Mx")
+  (parent "MxDeformTexture")
+  (c-name "MxDeformBowtie")
+  (gtype-id "MX_TYPE_DEFORM_BOWTIE")
+)
+
+(define-object DeformCloth
+  (in-module "Mx")
+  (parent "MxDeformTexture")
+  (c-name "MxDeformCloth")
+  (gtype-id "MX_TYPE_DEFORM_CLOTH")
+)
+
+(define-object DeformPageTurn
+  (in-module "Mx")
+  (parent "MxDeformTexture")
+  (c-name "MxDeformPageTurn")
+  (gtype-id "MX_TYPE_DEFORM_PAGE_TURN")
+)
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

@@ -3244,3 +3244,111 @@
 )
 
 
+;; From mx-deform-bowtie.h
+
+(define-function deform_bowtie_get_type
+  (c-name "mx_deform_bowtie_get_type")
+  (return-type "GType")
+)
+
+(define-function deform_bowtie_new
+  (c-name "mx_deform_bowtie_new")
+  (is-constructor-of "MxDeformBowtie")
+  (return-type "ClutterActor*")
+)
+
+
+
+;; From mx-deform-cloth.h
+
+(define-function deform_cloth_get_type
+  (c-name "mx_deform_cloth_get_type")
+  (return-type "GType")
+)
+
+(define-function deform_cloth_new
+  (c-name "mx_deform_cloth_new")
+  (is-constructor-of "MxDeformCloth")
+  (return-type "ClutterActor*")
+)
+
+
+
+;; From mx-deform-page-turn.h
+
+(define-function deform_page_turn_get_type
+  (c-name "mx_deform_page_turn_get_type")
+  (return-type "GType")
+)
+
+(define-function deform_page_turn_new
+  (c-name "mx_deform_page_turn_new")
+  (is-constructor-of "MxDeformPageTurn")
+  (return-type "ClutterActor*")
+)
+
+
+
+;; From mx-deform-texture.h
+
+(define-function deform_texture_get_type
+  (c-name "mx_deform_texture_get_type")
+  (return-type "GType")
+)
+
+(define-method get_resolution
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_get_resolution")
+  (return-type "none")
+  (parameters
+    '("gint*" "tiles_x")
+    '("gint*" "tiles_y")
+  )
+)
+
+(define-method set_resolution
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_set_resolution")
+  (return-type "none")
+  (parameters
+    '("gint" "tiles_x")
+    '("gint" "tiles_y")
+  )
+)
+
+(define-method set_materials
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_set_materials")
+  (return-type "none")
+  (parameters
+    '("CoglHandle" "front_face")
+    '("CoglHandle" "back_face")
+  )
+)
+
+(define-method get_materials
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_get_materials")
+  (return-type "none")
+  (parameters
+    '("CoglHandle*" "front_face")
+    '("CoglHandle*" "back_face")
+  )
+)
+
+(define-method set_from_files
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_set_from_files")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "front_file")
+    '("const-gchar*" "back_file")
+  )
+)
+
+(define-method invalidate
+  (of-object "MxDeformTexture")
+  (c-name "mx_deform_texture_invalidate")
+  (return-type "none")
+)
+
