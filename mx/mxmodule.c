@@ -1,3 +1,7 @@
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <pygobject.h>
 #include <mx/mx.h>
  
@@ -33,6 +37,20 @@ init_mx(void)
     m = Py_InitModule ("_mx", pymx_functions);
     d = PyModule_GetDict (m);
  
+    /* mxpy version */
+    PyModule_AddObject (m, "__version__",
+                        Py_BuildValue ("(iii)",
+                                       MXPY_MAJOR_VERSION,
+                                       MXPY_MINOR_VERSION,
+                                       MXPY_MICRO_VERSION));
+
+    /* mx version */
+    PyModule_AddObject (m, "mx_version",
+                        Py_BuildValue ("(iii)",
+                                       MX_MAJOR_VERSION,
+                                       MX_MINOR_VERSION,
+                                       MX_MICRO_VERSION));
+
     pymx_register_classes (d);
     pymx_add_constants (m, "MX_");
  
