@@ -3196,7 +3196,20 @@
   (return-type "MxEntry*")
 )
 
+(define-method get_clear_on_change
+  (of-object "MxPathBar")
+  (c-name "mx_path_bar_get_clear_on_change")
+  (return-type "gboolean")
+)
 
+(define-method set_clear_on_change
+  (of-object "MxPathBar")
+  (c-name "mx_path_bar_set_clear_on_change")
+  (return-type "none")
+  (parameters
+    '("gboolean" "clear_on_change")
+  )
+)
 ;; From mx-window.h
 
 (define-function window_get_type
