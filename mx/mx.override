@@ -1286,3 +1286,14 @@ _wrap_mx_icon_theme_get_search_paths (PyGObject *self)
 
   return py_paths;
 }
+%%
+override mx_window_get_window_position noargs
+static PyObject *
+_wrap_mx_window_get_window_position (PyGObject *self)
+{
+  gint x, y;
+
+  mx_window_get_window_position (MX_WINDOW (self->obj), &x, &y);
+
+  return Py_BuildValue ("(ii)", x, y);
+}

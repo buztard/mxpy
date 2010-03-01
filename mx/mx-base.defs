@@ -3246,6 +3246,56 @@
   )
 )
 
+(define-method get_small_screen
+  (of-object "MxWindow")
+  (c-name "mx_window_get_small_screen")
+  (return-type "gboolean")
+)
+
+(define-method set_small_screen
+  (of-object "MxWindow")
+  (c-name "mx_window_set_small_screen")
+  (return-type "none")
+  (parameters
+    '("gboolean" "small_screen")
+  )
+)
+
+(define-method get_window_position
+  (of-object "MxWindow")
+  (c-name "mx_window_get_window_position")
+  (return-type "none")
+  (parameters
+    '("gint*" "x")
+    '("gint*" "y")
+  )
+)
+
+(define-method set_window_position
+  (of-object "MxWindow")
+  (c-name "mx_window_set_window_position")
+  (return-type "none")
+  (parameters
+    '("gint" "x")
+    '("gint" "y")
+  )
+)
+
+(define-method set_icon_name
+  (of-object "MxWindow")
+  (c-name "mx_window_set_icon_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "icon_name")
+  )
+)
+
+(define-method get_icon_name
+  (of-object "MxWindow")
+  (c-name "mx_window_get_icon_name")
+  (return-type "const-gchar*")
+)
+
 
 ;; From mx-deform-bowtie.h
 
