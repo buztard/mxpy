@@ -39,6 +39,7 @@ ignore
   mx_icon_theme_lookup
   mx_deform_texture_set_materials
   mx_deform_texture_get_materials
+  mx_texture_cache_get_cogl_texture
 %%
 new-constructor MX_TYPE_WIDGET
 %%

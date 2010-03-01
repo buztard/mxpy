@@ -2042,6 +2042,14 @@
   )
 )
 
+(define-method get_cogl_texture
+  (of-object "MxTextureCache")
+  (c-name "mx_texture_cache_get_cogl_texture")
+  (return-type "CoglHandle")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
 
 
 ;; From mx-texture-frame.h
