@@ -1107,7 +1107,7 @@ override MxScrollable__do_get_adjustments
 static PyObject *
 _wrap_MxScrollable__do_get_adjustments (PyObject *cls, PyObject *args)
 {
-  MxScrollableInterface *iface;
+  MxScrollableIface *iface;
   PyGObject *self;
   PyObject *py_hadj, *py_vadj;
   MxAdjustment *hadj, *vadj;

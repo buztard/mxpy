@@ -20,7 +20,7 @@
   (in-module "Mx")
   (c-name "MxScrollable")
   (gtype-id "MX_TYPE_SCROLLABLE")
-  (vtable "MxScrollableInterface")
+  (vtable "MxScrollableIface")
 )
 
 (define-interface Focusable
