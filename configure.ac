@@ -4,13 +4,13 @@ AC_PREREQ(2.53)
 # An odd micro number indicates in-progress development, (eg. from svn)
 # An even micro number indicates a released version.
 m4_define(mxpy_version_major, 0)
-m4_define(mxpy_version_minor, 5)
-m4_define(mxpy_version_micro, 1)
+m4_define(mxpy_version_minor, 7)
+m4_define(mxpy_version_micro, 7)
 m4_define(mxpy_version, mxpy_version_major.mxpy_version_minor.mxpy_version_micro)
 
 m4_define(clutter_required_version,      1.0.0)
-m4_define(mx_required_version,           0.5.1)
-m4_define(mxgtk_required_version,        0.5.1)
+m4_define(mx_required_version,           0.7.3)
+m4_define(mxgtk_required_version,        0.7.3)
 m4_define(pyclutter_required_version,    1.0.0)
 m4_define(pygtk_required_version,        2.8.0)
 
