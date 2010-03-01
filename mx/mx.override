@@ -1297,3 +1297,15 @@ _wrap_mx_window_get_window_position (PyGObject *self)
 
   return Py_BuildValue ("(ii)", x, y);
 }
+%%
+override mx_deform_texture_get_resolution noargs
+static PyObject *
+_wrap_mx_deform_texture_get_resolution (PyGObject *self)
+{
+  gint tiles_x, tiles_y;
+
+  mx_deform_texture_get_resolution (MX_DEFORM_TEXTURE (self->obj),
+                                    &tiles_x, &tiles_y);
+
+  return Py_BuildValue ("(ii)", tiles_x, tiles_y);
+}
