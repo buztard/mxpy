@@ -472,3 +472,15 @@
   )
 )
 
+(define-enum ScrollPolicy
+  (in-module "Mx")
+  (c-name "MxScrollPolicy")
+  (gtype-id "MX_TYPE_SCROLL_POLICY")
+  (values
+    '("none" "MX_SCROLL_NONE")
+    '("horizontal" "MX_SCROLL_HORIZONTAL")
+    '("vertical" "MX_SCROLL_VERTICAL")
+    '("both" "MX_SCROLL_BOTH")
+  )
+)
+
