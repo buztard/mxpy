@@ -37,6 +37,8 @@ ignore
   mx_button_group_foreach
   mx_button_new_with_label
   mx_icon_theme_lookup
+  mx_deform_texture_set_materials
+  mx_deform_texture_get_materials
 %%
 new-constructor MX_TYPE_WIDGET
 %%
