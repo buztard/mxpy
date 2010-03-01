@@ -40,6 +40,8 @@ ignore
   mx_deform_texture_set_materials
   mx_deform_texture_get_materials
   mx_texture_cache_get_cogl_texture
+  mx_border_image_set_from_string
+  mx_font_weight_set_from_string
 %%
 new-constructor MX_TYPE_WIDGET
 %%

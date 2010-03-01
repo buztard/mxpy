@@ -2201,6 +2201,25 @@
   (return-type "GType")
 )
 
+(define-function border_image_set_from_string
+  (c-name "mx_border_image_set_from_string")
+  (return-type "none")
+  (parameters
+    '("GValue*" "value")
+    '("const-gchar*" "str")
+    '("const-gchar*" "filename")
+  )
+)
+
+(define-function font_weight_set_from_string
+  (c-name "mx_font_weight_set_from_string")
+  (return-type "none")
+  (parameters
+    '("GValue*" "value")
+    '("const-gchar*" "str")
+  )
+)
+
 
 ;; From mx-version.h
 
