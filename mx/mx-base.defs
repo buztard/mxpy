@@ -219,35 +219,6 @@
   (return-type "MxWidget*")
 )
 
-(define-method set_vertical
-  (of-object "MxBoxLayout")
-  (c-name "mx_box_layout_set_vertical")
-  (return-type "none")
-  (parameters
-    '("gboolean" "vertical")
-  )
-)
-
-(define-method get_vertical
-  (of-object "MxBoxLayout")
-  (c-name "mx_box_layout_get_vertical")
-  (return-type "gboolean")
-)
-
-(define-method set_pack_start
-  (of-object "MxBoxLayout")
-  (c-name "mx_box_layout_set_pack_start")
-  (return-type "none")
-  (parameters
-    '("gboolean" "pack_start")
-  )
-)
-
-(define-method get_pack_start
-  (of-object "MxBoxLayout")
-  (c-name "mx_box_layout_get_pack_start")
-  (return-type "gboolean")
-)
 
 (define-method set_spacing
   (of-object "MxBoxLayout")
@@ -277,6 +248,43 @@
   (parameters
     '("gboolean" "enable_animations")
   )
+)
+
+(define-method set_orientation
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_set_orientation")
+  (return-type "none")
+  (parameters
+    '("MxOrientation" "orientation")
+  )
+)
+
+(define-method get_orientation
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_get_orientation")
+  (return-type "MxOrientation")
+)
+
+(define-method add_actor
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_add_actor")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "position")
+  )
+)
+
+(define-method add_actor_with_properties
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_add_actor_with_properties")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+    '("gint" "position")
+    '("const-char*" "first_property")
+  )
+  (varargs #t)
 )
 
 
