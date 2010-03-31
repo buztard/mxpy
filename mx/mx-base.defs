@@ -2965,8 +2965,8 @@
   (return-type "GType")
 )
 
-(define-function focus_manager_new
-  (c-name "mx_focus_manager_new")
+(define-function focus_manager_get_for_stage
+  (c-name "mx_focus_manager_get_for_stage")
   (is-constructor-of "MxFocusManager")
   (return-type "MxFocusManager*")
   (properties
@@ -2978,15 +2978,6 @@
   (of-object "MxFocusManager")
   (c-name "mx_focus_manager_get_stage")
   (return-type "ClutterStage*")
-)
-
-(define-method set_stage
-  (of-object "MxFocusManager")
-  (c-name "mx_focus_manager_set_stage")
-  (return-type "none")
-  (parameters
-    '("ClutterStage*" "stage")
-  )
 )
 
 (define-method get_focused
