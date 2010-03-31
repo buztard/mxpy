@@ -319,36 +319,35 @@
   )
 )
 
-(define-method set_toggle_mode
+(define-method set_is_toggle
   (of-object "MxButton")
-  (c-name "mx_button_set_toggle_mode")
+  (c-name "mx_button_set_is_toggle")
   (return-type "none")
   (parameters
     '("gboolean" "toggle")
   )
 )
 
-(define-method get_toggle_mode
+(define-method get_is_toggle
   (of-object "MxButton")
-  (c-name "mx_button_get_toggle_mode")
+  (c-name "mx_button_get_is_toggle")
   (return-type "gboolean")
 )
 
-(define-method set_checked
+(define-method set_toggled
   (of-object "MxButton")
-  (c-name "mx_button_set_checked")
+  (c-name "mx_button_set_toggled")
   (return-type "none")
   (parameters
-    '("gboolean" "checked")
+    '("gboolean" "toggled")
   )
 )
 
-(define-method get_checked
+(define-method get_toggled
   (of-object "MxButton")
-  (c-name "mx_button_get_checked")
+  (c-name "mx_button_get_toggled")
   (return-type "gboolean")
 )
-
 
 
 ;; From mx-clipboard.h
