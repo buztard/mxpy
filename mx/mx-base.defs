@@ -1251,6 +1251,12 @@
   )
 )
 
+(define-method get_factory
+  (of-object "MxListView")
+  (c-name "mx_list_view_get_factory")
+  (return-type "MxItemFactory*")
+)
+
 
 ;; From mx-progress-bar.h
 
