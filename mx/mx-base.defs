@@ -1644,18 +1644,18 @@
   (return-type "GType")
 )
 
-(define-method child_get_col_span
+(define-method child_get_column_span
   (of-object "MxTable")
-  (c-name "mx_table_child_get_col_span")
+  (c-name "mx_table_child_get_column_span")
   (return-type "gint")
   (parameters
     '("ClutterActor*" "child")
   )
 )
 
-(define-method child_set_col_span
+(define-method child_set_column_span
   (of-object "MxTable")
-  (c-name "mx_table_child_set_col_span")
+  (c-name "mx_table_child_set_column_span")
   (return-type "none")
   (parameters
     '("ClutterActor*" "child")
@@ -1815,6 +1815,45 @@
   )
 )
 
+(define-method child_get_column
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_column")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_column
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_column")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "col")
+  )
+)
+
+(define-method child_get_row
+  (of-object "MxTable")
+  (c-name "mx_table_child_get_row")
+  (return-type "gint")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_row
+  (of-object "MxTable")
+  (c-name "mx_table_child_set_row")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gint" "row")
+  )
+)
+
+
 
 ;; From mx-table.h
 
@@ -1829,9 +1868,9 @@
   (return-type "MxWidget*")
 )
 
-(define-method set_col_spacing
+(define-method set_column_spacing
   (of-object "MxTable")
-  (c-name "mx_table_set_col_spacing")
+  (c-name "mx_table_set_column_spacing")
   (return-type "none")
   (parameters
     '("gint" "spacing")
@@ -1847,9 +1886,9 @@
   )
 )
 
-(define-method get_col_spacing
+(define-method get_column_spacing
   (of-object "MxTable")
-  (c-name "mx_table_get_col_spacing")
+  (c-name "mx_table_get_column_spacing")
   (return-type "gint")
 )
 
