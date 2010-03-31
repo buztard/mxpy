@@ -726,21 +726,6 @@
   (return-type "MxWidget*")
 )
 
-(define-method set_end_align
-  (of-object "MxGrid")
-  (c-name "mx_grid_set_end_align")
-  (return-type "none")
-  (parameters
-    '("gboolean" "value")
-  )
-)
-
-(define-method get_end_align
-  (of-object "MxGrid")
-  (c-name "mx_grid_get_end_align")
-  (return-type "gboolean")
-)
-
 (define-method set_homogenous_rows
   (of-object "MxGrid")
   (c-name "mx_grid_set_homogenous_rows")
@@ -768,21 +753,6 @@
 (define-method get_homogenous_columns
   (of-object "MxGrid")
   (c-name "mx_grid_get_homogenous_columns")
-  (return-type "gboolean")
-)
-
-(define-method set_vertical
-  (of-object "MxGrid")
-  (c-name "mx_grid_set_vertical")
-  (return-type "none")
-  (parameters
-    '("gboolean" "value")
-  )
-)
-
-(define-method get_vertical
-  (of-object "MxGrid")
-  (c-name "mx_grid_get_vertical")
   (return-type "gboolean")
 )
 
@@ -816,36 +786,6 @@
   (return-type "gfloat")
 )
 
-(define-method set_valign
-  (of-object "MxGrid")
-  (c-name "mx_grid_set_valign")
-  (return-type "none")
-  (parameters
-    '("gdouble" "value")
-  )
-)
-
-(define-method get_valign
-  (of-object "MxGrid")
-  (c-name "mx_grid_get_valign")
-  (return-type "gdouble")
-)
-
-(define-method set_halign
-  (of-object "MxGrid")
-  (c-name "mx_grid_set_halign")
-  (return-type "none")
-  (parameters
-    '("gdouble" "value")
-  )
-)
-
-(define-method get_halign
-  (of-object "MxGrid")
-  (c-name "mx_grid_get_halign")
-  (return-type "gdouble")
-)
-
 (define-method set_max_stride
   (of-object "MxGrid")
   (c-name "mx_grid_set_max_stride")
@@ -860,6 +800,67 @@
   (c-name "mx_grid_get_max_stride")
   (return-type "gint")
 )
+
+(define-method set_line_alignment
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_line_alignment")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "value")
+  )
+)
+
+(define-method get_line_alignment
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_line_alignment")
+  (return-type "gboolean")
+)
+
+(define-method set_orientation
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_orientation")
+  (return-type "none")
+  (parameters
+    '("MxOrientation" "orientation")
+  )
+)
+
+(define-method get_orientation
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_orientation")
+  (return-type "MxOrientation")
+)
+
+(define-method set_child_y_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_child_y_align")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "value")
+  )
+)
+
+(define-method get_child_y_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_child_y_align")
+  (return-type "MxAlign")
+)
+
+(define-method set_child_x_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_set_child_x_align")
+  (return-type "none")
+  (parameters
+    '("MxAlign" "value")
+  )
+)
+
+(define-method get_child_x_align
+  (of-object "MxGrid")
+  (c-name "mx_grid_get_child_x_align")
+  (return-type "MxAlign")
+)
+
 
 
 
