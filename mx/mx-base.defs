@@ -3371,18 +3371,47 @@
   (return-type "const-gchar*")
 )
 
+;; From mx-deform-bow-tie.h
 
-;; From mx-deform-bowtie.h
-
-(define-function deform_bowtie_get_type
-  (c-name "mx_deform_bowtie_get_type")
+(define-function deform_bow_tie_get_type
+  (c-name "mx_deform_bow_tie_get_type")
   (return-type "GType")
 )
 
-(define-function deform_bowtie_new
-  (c-name "mx_deform_bowtie_new")
-  (is-constructor-of "MxDeformBowtie")
+(define-function deform_bow_tie_new
+  (c-name "mx_deform_bow_tie_new")
+  (is-constructor-of "MxDeformBowTie")
   (return-type "ClutterActor*")
+)
+
+(define-method get_period
+  (of-object "MxDeformBowTie")
+  (c-name "mx_deform_bow_tie_get_period")
+  (return-type "gdouble")
+)
+
+(define-method set_period
+  (of-object "MxDeformBowTie")
+  (c-name "mx_deform_bow_tie_set_period")
+  (return-type "none")
+  (parameters
+    '("gdouble" "period")
+  )
+)
+
+(define-method get_flip_back
+  (of-object "MxDeformBowTie")
+  (c-name "mx_deform_bow_tie_get_flip_back")
+  (return-type "gboolean")
+)
+
+(define-method set_flip_back
+  (of-object "MxDeformBowTie")
+  (c-name "mx_deform_bow_tie_set_flip_back")
+  (return-type "none")
+  (parameters
+    '("gboolean" "flip_back")
+  )
 )
 
 

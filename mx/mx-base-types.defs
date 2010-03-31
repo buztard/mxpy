@@ -347,11 +347,11 @@
   (gtype-id "MX_TYPE_DEFORM_TEXTURE")
 )
 
-(define-object DeformBowtie
+(define-object DeformBowTie
   (in-module "Mx")
   (parent "MxDeformTexture")
-  (c-name "MxDeformBowtie")
-  (gtype-id "MX_TYPE_DEFORM_BOWTIE")
+  (c-name "MxDeformBowTie")
+  (gtype-id "MX_TYPE_DEFORM_BOW_TIE")
 )
 
 (define-object DeformCloth
