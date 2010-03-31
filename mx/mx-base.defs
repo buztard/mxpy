@@ -3425,33 +3425,23 @@
   )
 )
 
-(define-method set_materials
+(define-method set_textures
   (of-object "MxDeformTexture")
-  (c-name "mx_deform_texture_set_materials")
+  (c-name "mx_deform_texture_set_textures")
   (return-type "none")
   (parameters
-    '("CoglHandle" "front_face")
-    '("CoglHandle" "back_face")
+    '("ClutterTexture*" "front")
+    '("ClutterTexture*" "back")
   )
 )
 
-(define-method get_materials
+(define-method get_textures
   (of-object "MxDeformTexture")
-  (c-name "mx_deform_texture_get_materials")
+  (c-name "mx_deform_texture_get_textures")
   (return-type "none")
   (parameters
-    '("CoglHandle*" "front_face")
-    '("CoglHandle*" "back_face")
-  )
-)
-
-(define-method set_from_files
-  (of-object "MxDeformTexture")
-  (c-name "mx_deform_texture_set_from_files")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "front_file")
-    '("const-gchar*" "back_file")
+    '("ClutterTexture**" "front")
+    '("ClutterTexture**" "back")
   )
 )
 
