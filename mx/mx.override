@@ -47,6 +47,7 @@ ignore
   mx_adjustment_new_with_values
   mx_entry_new_with_text
   mx_label_new_with_text
+  mx_scroll_bar_new_with_adjustment
 %%
 new-constructor MX_TYPE_WIDGET
 %%

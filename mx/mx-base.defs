@@ -1535,8 +1535,31 @@
   (is-constructor-of "MxScrollBar")
   (return-type "MxWidget*")
   (properties
-    '("adjustment")
+    '("adjustment" (optional))
   )
+)
+
+(define-function scroll_bar_new_with_adjustment
+  (c-name "mx_scroll_bar_new_with_adjustment")
+  (return-type "ClutterActor*")
+  (parameters
+    '("MxAdjustment*" "adjustment")
+  )
+)
+
+(define-method set_orientation
+  (of-object "MxScrollBar")
+  (c-name "mx_scroll_bar_set_orientation")
+  (return-type "none")
+  (parameters
+    '("MxOrientation" "orientation")
+  )
+)
+
+(define-method get_orientation
+  (of-object "MxScrollBar")
+  (c-name "mx_scroll_bar_get_orientation")
+  (return-type "MxOrientation")
 )
 
 (define-method set_adjustment
