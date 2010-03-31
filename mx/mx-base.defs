@@ -2658,18 +2658,18 @@
   (return-type "ClutterActor*")
 )
 
-(define-method set_page
+(define-method set_current_page
   (of-object "MxNotebook")
-  (c-name "mx_notebook_set_page")
+  (c-name "mx_notebook_set_current_page")
   (return-type "none")
   (parameters
     '("gint" "page")
   )
 )
 
-(define-method get_page
+(define-method get_current_page
   (of-object "MxNotebook")
-  (c-name "mx_notebook_get_page")
+  (c-name "mx_notebook_get_current_page")
   (return-type "gint")
 )
 
