@@ -3433,6 +3433,17 @@
   (c-name "mx_window_new")
   (is-constructor-of "MxWindow")
   (return-type "MxWindow*")
+  (property
+    '("stage" (optional))
+  )
+)
+
+(define-function window_new_with_clutter_stage
+  (c-name "mx_window_new_with_clutter_stage")
+  (return-type "MxWindow*")
+  (parameters
+    '("ClutterStage*" "stage")
+  )
 )
 
 (define-method get_child
@@ -3519,6 +3530,29 @@
   (of-object "MxWindow")
   (c-name "mx_window_get_icon_name")
   (return-type "const-gchar*")
+)
+
+(define-function window_get_for_stage
+  (c-name "mx_window_get_for_stage")
+  (return-type "MxWindow*")
+  (parameters
+    '("ClutterStage*" "stage")
+  )
+)
+
+(define-method set_icon_from_cogl_texture
+  (of-object "MxWindow")
+  (c-name "mx_window_set_icon_from_cogl_texture")
+  (return-type "none")
+  (parameters
+    '("CoglHandle" "texture")
+  )
+)
+
+(define-method get_clutter_stage
+  (of-object "MxWindow")
+  (c-name "mx_window_get_clutter_stage")
+  (return-type "ClutterStage*")
 )
 
 ;; From mx-deform-bow-tie.h
