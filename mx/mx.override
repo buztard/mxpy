@@ -156,15 +156,15 @@ _wrap_mx_draggable_get_containment_area (PyGObject *self)
   return Py_BuildValue ("(ffff)", x_1, y_1, x_2, y_2);
 }
 %%
-override mx_texture_frame_get_frame noargs
+override mx_texture_frame_get_border_values noargs
 static PyObject *
-_wrap_mx_texture_frame_get_frame (PyGObject *self)
+_wrap_mx_texture_frame_get_border_values (PyGObject *self)
 {
   gfloat top, right, bottom, left;
   top = right = bottom = left = 0.f;
 
-  mx_texture_frame_get_frame (MX_TEXTURE_FRAME (self->obj),
-                                &top, &right, &bottom, &left);
+  mx_texture_frame_get_border_values (MX_TEXTURE_FRAME (self->obj),
+                                      &top, &right, &bottom, &left);
 
   return Py_BuildValue ("(ffff)", top, right, bottom, left);
 }
