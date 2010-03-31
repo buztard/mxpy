@@ -1369,21 +1369,6 @@
   (return-type "MxWidget*")
 )
 
-(define-method set_mouse_scrolling
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_set_mouse_scrolling")
-  (return-type "none")
-  (parameters
-    '("gboolean" "enabled")
-  )
-)
-
-(define-method get_mouse_scrolling
-  (of-object "MxScrollView")
-  (c-name "mx_scroll_view_get_mouse_scrolling")
-  (return-type "gboolean")
-)
-
 (define-method set_enable_gestures
   (of-object "MxScrollView")
   (c-name "mx_scroll_view_set_enable_gestures")
@@ -1413,6 +1398,31 @@
   (c-name "mx_scroll_view_get_scroll_policy")
   (return-type "MxScrollPolicy")
 )
+
+(define-method set_enable_mouse_scrolling
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_set_enable_mouse_scrolling")
+  (return-type "none")
+  (parameters
+    '("gboolean" "enabled")
+  )
+)
+
+(define-method get_enable_mouse_scrolling
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_get_enable_mouse_scrolling")
+  (return-type "gboolean")
+)
+
+(define-method ensure_visible
+  (of-object "MxScrollView")
+  (c-name "mx_scroll_view_ensure_visible")
+  (return-type "none")
+  (parameters
+    '("const-ClutterGeometry*" "geometry")
+  )
+)
+
 
 
 ;; From mx-stylable.h
