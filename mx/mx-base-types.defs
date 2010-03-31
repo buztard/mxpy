@@ -362,6 +362,14 @@
   (gtype-id "MX_TYPE_DEFORM_PAGE_TURN")
 )
 
+(define-object Offscreen
+  (in-module "Mx")
+  (parent "ClutterTexture")
+  (c-name "MxOffscreen")
+  (gtype-id "MX_TYPE_OFFSCREEN")
+)
+
+
 ;; Enumerations and flags ...
 
 (define-enum DragAxis

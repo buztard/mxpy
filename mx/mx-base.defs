@@ -3751,3 +3751,69 @@
     '("ClutterActorBox*" "box")
   )
 )
+
+;; From mx-offscreen.h
+
+(define-function offscreen_get_type
+  (c-name "mx_offscreen_get_type")
+  (return-type "GType")
+)
+
+(define-function offscreen_new
+  (c-name "mx_offscreen_new")
+  (is-constructor-of "MxOffscreen")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_child
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_set_child")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "actor")
+  )
+)
+
+(define-method get_child
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_get_child")
+  (return-type "ClutterActor*")
+)
+
+(define-method set_pick_child
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_set_pick_child")
+  (return-type "none")
+  (parameters
+    '("gboolean" "pick")
+  )
+)
+
+(define-method get_pick_child
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_get_pick_child")
+  (return-type "gboolean")
+)
+
+(define-method set_auto_update
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_set_auto_update")
+  (return-type "none")
+  (parameters
+    '("gboolean" "auto_update")
+  )
+)
+
+(define-method get_auto_update
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_get_auto_update")
+  (return-type "gboolean")
+)
+
+(define-method update
+  (of-object "MxOffscreen")
+  (c-name "mx_offscreen_update")
+  (return-type "none")
+)
+
+
