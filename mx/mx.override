@@ -1307,3 +1307,17 @@ _wrap_mx_deform_texture_get_resolution (PyGObject *self)
 
   return Py_BuildValue ("(ii)", tiles_x, tiles_y);
 }
+%%
+override mx_deform_texture_get_textures noargs
+static PyObject *
+_wrap_mx_deform_texture_get_textures (PyGObject *self)
+{
+  ClutterTexture *front, *back;
+
+  mx_deform_texture_get_textures (MX_DEFORM_TEXTURE (self->obj),
+                                  &front, &back);
+
+  return Py_BuildValue ("(NN)",
+                        pygobject_new (G_OBJECT (front)),
+                        pygobject_new (G_OBJECT (back)));
+}
