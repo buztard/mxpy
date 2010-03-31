@@ -2860,7 +2860,7 @@
 (define-method create_window
   (of-object "MxApplication")
   (c-name "mx_application_create_window")
-  (return-type "ClutterStage*")
+  (return-type "MxWindow*")
 )
 
 (define-method add_window
@@ -2868,7 +2868,7 @@
   (c-name "mx_application_add_window")
   (return-type "none")
   (parameters
-    '("ClutterStage*" "window")
+    '("MxWindow*" "window")
   )
 )
 
@@ -2877,7 +2877,7 @@
   (c-name "mx_application_remove_window")
   (return-type "none")
   (parameters
-    '("ClutterStage*" "window")
+    '("MxWindow*" "window")
   )
 )
 
@@ -2926,6 +2926,11 @@
   (return-type "gboolean")
 )
 
+(define-method get_flags
+  (of-object "MxApplication")
+  (c-name "mx_application_get_flags")
+  (return-type "MxApplicationFlags")
+)
 
 ;; From mx-slider.h
 
