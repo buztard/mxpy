@@ -3599,6 +3599,50 @@
   (return-type "ClutterActor*")
 )
 
+(define-method get_period
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_get_period")
+  (return-type "gdouble")
+)
+
+(define-method set_period
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_set_period")
+  (return-type "none")
+  (parameters
+    '("gdouble" "period")
+  )
+)
+
+(define-method get_angle
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_get_angle")
+  (return-type "gdouble")
+)
+
+(define-method set_angle
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_set_angle")
+  (return-type "none")
+  (parameters
+    '("gdouble" "angle")
+  )
+)
+
+(define-method get_radius
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_get_radius")
+  (return-type "gdouble")
+)
+
+(define-method set_radius
+  (of-object "MxDeformPageTurn")
+  (c-name "mx_deform_page_turn_set_radius")
+  (return-type "none")
+  (parameters
+    '("gdouble" "radius")
+  )
+)
 
 
 ;; From mx-deform-texture.h
