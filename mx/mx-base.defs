@@ -3055,15 +3055,15 @@
   (return-type "MxIconTheme*")
 )
 
-(define-method get_theme
+(define-method get_theme_name
   (of-object "MxIconTheme")
-  (c-name "mx_icon_theme_get_theme")
+  (c-name "mx_icon_theme_get_theme_name")
   (return-type "const-gchar*")
 )
 
-(define-method set_theme
+(define-method set_theme_name
   (of-object "MxIconTheme")
-  (c-name "mx_icon_theme_set_theme")
+  (c-name "mx_icon_theme_set_theme_name")
   (return-type "none")
   (parameters
     '("const-gchar*" "theme_name")
