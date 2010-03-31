@@ -249,11 +249,11 @@
   (vtable "MxItemFactoryIface")
 )
 
-(define-object Popup
+(define-object Menu
   (in-module "Mx")
-  (parent "MxWidget")
-  (c-name "MxPopup")
-  (gtype-id "MX_TYPE_POPUP")
+  (parent "MxFloatingWidget")
+  (c-name "MxMenu")
+  (gtype-id "MX_TYPE_MENU")
 )
 
 (define-object ComboBox
