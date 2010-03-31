@@ -1982,9 +1982,9 @@
   (return-type "ClutterTexture*")
 )
 
-(define-method set_frame
+(define-method set_border_values
   (of-object "MxTextureFrame")
-  (c-name "mx_texture_frame_set_frame")
+  (c-name "mx_texture_frame_set_border_values")
   (return-type "none")
   (parameters
     '("gfloat" "top")
@@ -1994,9 +1994,9 @@
   )
 )
 
-(define-method get_frame
+(define-method get_border_values
   (of-object "MxTextureFrame")
-  (c-name "mx_texture_frame_get_frame")
+  (c-name "mx_texture_frame_get_border_values")
   (return-type "none")
   (parameters
     '("gfloat*" "top")
@@ -2005,7 +2005,6 @@
     '("gfloat*" "left")
   )
 )
-
 
 
 ;; From mx-tooltip.h
