@@ -435,18 +435,18 @@
   )
 )
 
-(define-enum Direction
+(define-enum FocusDirection
   (in-module "Mx")
-  (c-name "MxDirection")
-  (gtype-id "MX_TYPE_DIRECTION")
+  (c-name "MxFocusDirection")
+  (gtype-id "MX_TYPE_FOCUS_DIRECTION")
   (values
-    '("out" "MX_OUT")
-    '("up" "MX_UP")
-    '("down" "MX_DOWN")
-    '("left" "MX_LEFT")
-    '("right" "MX_RIGHT")
-    '("next" "MX_NEXT")
-    '("previous" "MX_PREVIOUS")
+    '("out" "MX_FOCUS_DIRECTION_OUT")
+    '("up" "MX_FOCUS_DIRECTION_UP")
+    '("down" "MX_FOCUS_DIRECTION_DOWN")
+    '("left" "MX_FOCUS_DIRECTION_LEFT")
+    '("right" "MX_FOCUS_DIRECTION_RIGHT")
+    '("next" "MX_FOCUS_DIRECTION_NEXT")
+    '("previous" "MX_FOCUS_DIRECTION_PREVIOUS")
   )
 )
 
@@ -467,8 +467,8 @@
   (c-name "MxFocusHint")
   (gtype-id "MX_TYPE_FOCUS_HINT")
   (values
-    '("first" "MX_FIRST")
-    '("last" "MX_LAST")
+    '("first" "MX_FOCUS_HINT_FIRST")
+    '("last" "MX_FOCUS_HINT_LAST")
   )
 )
 
