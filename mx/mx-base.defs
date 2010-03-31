@@ -1631,68 +1631,6 @@
 )
 
 
-
-;; From mx-subtexture.h
-
-(define-function subtexture_get_type
-  (c-name "mx_subtexture_get_type")
-  (return-type "GType")
-)
-
-(define-function subtexture_new
-  (c-name "mx_subtexture_new")
-  (is-constructor-of "MxSubtexture")
-  (return-type "ClutterActor*")
-  (properties
-    '("texture")
-    '("top")
-    '("left")
-    '("width")
-    '("height")
-  )
-)
-
-(define-method set_parent_texture
-  (of-object "MxSubtexture")
-  (c-name "mx_subtexture_set_parent_texture")
-  (return-type "none")
-  (parameters
-    '("ClutterTexture*" "texture")
-  )
-)
-
-(define-method get_parent_texture
-  (of-object "MxSubtexture")
-  (c-name "mx_subtexture_get_parent_texture")
-  (return-type "ClutterTexture*")
-)
-
-(define-method set_frame
-  (of-object "MxSubtexture")
-  (c-name "mx_subtexture_set_frame")
-  (return-type "none")
-  (parameters
-    '("gint" "top")
-    '("gint" "left")
-    '("gint" "width")
-    '("gint" "height")
-  )
-)
-
-(define-method get_frame
-  (of-object "MxSubtexture")
-  (c-name "mx_subtexture_get_frame")
-  (return-type "none")
-  (parameters
-    '("gint*" "top")
-    '("gint*" "left")
-    '("gint*" "width")
-    '("gint*" "height")
-  )
-)
-
-
-
 ;; From mx-table-child.h
 
 (define-function table_child_get_type

@@ -9,7 +9,6 @@ headers
 /* This should be fixed in mx upstream */
 #define MX_H_INSIDE
 #include <mx/mx-box-layout-child.h>
-#include <mx/mx-subtexture.h>
 #include <mx/mx-notebook.h>
 
 %%
@@ -151,19 +150,6 @@ _wrap_mx_draggable_get_containment_area (PyGObject *self)
                                        &x_1, &y_1, &x_2, &y_2);
 
   return Py_BuildValue ("(ffff)", x_1, y_1, x_2, y_2);
-}
-%%
-override mx_subtexture_get_frame noargs
-static PyObject *
-_wrap_mx_subtexture_get_frame (PyGObject *self)
-{
-  gint top, left, width, height;
-  top = left = width = height = 0;
-
-  mx_subtexture_get_frame (MX_SUBTEXTURE (self->obj),
-                             &top, &left, &width, &height);
-
-  return Py_BuildValue ("(iiii)", top, left, width, height);
 }
 %%
 override mx_texture_frame_get_frame noargs
