@@ -423,45 +423,6 @@
   (return-type "guint")
 )
 
-(define-method set_containment_type
-  (of-object "MxDraggable")
-  (c-name "mx_draggable_set_containment_type")
-  (return-type "none")
-  (parameters
-    '("MxDragContainment" "containment")
-  )
-)
-
-(define-method get_containment_type
-  (of-object "MxDraggable")
-  (c-name "mx_draggable_get_containment_type")
-  (return-type "MxDragContainment")
-)
-
-(define-method set_containment_area
-  (of-object "MxDraggable")
-  (c-name "mx_draggable_set_containment_area")
-  (return-type "none")
-  (parameters
-    '("gfloat" "x_1")
-    '("gfloat" "y_1")
-    '("gfloat" "x_2")
-    '("gfloat" "y_2")
-  )
-)
-
-(define-method get_containment_area
-  (of-object "MxDraggable")
-  (c-name "mx_draggable_get_containment_area")
-  (return-type "none")
-  (parameters
-    '("gfloat*" "x_1")
-    '("gfloat*" "y_1")
-    '("gfloat*" "x_2")
-    '("gfloat*" "y_2")
-  )
-)
-
 (define-method disable
   (of-object "MxDraggable")
   (c-name "mx_draggable_disable")
@@ -679,11 +640,6 @@
 
 (define-function drag_axis_get_type
   (c-name "mx_drag_axis_get_type")
-  (return-type "GType")
-)
-
-(define-function drag_containment_get_type
-  (c-name "mx_drag_containment_get_type")
   (return-type "GType")
 )
 

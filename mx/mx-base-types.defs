@@ -382,18 +382,6 @@
   )
 )
 
-(define-enum DragContainment
-  (in-module "Mx")
-  (c-name "MxDragContainment")
-  (gtype-id "MX_TYPE_DRAG_CONTAINMENT")
-  (values
-    '("disable-containment" "MX_DISABLE_CONTAINMENT")
-    '("contain-in-stage" "MX_CONTAIN_IN_STAGE")
-    '("contain-in-parent" "MX_CONTAIN_IN_PARENT")
-    '("contain-in-area" "MX_CONTAIN_IN_AREA")
-  )
-)
-
 (define-enum StyleError
   (in-module "Mx")
   (c-name "MxStyleError")
