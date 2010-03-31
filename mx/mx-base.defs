@@ -365,6 +365,101 @@
   (varargs #t)
 )
 
+(define-method child_get_expand
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_get_expand")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_expand
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_set_expand")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "expand")
+  )
+)
+
+(define-method child_get_x_fill
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_get_x_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_fill
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_set_x_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "x_fill")
+  )
+)
+
+(define-method child_get_y_fill
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_get_y_fill")
+  (return-type "gboolean")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_fill
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_set_y_fill")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("gboolean" "y_fill")
+  )
+)
+
+(define-method child_get_x_align
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_get_x_align")
+  (return-type "MxAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_x_align
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_set_x_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("MxAlign" "x_align")
+  )
+)
+
+(define-method child_get_y_align
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_get_y_align")
+  (return-type "MxAlign")
+  (parameters
+    '("ClutterActor*" "child")
+  )
+)
+
+(define-method child_set_y_align
+  (of-object "MxBoxLayout")
+  (c-name "mx_box_layout_child_set_y_align")
+  (return-type "none")
+  (parameters
+    '("ClutterActor*" "child")
+    '("MxAlign" "y_align")
+  )
+)
+
 
 ;; From mx-button.h
 
