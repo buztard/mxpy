@@ -485,3 +485,23 @@
   )
 )
 
+(define-flags StyleChangedFlags
+  (in-module "Mx")
+  (c-name "MxStyleChangedFlags")
+  (gtype-id "MX_TYPE_STYLE_CHANGED_FLAGS")
+  (values
+    '("none" "MX_STYLE_CHANGED_NONE")
+    '("force" "MX_STYLE_CHANGED_FORCE")
+  )
+)
+
+(define-enum Orientation
+  (in-module "Mx")
+  (c-name "MxOrientation")
+  (gtype-id "MX_TYPE_ORIENTATION")
+  (values
+    '("horizontal" "MX_ORIENTATION_HORIZONTAL")
+    '("vertical" "MX_ORIENTATION_VERTICAL")
+  )
+)
+
