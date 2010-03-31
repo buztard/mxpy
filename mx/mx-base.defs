@@ -2704,14 +2704,14 @@
   (c-name "mx_notebook_set_current_page")
   (return-type "none")
   (parameters
-    '("gint" "page")
+    '("ClutterActor*" "page")
   )
 )
 
 (define-method get_current_page
   (of-object "MxNotebook")
   (c-name "mx_notebook_get_current_page")
-  (return-type "gint")
+  (return-type "ClutterActor*")
 )
 
 (define-method get_enable_gestures
