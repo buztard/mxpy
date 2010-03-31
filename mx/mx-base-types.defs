@@ -354,11 +354,12 @@
   (gtype-id "MX_TYPE_DEFORM_BOW_TIE")
 )
 
-(define-object DeformCloth
+
+(define-object DeformWaves
   (in-module "Mx")
   (parent "MxDeformTexture")
-  (c-name "MxDeformCloth")
-  (gtype-id "MX_TYPE_DEFORM_CLOTH")
+  (c-name "MxDeformWaves")
+  (gtype-id "MX_TYPE_DEFORM_WAVES")
 )
 
 (define-object DeformPageTurn
