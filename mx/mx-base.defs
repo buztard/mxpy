@@ -745,6 +745,14 @@
   )
 )
 
+(define-function entry_new_with_text
+  (c-name "mx_entry_new_with_text")
+  (return-type "ClutterActor*")
+  (parameters
+    '("const-gchar*" "text")
+  )
+)
+
 (define-method get_text
   (of-object "MxEntry")
   (c-name "mx_entry_get_text")

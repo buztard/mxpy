@@ -45,6 +45,7 @@ ignore
   mx_utils_format_time
   mx_actor_box_clamp_to_pixels
   mx_adjustment_new_with_values
+  mx_entry_new_with_text
 %%
 new-constructor MX_TYPE_WIDGET
 %%
