@@ -2296,21 +2296,6 @@
   (return-type "GType")
 )
 
-(define-method set_has_tooltip
-  (of-object "MxWidget")
-  (c-name "mx_widget_set_has_tooltip")
-  (return-type "none")
-  (parameters
-    '("gboolean" "has_tooltip")
-  )
-)
-
-(define-method get_has_tooltip
-  (of-object "MxWidget")
-  (c-name "mx_widget_get_has_tooltip")
-  (return-type "gboolean")
-)
-
 (define-method set_tooltip_text
   (of-object "MxWidget")
   (c-name "mx_widget_set_tooltip_text")
@@ -2335,12 +2320,6 @@
 (define-method hide_tooltip
   (of-object "MxWidget")
   (c-name "mx_widget_hide_tooltip")
-  (return-type "none")
-)
-
-(define-method ensure_style
-  (of-object "MxWidget")
-  (c-name "mx_widget_ensure_style")
   (return-type "none")
 )
 
@@ -2386,35 +2365,19 @@
   (return-type "none")
 )
 
-(define-method set_popup
+(define-method set_menu
   (of-object "MxWidget")
-  (c-name "mx_widget_set_popup")
+  (c-name "mx_widget_set_menu")
   (return-type "none")
   (parameters
-    '("MxPopup*" "popup")
+    '("MxMenu*" "menu")
   )
 )
 
-(define-method get_popup
+(define-method get_menu
   (of-object "MxWidget")
-  (c-name "mx_widget_get_popup")
-  (return-type "MxPopup*")
-)
-
-(define-method show_popup
-  (of-object "MxWidget")
-  (c-name "mx_widget_show_popup")
-  (return-type "none")
-  (parameters
-    '("gfloat" "x")
-    '("gfloat" "y")
-  )
-)
-
-(define-method hide_popup
-  (of-object "MxWidget")
-  (c-name "mx_widget_hide_popup")
-  (return-type "none")
+  (c-name "mx_widget_get_menu")
+  (return-type "MxMenu*")
 )
 
 (define-method get_available_area
