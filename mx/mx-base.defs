@@ -997,36 +997,35 @@
   (return-type "MxIcon*")
 )
 
-(define-method get_name
+(define-method get_icon_name
   (of-object "MxIcon")
-  (c-name "mx_icon_get_name")
+  (c-name "mx_icon_get_icon_name")
   (return-type "const-gchar*")
 )
 
-(define-method set_name
+(define-method set_icon_name
   (of-object "MxIcon")
-  (c-name "mx_icon_set_name")
+  (c-name "mx_icon_set_icon_name")
   (return-type "none")
   (parameters
     '("const-gchar*" "icon_name")
   )
 )
 
-(define-method get_size
+(define-method get_icon_size
   (of-object "MxIcon")
-  (c-name "mx_icon_get_size")
+  (c-name "mx_icon_get_icon_size")
   (return-type "gint")
 )
 
-(define-method set_size
+(define-method set_icon_size
   (of-object "MxIcon")
-  (c-name "mx_icon_set_size")
+  (c-name "mx_icon_set_icon_size")
   (return-type "none")
   (parameters
     '("gint" "size")
   )
 )
-
 
 
 ;; From mx-item-view.h
