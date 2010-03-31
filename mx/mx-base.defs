@@ -2058,15 +2058,15 @@
   (return-type "GType")
 )
 
-(define-method get_label
+(define-method get_text
   (of-object "MxTooltip")
-  (c-name "mx_tooltip_get_label")
+  (c-name "mx_tooltip_get_text")
   (return-type "const-gchar*")
 )
 
-(define-method set_label
+(define-method set_text
   (of-object "MxTooltip")
-  (c-name "mx_tooltip_set_label")
+  (c-name "mx_tooltip_set_text")
   (return-type "none")
   (parameters
     '("const-gchar*" "text")
