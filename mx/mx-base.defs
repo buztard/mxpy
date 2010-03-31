@@ -1433,26 +1433,6 @@
   )
 )
 
-(define-method freeze_style_notify
-  (of-object "MxStylable")
-  (c-name "mx_stylable_freeze_notify")
-  (return-type "none")
-)
-
-(define-method style_notify
-  (of-object "MxStylable")
-  (c-name "mx_stylable_notify")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "property_name")
-  )
-)
-
-(define-method thaw_style_notify
-  (of-object "MxStylable")
-  (c-name "mx_stylable_thaw_notify")
-  (return-type "none")
-)
 
 (define-method list_style_properties
   (of-object "MxStylable")
@@ -1532,8 +1512,10 @@
 
 (define-method style_changed
   (of-object "MxStylable")
-  (c-name "mx_stylable_changed")
-  (return-type "none")
+  (c-name "mx_stylable_style_changed")
+  (parameters
+    '("MxStyleChangedFlags" "flags")
+  )
 )
 
 (define-method get_style_class
@@ -1573,6 +1555,12 @@
   (parameters
     '("ClutterText*" "text")
   )
+)
+
+(define-method connect_change_notifiers
+  (of-object "MxStylable")
+  (c-name "mx_stylable_connect_change_notifiers")
+  (return-type "none")
 )
 
 
