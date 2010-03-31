@@ -2873,18 +2873,18 @@
   (return-type "ClutterActor*")
 )
 
-(define-method set_progress
+(define-method set_value
   (of-object "MxSlider")
-  (c-name "mx_slider_set_progress")
+  (c-name "mx_slider_set_value")
   (return-type "none")
   (parameters
-    '("gdouble" "progress")
+    '("gdouble" "value")
   )
 )
 
-(define-method get_progress
+(define-method get_value
   (of-object "MxSlider")
-  (c-name "mx_slider_get_progress")
+  (c-name "mx_slider_get_value")
   (return-type "gdouble")
 )
 
