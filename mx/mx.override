@@ -44,6 +44,7 @@ ignore
   mx_set_locale
   mx_utils_format_time
   mx_actor_box_clamp_to_pixels
+  mx_adjustment_new_with_values
 %%
 new-constructor MX_TYPE_WIDGET
 %%

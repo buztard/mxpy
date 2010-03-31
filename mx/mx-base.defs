@@ -14,12 +14,25 @@
   (is-constructor-of "MxAdjustment")
   (return-type "MxAdjustment*")
   (properties
-    '("value")
-    '("lower")
-    '("upper")
-    '("step_increment")
-    '("page_increment")
-    '("page_size")
+    '("value" (optional))
+    '("lower" (optional))
+    '("upper" (optional))
+    '("step_increment" (optional))
+    '("page_increment" (optional))
+    '("page_size" (optional))
+  )
+)
+
+(define-function adjustment_new_with_values
+  (c-name "mx_adjustment_new_with_values")
+  (return-type "MxAdjustment*")
+  (parameters
+    '("gdouble" "value")
+    '("gdouble" "lower")
+    '("gdouble" "upper")
+    '("gdouble" "step_increment")
+    '("gdouble" "page_increment")
+    '("gdouble" "page_size")
   )
 )
 
@@ -35,16 +48,6 @@
   (return-type "none")
   (parameters
     '("gdouble" "value")
-  )
-)
-
-(define-method clamp_page
-  (of-object "MxAdjustment")
-  (c-name "mx_adjustment_clamp_page")
-  (return-type "none")
-  (parameters
-    '("gdouble" "lower")
-    '("gdouble" "upper")
   )
 )
 
@@ -121,6 +124,81 @@
     '("gboolean" "interpolate")
     '("guint" "duration")
     '("gulong" "mode")
+  )
+)
+
+(define-method get_lower
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_lower")
+  (return-type "gdouble")
+)
+
+(define-method set_lower
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_lower")
+  (return-type "none")
+  (parameters
+    '("gdouble" "lower")
+  )
+)
+
+(define-method get_upper
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_upper")
+  (return-type "gdouble")
+)
+
+(define-method set_upper
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_upper")
+  (return-type "none")
+  (parameters
+    '("gdouble" "upper")
+  )
+)
+
+(define-method get_step_increment
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_step_increment")
+  (return-type "gdouble")
+)
+
+(define-method set_step_increment
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_step_increment")
+  (return-type "none")
+  (parameters
+    '("gdouble" "increment")
+  )
+)
+
+(define-method get_page_increment
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_page_increment")
+  (return-type "gdouble")
+)
+
+(define-method set_page_increment
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_page_increment")
+  (return-type "none")
+  (parameters
+    '("gdouble" "increment")
+  )
+)
+
+(define-method get_page_size
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_get_page_size")
+  (return-type "gdouble")
+)
+
+(define-method set_page_size
+  (of-object "MxAdjustment")
+  (c-name "mx_adjustment_set_page_size")
+  (return-type "none")
+  (parameters
+    '("gdouble" "page_size")
   )
 )
 
