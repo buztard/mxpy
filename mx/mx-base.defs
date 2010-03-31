@@ -3157,7 +3157,7 @@
   (c-name "mx_focusable_move_focus")
   (return-type "MxFocusable*")
   (parameters
-    '("MxDirection" "direction")
+    '("MxFocusDirection" "direction")
     '("MxFocusable*" "from")
   )
 )
@@ -3166,7 +3166,7 @@
   (of-object "MxFocusable")
   (return-type "MxFocusable*")
   (parameters
-    '("MxDirection" "direction")
+    '("MxFocusDirection" "direction")
     '("MxFocusable*" "from")
   )
 )
