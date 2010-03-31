@@ -2421,6 +2421,21 @@
   )
 )
 
+(define-method set_sync_adjustments
+  (of-object "MxViewport")
+  (c-name "mx_viewport_set_sync_adjustments")
+  (return-type "none")
+  (parameters
+    '("gboolean" "sync")
+  )
+)
+
+(define-method get_sync_adjustments
+  (of-object "MxViewport")
+  (c-name "mx_viewport_get_sync_adjustments")
+  (return-type "gboolean")
+)
+
 
 
 ;; From mx-widget.h
