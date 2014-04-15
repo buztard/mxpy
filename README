@@ -1,1 +1,5 @@
-MxPy are Python bindings to the Mx toolkit, the successor of Nbtk
+MxPy are Python bindings to the Mx toolkit, the successor of Nbtk.
+
+Do **NOT** use this bindings for new projects. Please use
+[GObject-Introspection](https://wiki.gnome.org/GObjectIntrospection)
+through [PyGObject](https://wiki.gnome.org/PyGObject) instead.
